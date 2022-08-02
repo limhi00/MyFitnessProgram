@@ -9,6 +9,10 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -21,7 +25,7 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/inner-page.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Green - v4.8.0
@@ -43,28 +47,34 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
-          <li><a class="getstarted scrollto" href="#">Login</a></li>
+          <li><a class="nav-link scrollto " href="#hero"></a></li>
+          <li><a class="nav-link scrollto" href="#about"></a></li>
+          <li><a class="nav-link scrollto" href="#services"></a></li>
+          <li><a class="nav-link scrollto " href="#portfolio">Home</a></li>
+          <li><a class="nav-link scrollto" href="#team">회원가입</a></li>
+          <li class="dropdown"><a href="#"><span></span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#"></a></li>
+              <li class="dropdown"><a href="#"><span></span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact"></a></li>
+          <li><a class="getstarted scrollto" href="#about">Login</a></li>
         </ul>
-      </nav>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
-	  <div class="sidemenu">
-	    <input type="checkbox" id="menuicon">
-	    <label for="menuicon">
-	      <span></span>
-	      <span></span>
-	      <span></span>
-	    </label>
-	    <div class="sidebar">
-	      <ul class="side_list">
-	        <li class="list_name">큰 페이지</li>
-	        <li class="list_link"><a href="#">> 작은 페이지</a></li>
-	        <li class="list_link"><a href="#">> 작은 페이지</a></li>
-	      </ul>
-	    </div>
-	  </div>
-      <!-- .navbar -->
-      
     </div>
   </header>
   <!-- End Header -->
@@ -74,18 +84,20 @@
     <!-- ======= Breadcrumbs ======= -->
     <section class="breadcrumbs">
       <div class="container">
+
         <div class="d-flex justify-content-between align-items-center">
           <h2>페이지명(ex.자유게시판)</h2>
           <ol>
-            <li><a href="#">페이지명(ex.자유게시판)</a></li>
+            <li><a href="index.html">페이지명(ex.자유게시판)</a></li>
             <li>큰 페이지(ex.게시판)</li>
           </ol>
         </div>
+
       </div>
     </section>
     <!-- End Breadcrumbs -->
 
-    <section class="content">
+    <section class="inner-page">
       <div class="container">
         <p>
           내용은 여기에
@@ -126,25 +138,6 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <!-- 왼쪽 사이드 메뉴 스크립트 -->
-  <script>
-	  $(function () {
-	      $(".left_sub_menu").hide();
-	      $(".has_sub").click(function () {
-	          $(".left_sub_menu").fadeToggle(300);
-	      });
-	      // 왼쪽메뉴 드롭다운
-	      $(".sub_menu ul.small_menu").hide();
-	      $(".sub_menu ul.big_menu").click(function () {
-	          $("ul", this).slideToggle(300);
-	      });
-	      // 외부 클릭 시 좌측 사이드 메뉴 숨기기
-	      $('.overlay').on('click', function () {
-	          $('.left_sub_menu').fadeOut();
-	          $('.hide_sidemenu').fadeIn();
-	      });
-	  });
-  </script>
 
 </body>
 
