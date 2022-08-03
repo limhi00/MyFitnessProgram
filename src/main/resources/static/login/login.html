@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>login</title>
+    <link rel="stylesheet" href="assets/css/style_login.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript">   
+	$(document).ready( function() {
+	
+	$("#headers").load("common/header.html");  // 원하는 파일 경로를 삽입하면 된다
+	$("#footers").load("common/footer.html");  // 추가 인클루드를 원할 경우 이런식으로 추가하면 된다
+	
+	});
+	</script>    
+  </head>
+  <body>
+    <div class="center">
+      <h1>Login</h1>
+      <form method="post">
+        <div class="txt_field">
+          <input type="text" required>
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <div class="pass">Forgot Password?</div>
+        <div class="Id">Forgot ID?</div>
+        <input type="submit" value="Login">
+        <div class="signup_link">
+          Not a member? <a href="#">Signup</a>
+        </div>
+      </form>
+    </div>
+
+  </body>
+</html>
