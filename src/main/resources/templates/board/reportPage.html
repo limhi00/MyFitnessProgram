@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
-    <link rel="stylesheet" href="assets/css/css.css">
+    <link rel="stylesheet" href="static/assets/css/style_board.css">
 </head>
 <body>
     <div class="board_wrap">
         <div class="board_title">
-            <strong>비밀번호 확인</strong>
+            <strong>글 신고</strong>
             
         </div>
         <div class="board_write_wrap">
             <div class="board_write">
                 <div class="title">
                     <dl>
-                        <dd><p>삭제 및 수정을 원하시면 비밀번호를 입력해주세요.</p></dd>
+                        <dt>제목</dt>
+                        <dd><input type="text" placeholder="제목 입력"></dd>
                     </dl>
                 </div>
-                <hr><br><br>
-                <dl>
-                	<dd><strong>비밀번호</strong><input type="password" placeholder="비밀번호 입력" value="1234"></dd><br><br>
-                </dl>
-            	<hr>
+                <hr>
+                <div class="cont">
+                    <textarea placeholder="내용 입력"></textarea>
+                </div>
             </div>
             <div class="bt_wrap">
-                <a href="delete_real.html">확인</a>
+                <a href="view.html">신고</a>
                 <a href="view.html">취소</a>
             </div>
         </div>

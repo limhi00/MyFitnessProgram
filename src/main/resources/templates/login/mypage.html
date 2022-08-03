@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+ 
+ 
+  <style>
+ 
+ h, td, tr, input, textarea, select, FORM
+ {
+   font-family:고딕;
+  font-size:1em;
+  border-radius:5px;
+  
+ }
+ 
+ table, FORM
+ {
+  border:1px solid rgba(0, 0, 0, 0);
+  border-spacing:15px;
+ }
+
+ 
+  
+  </style>
+
+
+</head>
+<body style="background-color:white">
+ <center>
+ <h1> 회원가입</h1>
+ <table boder = ""  cellspacing = "1" >
+ <FORM>
+ 	
+ 	<tr>
+	   <td> 이름 </td>
+	   <td> <input type = "text"/> </td>
+	  </tr>
+ 	
+  <tr>
+   <td text-align="center">아이디 </td>
+   <td>
+   <input type = "text" />
+   <input type = "button" value = "중복확인" onclick="idcheck.html"/>
+   </td>
+  </tr>
+
+
+
+  <tr>
+   <td> 비밀번호 </td>
+   <td> <input type = "password"/> </td>
+  </tr>
+
+
+  <tr>
+   <td> 비밀번호 확인 </td>
+   <td> <input type = "password"/>&nbsp;*비밀번호를 다시입력하여주세여. </td>
+  </tr>
+  
+  	
+  <tr>
+   <td text-align="center">주소 </td>
+   <td>
+   <input type = "text" />
+   <input type = "button" value = "주소검색" onclick="find_address.html"/>
+   </td>
+  </tr>
+  
+  
+  <tr>
+   <td>상세주소 </td>
+   <td> <input type = "text"/> </td>
+  </tr>
+  
+    <tr>
+   <td text-align="center">전화 번호 </td>
+   <td>
+   <input type = "text" />
+   <input type = "button" value = "인증번호 전송" onclick=""/>
+   </td>
+  </tr>
+  
+  
+  <tr>
+   <td text-align="center">인증번호 확인 </td>
+   <td>
+   <input type = "text" />
+   <input type = "button" value = "확인" onclick=""/>
+   </td>
+  </tr>
+
+ 
+
+
+  <tr>
+   <td> 성별 </td>
+   <td>
+    <input type = "radio" name = "gender"/ checked> 남자
+    <input type = "radio" name = "gender"/> 여자
+   </td>
+  </tr>
+  
+  <tr>
+   <td> PT 등록 여부 </td>
+   <td>
+    <input type = "radio" name = "regist"/ checked> 미등록
+    <input type = "radio" name = "regist"/> 등록
+   </td>
+  </tr>
+  
+   <tr>
+   <td>담당 트레이너 이름 </td>
+   <td>
+  <select name="trainer" id="trainer">
+           	  <option value="none">없음</option>
+			  <option value="trainer1">홍길동</option>
+			  <option value="trainer2">고길동</option>
+			  <option value="trainer3">김길동</option>
+			  <option value="trainer4">제갈길동</option>
+			</select>
+   </td>
+  </tr>
+  
+</table>
+<input type = "submit" value = "회원가입"/>
+<input type = "reset" value = "다시 입력"/>
+
+
+</center>
+</body>
+</html>
