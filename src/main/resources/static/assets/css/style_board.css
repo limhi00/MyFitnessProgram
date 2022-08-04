@@ -1,24 +1,12 @@
-* {
-    margin: 0;
-    padding: 0;
-}
 
-html {
-    font-size: 10px;
-}
-
-ul, li {
-    list-style: none;
-}
-
-a {
+.board_wrap a  {
     text-decoration: none;
-    color: inherit;
+    color:#000;
 }
 
 .board_wrap {
     width: 1000px;
-    margin: 100px auto;
+    margin: 50px auto;
 }
 
 .board_title {
@@ -32,8 +20,15 @@ a {
 .search_1 {
     margin-bottom: 10px;
     position: relative; left: 77%; 
+	width:350px;
+	font-weight:700;
+	font-size: 14px;
 }
 
+
+.search_1 #searchBtn {
+	padding:1px;
+}
 
 .board_title p {
     margin-top: 5px;
@@ -302,9 +297,10 @@ a {
     resize: vertical;
 }
 
-.board_write .upload{
+.board_write .upload {
 	padding: 5%;
 }
+
 @media (max-width: 1000px) {
     .board_wrap {
         width: 100%;

@@ -1,54 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>My Fitness Program</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>My Fitness GYM</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet"/>
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Green - v4.8.0
-  * Template URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
 
-
   <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
+  <header id="header_custom" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">My Fitness Gym</a></h1>
+      <h1 class="logo me-auto"><a href="/">My Fitness Gym</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
+      <nav id="navbar_custom" class="navbar_custom">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
-          <li><a class="getstarted scrollto" href="/login/login.html">Login</a></li>
+          <li><a class="nav-link scrollto active" href="/">Home</a></li>
+          <li><a class="getstarted scrollto" href="/login">Login</a></li>
         </ul>
       </nav>
-
+      <!-- .navbar -->
+      
 	  <div class="sidemenu">
 	    <input type="checkbox" id="menuicon">
 	    <label for="menuicon">
@@ -64,7 +56,7 @@
 	      </ul>
 	    </div>
 	  </div>
-      <!-- .navbar -->
+      
       
     </div>
   </header>
@@ -82,9 +74,9 @@
         <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg)">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">Welcome to <span>My Fitness Gym</span></h2>
-              <p class="animate__animated animate__fadeInUp">work harder, get stronger. 저희와 함께라면 할 수 있습니다.</p>
-              <a href="/login/join.html" class="btn-get-started animate__animated animate__fadeInUp scrollto">Sign Up</a>
+              <h2 class="animate__animated animate__fadeInDown">Welcome to <span>My Fitness GYM</span></h2>
+              <p class="animate__animated animate__fadeInUp">Work Harder, Get Stronger. 저희와 함께라면 할 수 있습니다.</p>
+              <a href="/join" class="btn-get-started animate__animated animate__fadeInUp scrollto">회원가입</a>
             </div>
           </div>
         </div>
@@ -94,8 +86,8 @@
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">운동 영상을 업로드하고 소통하세요</h2>
-              <p class="animate__animated animate__fadeInUp">게시판에서 게시글을 쓰거나 운동영상을 올려 사람들과 소통하세요. 커뮤니티처럼 즐길 수 있습니다.</p>
-              <a href="/login/join.html" class="btn-get-started animate__animated animate__fadeInUp scrollto">Sign Up</a>
+              <p class="animate__animated animate__fadeInUp">게시판에서 커뮤니티를 활동을 즐겨보세요. 운동에 대한 모든 의견을 사람들과 소통할 수 있습니다.</p>
+              <a href="/join" class="btn-get-started animate__animated animate__fadeInUp scrollto">회원가입</a>
             </div>
           </div>
         </div>
@@ -104,9 +96,9 @@
         <div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.jpg)">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">트레이너의 수업요약 및 피드백</h2>
+              <h2 class="animate__animated animate__fadeInDown">전문 트레이너의 PT수업과 피드백</h2>
               <p class="animate__animated animate__fadeInUp">지난 수업을 까먹곤 하지 않았나요? 트레이너의 수업요약일지를 통해 복습해보세요. 댓글을 남겨 피드백을 받을 수도 있습니다.</p>
-              <a href="/login/join.html" class="btn-get-started animate__animated animate__fadeInUp scrollto">Sign Up</a>
+              <a href="/join" class="btn-get-started animate__animated animate__fadeInUp scrollto">회원가입</a>
             </div>
           </div>
         </div>
@@ -135,22 +127,22 @@
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-chat-text"></i></div>
-              <h4 class="title"><a href="/board/allBoardList.html">게시판</a></h4>
+              <h4 class="title"><a href="/allBoardList">게시판</a></h4>
               <p class="description">당신의 운동영상이나 글을 게시하여 사람들과 소통해보세요.</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-              <h4 class="title"><a href="/class/classCalendar.html">수업 예약</a></h4>
+              <h4 class="title"><a href="/classCalendar">수업 예약</a></h4>
               <p class="description">몇 번의 클릭으로 편하게 수업을 예약하실 수 있습니다.</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-cup-straw"></i></div>
-              <h4 class="title"><a href="/diet/dietCalendar.html">식단 올리기</a></h4>
-              <p class="description">매 월마다 식단과 수분섭취량, 인바디를 기록해보세요.</p>
+              <h4 class="title"><a href="/dietCalendar">식단 올리기</a></h4>
+              <p class="description">매달 식단과 수분섭취량, 인바디를 달력에 기록해보세요.</p>
             </div>
           </div>
         </div>
@@ -417,15 +409,15 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+  <footer id="footer_custom">
     <div class="container">
       <h3>My Fitness Gym</h3>
       <p>Everybody wants to be a bodybuilder, but nobody wants to lift no heavy-ass weights.</p>
 
-      <div class="copyright">
+      <div class="copyright_custom">
         &copy; Copyright <strong><span>지동석</span></strong>. All Rights Reserved
       </div>
-      <div class="credits">
+      <div class="credits_custom">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->

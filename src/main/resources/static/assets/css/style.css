@@ -68,18 +68,18 @@ h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-#header {
+#header_custom {
   background: #fff;
   transition: all 0.5s;
   z-index: 997;
   height: 70px;
 }
 
-#header.header-scrolled {
+#header_custom.header-scrolled {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-#header .logo {
+#header_custom .logo {
   font-size: 30px;
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -90,11 +90,11 @@ h6 {
   text-transform: uppercase;
 }
 
-#header .logo a {
+#header_custom .logo a {
   color: #626358;
 }
 
-#header .logo img {
+#header_custom .logo img {
   max-height: 40px;
 }
 
@@ -103,7 +103,7 @@ h6 {
 }
 
 @media (max-width: 500px) {
-	#header .logo {
+	#header_custom .logo {
 	  font-size: 20px;
 	}
 }
@@ -113,11 +113,11 @@ h6 {
 /**
 * Desktop Navigation 
 */
-.navbar {
+.navbar_custom {
   padding: 0;
 }
 
-.navbar ul {
+.navbar_custom ul {
   margin: 0;
   padding: 0;
   display: flex;
@@ -125,12 +125,12 @@ h6 {
   align-items: center;
 }
 
-.navbar li {
+.navbar_custom li {
   position: relative;
 }
 
-.navbar a,
-.navbar a:focus {
+.navbar_custom a,
+.navbar_custom a:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -141,15 +141,15 @@ h6 {
   transition: 0.3s;
 }
 
-.navbar a:hover,
-.navbar .active,
-.navbar .active:focus,
-.navbar li:hover>a {
+.navbar_custom a:hover,
+.navbar_custom .active,
+.navbar_custom .active:focus,
+.navbar_custom li:hover>a {
   color: #626358;
 }
 
-.navbar .getstarted,
-.navbar .getstarted:focus {
+.navbar_custom .getstarted,
+.navbar_custom .getstarted:focus {
   color: #ffffff;
   background-color: #ED563B;
   padding: 8px 25px;
@@ -161,8 +161,8 @@ h6 {
   font-weight: 700;
 }
 
-.navbar .getstarted:hover,
-.navbar .getstarted:focus:hover {
+.navbar_custom .getstarted:hover,
+.navbar_custom .getstarted:focus:hover {
   background: #fff;
   color: #ED563B;
 }
@@ -818,7 +818,7 @@ section {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-#footer {
+#footer_custom {
   background: #090909;
   color: #fff;
   font-size: 14px;
@@ -826,7 +826,7 @@ section {
   padding: 30px 0;
 }
 
-#footer h3 {
+#footer_custom h3 {
   font-size: 36px;
   font-weight: 700;
   color: #fff;
@@ -836,17 +836,17 @@ section {
   margin: 0 0 15px 0;
 }
 
-#footer p {
+#footer_custom p {
   font-size: 15;
   font-style: italic;
   padding: 0;
   margin: 0 0 40px 0;
 }
 
-#footer .copyright {
+#footer_custom .copyright {
   margin: 0 0 5px 0;
 }
 
-#footer .credits {
+#footer_custom .credits {
   font-size: 13px;
 }
