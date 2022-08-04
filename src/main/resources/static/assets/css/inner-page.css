@@ -253,31 +253,70 @@ input[id="menuicon"]:checked + label + div {
 	backdrop-filter: blur(5px);
 }
 
+.sidebar h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  border-bottom: 5px solid #fff;
+  padding-bottom: 5px;
+  margin: 100px 198px 60px 80px;
+}
 .sidebar ul {
-	list-style: none;
-	margin: 100px 10px;
+  list-style: none;
 }
-.sidebar a {
+.sidebar .side_list .dropdown {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 35px 48px;
+}
+.sidebar .dropdown ul {
+  list-style: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: block;
+  position: absolute;
+  top: calc(100% + 30px);
+  left: 10%;
+  padding: 20px 10px;
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  background:rgba(60,60,60,0.3); 
+  backdrop-filter: blur(5px);
+  transition: 0.3s;
+}
+.sidebar .dropdown ul li {
+  min-width: 290px;
+  margin: 11px 0 11px 0;
+  padding: 10px 20px;
+  text-transform: none;
+}
+.sidebar .dropdown ul a:hover {
+	font-weight: 500;
 	color: #fff;
-}
-.sidebar a:hover {
-	font-weight: 900;
 	background-color: rgba(237, 86, 59);
 	border-radius: 40px 80px / 80px 40px;
-	padding: 10px 20px;
+	padding: 8px 23px;
 	transition: .3s;
 }
-.list_name {
-	color: #fff;
-	font-size: 18px;
-	font-weight: 700;
-	margin-bottom: 40px;
+.sidebar .dropdown:hover>ul {
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
 }
-.list_link {
-	font-size: 20px;
-	margin-bottom: 30px;
-	transition:all .3s;
-	cursor: pointer;
+
+.sidebar .dropdown .deepdropdown ul {
+  top: 238px;
+  left: calc(100% - 30px);
+  visibility: hidden;
+}
+
+.sidebar .dropdown .deepdropdown:hover>ul {
+  opacity: 1;
+  top: 238px;
+  left: 100%;
+  visibility: visible;
 }
 
 @media (max-width: 500px) {
