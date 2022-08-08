@@ -1,51 +1,81 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/_layout">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글 등록</title>
-    <link rel="stylesheet" href="assets/css/css.css">
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>My Fitness Program - 게시글 등록</title>
+  <!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
+  <link href="assets/css/style_board.css" rel="stylesheet">
 </head>
 <body>
-    <div class="board_wrap">
-        <div class="board_title">
-            <strong>글 등록</strong>
-        </div>
-        <div class="board_write_wrap">
-            <div class="board_write">
-                <div class="title">
-                    <dl>
-                        <dt>제목</dt>
-                        <dd><input type="text" placeholder="제목 입력" value="글 제목이 들어갑니다"></dd>
-                    </dl>
-                </div>
-                <div class="info">
-                    <dl>
-                        <dt>글쓴이</dt>
-                        <dd><input type="text" placeholder="글쓴이 입력" value="김이름"></dd>
-                    </dl>
-                    <dl>
-                        <dt>비밀번호</dt>
-                        <dd><input type="password" placeholder="비밀번호 입력" value="1234"></dd>
-                    </dl>
-                     <dl>
-                        <dt>아이디</dt>
-                        <dd><input type="text" placeholder="아이디 입력" value=""></dd>
-                    </dl>
-                     <dl>
-                        <dt>카테고리</dt>
-                        <dd>
-                        	<select name="category" id="category">
-					           	<option value="category1">전체게시판</option>
-								<option value="category2">자유게시판</option>
-								<option value="category3">운동영상</option>
-								<option value="category4">첼린지</option>
-							</select>
-                        </dd>
-                    </dl>
-                </div>
-                <div class="cont">
-                    <textarea placeholder="내용 입력">
+
+	<div layout:fragment="content">
+
+		<!-- ======= Breadcrumbs ======= -->
+		<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>게시글 등록</h2>
+					<ol>
+						<li><a href="#">게시글 등록</a></li>
+						<li>게시판</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
+
+		<section class="myContent">
+			<div class="container">
+				<div class="board_wrap">
+					<div class="board_title">
+						<strong>글 등록</strong>
+					</div>
+					<div class="board_write_wrap">
+						<div class="board_write">
+							<div class="title">
+								<dl>
+									<dt>제목</dt>
+									<dd>
+										<input type="text" placeholder="제목 입력" value="글 제목이 들어갑니다">
+									</dd>
+								</dl>
+							</div>
+							<div class="info">
+								<dl>
+									<dt>글쓴이</dt>
+									<dd>
+										<input type="text" placeholder="글쓴이 입력" value="김이름">
+									</dd>
+								</dl>
+								<dl>
+									<dt>비밀번호</dt>
+									<dd>
+										<input type="password" placeholder="비밀번호 입력" value="1234">
+									</dd>
+								</dl>
+								<dl>
+									<dt>아이디</dt>
+									<dd>
+										<input type="text" placeholder="아이디 입력" value="">
+									</dd>
+								</dl>
+								<dl>
+									<dt>카테고리</dt>
+									<dd>
+										<select name="category" id="category">
+											<option value="category1">전체게시판</option>
+											<option value="category2">자유게시판</option>
+											<option value="category3">운동영상</option>
+											<option value="category4">첼린지</option>
+										</select>
+									</dd>
+								</dl>
+							</div>
+							<div class="cont">
+								<textarea placeholder="내용 입력">
 글 내용이 들어갑니다.
 글 내용이 들어갑니다.
 글 내용이 들어갑니다.
@@ -55,17 +85,19 @@
 글 내용이 들어갑니다.
 글 내용이 들어갑니다.
 </textarea>
-                </div>
-                <div class="upload">
-                	<input type="file" id="fileupload"/>
-                </div>
-                
-            </div>
-            <div class="bt_wrap">
-                <a href="view.html" >등록</a>
-                <a href="list.html">취소</a>
-            </div>
-        </div>
-    </div>
+							</div>
+							<div class="upload">
+								<input type="file" id="fileupload" />
+							</div>
+
+						</div>
+						<div class="bt_wrap">
+							<a href="view.html">등록</a> <a href="list.html">취소</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 </body>
 </html>
