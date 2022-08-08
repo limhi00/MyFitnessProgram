@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout/_layout">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -25,57 +23,37 @@ table, FORM {
 </head>
 <body style="background-color: white">
 
-	<div layout:fragment="content">
-
-		<!-- ======= Breadcrumbs ======= -->
-		<section class="breadcrumbs">
-			<div class="container">
-				<div class="d-flex justify-content-between align-items-center">
-					<h2>페이지명(ex.자유게시판)</h2>
-					<ol>
-						<li><a href="#">페이지명(ex.자유게시판)</a></li>
-						<li>큰 페이지(ex.게시판)</li>
-					</ol>
-				</div>
-			</div>
-		</section>
-		<!-- End Breadcrumbs -->
-
-		<section class="myContent">
-			<div class="container">
-
-				<center>
-					<h1>비밀번호 재설정</h1>
-					<p>새로운 비밀번호를 입력해주세요</p>
-					<table boder="" cellspacing="1">
-						<FORM>
+	<center>
+		<h1>비밀번호 재설정</h1>
+		<p>새로운 비밀번호를 입력해주세요</p>
+		<table boder="" cellspacing="1">
+			<FORM>
 
 
-							<tr>
-								<td>아이디</td>
-								<td><input type="text" /></td>
-							</tr>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" /></td>
+				</tr>
 
 
-							<tr>
-								<td>비밀번호</td>
-								<td><input type="text" /></td>
-							</tr>
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="text" /></td>
+				</tr>
 
 
-							<tr>
-								<td>비밀번호 확인</td>
-								<td><input type="text" /></td>
-							</tr>
-					</table>
-					<input type="submit" value="확인" /> <input type="reset"
-						value="다시 입력" />
+				<tr>
+					<td>비밀번호 확인</td>
+					<td><input type="text" /></td>
+				</tr>
+		</table>
+		<input type="submit" value="확인" /> <input type="reset" value="다시 입력" />
 
 
-				</center>
+	</center>
 
-			</div>
-		</section>
+	</div>
+	</section>
 	</div>
 
 
