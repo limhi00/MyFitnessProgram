@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/_layout">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<title>회원가입</title>
+
+  <!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
+
+<style>
+
+html {
+ magin:0;
+ padding:0;
+ width: 100%;
+}
+
+container {
+
+ 	width: 300px;
+	height: 300px;
+}
+
+section {
+     padding: 30px 0;
+}
+
+#footer {
+	height: 210px;
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+	left: 0;
+}
+
+.div {
+ display:inline-block;
+ 	width: 300px;
+	height: 300px;
+}
+
+
+</style>	
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+		<!-- ======= Breadcrumbs ======= -->
+		<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>회원가입</h2>
+					<ol>
+						<li><a href="#">회원가입</a></li>
+						<li>회원가입</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
+
+		<section class="myContent">
+			<div class="container">
+
+<!-- ======================== 회원가입 ======================== -->
+
+  <section>
+    <h1>회원가입 페이지</h1>
+  </section>
+  
+<form th:action="@{#}" method="post">
+        <!-- 텍스트 -->
+        <div>
+            <label for="name">이름</label>
+            <input type="text" name="name" id="name" placeholder="이름을 입력" required> <!-- required 필수로 입력 -->
+        </div>
+
+        <!-- Email -->
+        <div>
+            <label for="email">이메일</label>
+            <input required type="email" name="email" id="email"> 
+        </div>
+
+        <!-- 패스워드 -->
+        <div>
+            <label for="password">비밀번호</label>
+            <input required type="password" name="password" id="password">
+        </div>
+        
+         <div>
+            <label for="password">비밀번호 확인</label>
+            <input required type="password" name="password" id="password">
+        </div>
+        
+        <!-- select -->
+
+
+        <!-- 라디오 버튼:이름이 같음 -->
+        <div>
+            <label>성별</label>
+            <input type="radio" name="gender" value="male" checked>남
+            <input type="radio" name="gender" value="female">여
+        </div>
+
+        <!-- 리셋버튼 -->
+        <button type="reset">다시 입력</button>
+        <input type="submit" value="확인">
+    </form>
+    </div>
+    </section>
+    </div>
+    
+</body>
+</html>
