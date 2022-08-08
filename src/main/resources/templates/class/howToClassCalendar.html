@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/_layout">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>My Fitness Program - 예약 페이지 이용 방법</title>
+  <!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
+ <style>
+.howto {
+	display: flex;
+	padding: 0 300px;
+	margin: 30px auto;
+	
+}
+.readHow {
+	margin: 50px 50px;
+}
+
+.readHow ul li p {
+	font-size: 16px;
+	font-weight: 500;
+	color: #222;
+	margin-bottom: 30px;
+}
+
+.readHow span {
+	color: #000;
+	font-weight: 700;
+}
+</style>
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+		<!-- ======= Breadcrumbs ======= -->
+		<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>예약 페이지 이용 방법</h2>
+					<ol>
+						<li><a href="class/howToClassCalendar">예약 페이지 이용 방법</a></li>
+						<li>수업 예약</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
+
+		<section class="myContent">
+			<div class="container">
+				<div class="wrap howto">
+					<img alt="howToClassCalendar"
+						src="../assets/img/howToClassCalendar/howToClassCalendar.jpg"
+						width="800px">
+
+					<div class="readHow">
+						<ul>
+							<li><p>수업은 빨간 테두리로 표시되어 있는 수업기간에만 예약하실 수 있습니다.</p></li>
+							<li>
+								<p>
+									수업 예약이 된 날짜는 빨간색으로 표시됩니다.<br> <span>이 날짜를 클릭하면 수업예약
+										시간을 볼 수 있는 예약정보 페이지로 이동합니다.</span>
+								</p>
+							</li>
+							<li>
+								<p>
+									지난 수업 날짜는 파란색으로 표시됩니다.<br> <span>이 날짜를 클릭하면 수업일지를
+										작성할 수 있는 페이지로 이동합니다.</span>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>
