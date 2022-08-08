@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="_layout.html">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/_layout">
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
 <title>My Fitness Program - 식단 작성</title>
+
 <!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
-<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="assets/css/getDiary.css">
 </head>
+
 <body>
 
 	<div layout:fragment="content">
@@ -34,13 +37,16 @@
 			<div class="container getDiary">
 				<main>
 					<div class="py-5 text-center">
-						<h2><strong>2022년 07월 26일</strong></h2>
+						<h2>
+							<strong>2022년 07월 26일</strong>
+						</h2>
 						<input type="color" class="mycolor" value="red">
 					</div>
 
 					<div class="row g-5">
 						<div class="col-md-5 col-lg-4 order-md-last">
-							<h4 class="d-flex justify-content-between align-items-center mb-3">
+							<h4
+								class="d-flex justify-content-between align-items-center mb-3">
 								<span class="text-primary">수분 섭취량</span>
 								<button id="bt" type="button" class="btn btn-primary S">한컵</button>
 							</h4>
@@ -48,10 +54,11 @@
 								<li class="list-group-item d-flex justify-content-between lh-sm">
 									<div>
 										<!-- <i class="bi bi-cup mt-5 front_hp1" id="A"></i> -->
-										<img id="A" class=" mt-5 front_hp1" src="img/HP.png"></img>
-										<img id="B" class=" mt-5 front_hp2" src="img/HP.png"></img> 
-										<img id="C" class=" mt-5 front_hp3" src="img/HP.png"></img> 
-										<img id="D" class=" mt-5 front_hp4" src="img/HP.png"></img> <!-- 버튼 클릭전 보여줄 이미지 -->
+										<img id="A" class=" mt-5 front_hp1" src="img/HP.png"></img> <img
+											id="B" class=" mt-5 front_hp2" src="img/HP.png"></img> <img
+											id="C" class=" mt-5 front_hp3" src="img/HP.png"></img> <img
+											id="D" class=" mt-5 front_hp4" src="img/HP.png"></img>
+										<!-- 버튼 클릭전 보여줄 이미지 -->
 										<img id="btA" class=" mt-5 bcak_hp1" src="img/HP2.png"></img>
 										<img id="btB" class=" mt-5 bcak_hp2" src="img/HP2.png"></img>
 										<img id="btC" class=" mt-5 bcak_hp3" src="img/HP2.png"></img>
@@ -60,21 +67,21 @@
 								</li>
 							</ul>
 							<form class="needs-validation" novalidate>
-									<div class="col-sm-7">
-										<label class="form-label">체중 (kg)</label> 
-										<input type="text" class="form-control" id="weight"
-											placeholder="숫자만 기입하세요." value="">
-									</div>
-									<div class="col-sm-7">
-										<label class="form-label">체지방 (%)</label> 
-										<input type="text" class="form-control" id="bodyFat"
-											placeholder="숫자만 기입하세요." value="">
-									</div>
-									<div class="col-sm-7">
-										<label class="form-label">골격근 (%)</label> 
-										<input type="text" class="form-control" id="muscle"
-											placeholder="숫자만 기입하세요." value="">
-									</div>
+								<div class="col-sm-7">
+									<label class="form-label">체중 (kg)</label> <input type="text"
+										class="form-control" id="weight" placeholder="숫자만 기입하세요."
+										value="">
+								</div>
+								<div class="col-sm-7">
+									<label class="form-label">체지방 (%)</label> <input type="text"
+										class="form-control" id="bodyFat" placeholder="숫자만 기입하세요."
+										value="">
+								</div>
+								<div class="col-sm-7">
+									<label class="form-label">골격근 (%)</label> <input type="text"
+										class="form-control" id="muscle" placeholder="숫자만 기입하세요."
+										value="">
+								</div>
 							</form>
 						</div>
 						<div class="col-md-8 col-lg-7 ms-5">
@@ -82,30 +89,32 @@
 							<form class="needs-validation" novalidate>
 								<div class="row g-3 mb-5">
 									<div class="col-sm-10 flex-nowrap">
-										<label class="form-label">아침식사</label> 
-										<input type="text" class="form-control" id="morning"
-											placeholder="아침 식사를 작성하세요." value="고구마">
+										<label class="form-label">아침식사</label> <input type="text"
+											class="form-control" id="morning" placeholder="아침 식사를 작성하세요."
+											value="고구마">
 									</div>
 									<div class="col-sm-10">
-										<label class="form-label">점심식사</label> 
-										<input type="text" class="form-control" id="lunch"
-											placeholder="점심 식사를 작성하세요." value="샌드위치">
+										<label class="form-label">점심식사</label> <input type="text"
+											class="form-control" id="lunch" placeholder="점심 식사를 작성하세요."
+											value="샌드위치">
 									</div>
 									<div class="col-sm-10">
-										<label class="form-label">저녁식사</label> 
-										<input type="text" class="form-control" id="dinner"
-											placeholder="저녁 식사를 작성하세요." value="찜닭">
+										<label class="form-label">저녁식사</label> <input type="text"
+											class="form-control" id="dinner" placeholder="저녁 식사를 작성하세요."
+											value="찜닭">
 									</div>
 									<div class="col-sm-10">
-										<label class="form-label">야식</label> 
-										<input type="text" class="form-control" id="snack"
-											placeholder="야간 식사를 작성하세요." value="아이스크림">
+										<label class="form-label">야식</label> <input type="text"
+											class="form-control" id="snack" placeholder="야간 식사를 작성하세요."
+											value="아이스크림">
 									</div>
-									
+
 								</div>
-								<div class="clickButton mt-5 position-absolute bottom-10 start-50 translate-middle-x">
-								<button class="w-30 btn btn-dark btn-md" type="submit">등록</button>
-								<button class="w-30 btn btn-dark btn-md" type="submit">뒤로 가기</button>
+								<div
+									class="clickButton mt-5 position-absolute bottom-10 start-50 translate-middle-x">
+									<button class="w-30 btn btn-dark btn-md" type="submit">등록</button>
+									<button class="w-30 btn btn-dark btn-md" type="submit">뒤로
+										가기</button>
 								</div>
 							</form>
 						</div>

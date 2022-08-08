@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout/_layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/_layout">
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>로그인</title>
+<title>My Fitness Program - 로그인</title>
 
-  <!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
-     <link rel="stylesheet" href="assets/css/style_login.css"/>
+<!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
+<link rel="stylesheet" href="assets/css/style_login.css" />
 
 <!-- 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript">   
@@ -19,9 +19,8 @@
 	
 	});
 	</script>  -->
-	
-<style>
 
+<style>
 #footer {
 	height: 210px;
 	position: absolute;
@@ -29,8 +28,7 @@
 	bottom: 0px;
 	left: 0;
 }
-
-</style>	
+</style>
 </head>
 <body>
 
@@ -53,22 +51,27 @@
 		<section class="myContent">
 			<div class="container">
 
-<!-- ======================== 로그인 ======================== -->
+				<!-- ======================== 로그인 ======================== -->
 
 				<div class="center">
 					<h1>로그인</h1>
-					<form th:action="@{/login}" th:method="post" >
+					<form th:action="@{/login}" th:method="post">
 						<div class="txt_field">
 							<input type="text" name="id" required> <span></span> <label>아이디</label>
 						</div>
 						<div class="txt_field">
-							<input type="password" name="password" required> <span></span> <label>비밀번호</label>
+							<input type="password" name="password" required> <span></span>
+							<label>비밀번호</label>
 						</div>
-						<div class="Id"><a href="/findId">아이디 찾기</a></div>
-						<div class="pass"><a href="/findPwd">비밀번호 찾기</a></div>
+						<div class="Id">
+							<a href="/findId">아이디 찾기</a>
+						</div>
+						<div class="pass">
+							<a href="/findPwd">비밀번호 찾기</a>
+						</div>
 						<input type="submit" value="로그인">
 						<div class="signup_link">
-						<a href="/join">회원가입</a>
+							<a href="/join">회원가입</a>
 						</div>
 					</form>
 				</div>
