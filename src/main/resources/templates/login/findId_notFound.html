@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout/_layout">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -30,45 +28,27 @@ login {
 </head>
 <body style="background-color: white">
 
-	<div layout:fragment="content">
-
-		<!-- ======= Breadcrumbs ======= -->
-		<section class="breadcrumbs">
-			<div class="container">
-				<div class="d-flex justify-content-between align-items-center">
-					<h2>페이지명(ex.자유게시판)</h2>
-					<ol>
-						<li><a href="#">페이지명(ex.자유게시판)</a></li>
-						<li>큰 페이지(ex.게시판)</li>
-					</ol>
-				</div>
-			</div>
-		</section>
-		<!-- End Breadcrumbs -->
-
-		<section class="myContent">
-			<div class="container">
-
-				<center>
-
-					<table style="border: 1px solid black">
-						<h1>아이디 찾기 결과</h1>
-
-						<tr>
-							<td text-align="center">회원 정보를 찾을 수 없습니다.<br>입력하신 정보를
-								다시 확인해 주세요.<br>
-							<br></td>
-						</tr>
-					</table>
-
-					<input id="login" type="submit" value="로그인" /> <input id="login"
-						type="button" value="비밀 번호 찾기" onclick="" />
 
 
-				</center>
+	<center>
 
-			</div>
-		</section>
+		<table style="border: 1px solid black">
+			<h1>아이디 찾기 결과</h1>
+
+			<tr>
+				<td text-align="center">회원 정보를 찾을 수 없습니다.<br>입력하신 정보를 다시
+					확인해 주세요.<br> <br></td>
+			</tr>
+		</table>
+
+		<input id="login" type="submit" value="로그인" /> <input id="login"
+			type="button" value="비밀 번호 찾기" onclick="" />
+
+
+	</center>
+
+	</div>
+	</section>
 	</div>
 
 

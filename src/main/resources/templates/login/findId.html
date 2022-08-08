@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout/_layout">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -25,58 +23,39 @@ table, FORM {
 </head>
 <body style="background-color: white">
 
-	<div layout:fragment="content">
+	<center>
+		<h1>아이디 찾기</h1>
+		<table boder="" cellspacing="1">
+			<FORM>
 
-		<!-- ======= Breadcrumbs ======= -->
-		<section class="breadcrumbs">
-			<div class="container">
-				<div class="d-flex justify-content-between align-items-center">
-					<h2>페이지명(ex.자유게시판)</h2>
-					<ol>
-						<li><a href="#">페이지명(ex.자유게시판)</a></li>
-						<li>큰 페이지(ex.게시판)</li>
-					</ol>
-				</div>
-			</div>
-		</section>
-		<!-- End Breadcrumbs -->
-
-		<section class="myContent">
-			<div class="container">
-
-				<center>
-					<h1>아이디 찾기</h1>
-					<table boder="" cellspacing="1">
-						<FORM>
-
-							<tr>
-								<td>이름</td>
-								<td><input type="text" /></td>
-							</tr>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" /></td>
+				</tr>
 
 
 
-							<tr>
-								<td text-align="center">전화 번호</td>
-								<td><input type="text" /> <input type="button"
-									value="인증번호 전송" onclick="" /></td>
-							</tr>
+				<tr>
+					<td text-align="center">전화 번호</td>
+					<td><input type="text" /> <input type="button"
+						value="인증번호 전송" onclick="" /></td>
+				</tr>
 
 
-							<tr>
-								<td text-align="center">인증번호 확인</td>
-								<td><input type="text" /> <input type="button" value="확인"
-									onclick="" /></td>
-							</tr>
-					</table>
-					<input type="submit" value="아이디 찾기" /> <input type="reset"
-						value="다시 입력" />
+				<tr>
+					<td text-align="center">인증번호 확인</td>
+					<td><input type="text" /> <input type="button" value="확인"
+						onclick="" /></td>
+				</tr>
+		</table>
+		<input type="submit" value="아이디 찾기" /> <input type="reset"
+			value="다시 입력" />
 
 
-				</center>
+	</center>
 
-			</div>
-		</section>
+	</div>
+	</section>
 	</div>
 
 
