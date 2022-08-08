@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout/_layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/_layout">
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 <title>회원가입</title>
 
-  <!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
+<!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
 
 <style>
-
 html {
- magin:0;
- padding:0;
- width: 100%;
+	magin: 0;
+	padding: 0;
+	width: 100%;
 }
 
 container {
-
- 	width: 300px;
+	width: 300px;
 	height: 300px;
 }
 
 section {
-     padding: 30px 0;
+	padding: 30px 0;
 }
 
 #footer {
@@ -37,13 +35,11 @@ section {
 }
 
 .div {
- display:inline-block;
- 	width: 300px;
+	display: inline-block;
+	width: 300px;
 	height: 300px;
 }
-
-
-</style>	
+</style>
 </head>
 <body>
 
@@ -66,53 +62,54 @@ section {
 		<section class="myContent">
 			<div class="container">
 
-<!-- ======================== 회원가입 ======================== -->
+				<!-- ======================== 회원가입 ======================== -->
 
-  <section>
-    <h1>회원가입 페이지</h1>
-  </section>
-  
-<form th:action="@{#}" method="post">
-        <!-- 텍스트 -->
-        <div>
-            <label for="name">이름</label>
-            <input type="text" name="name" id="name" placeholder="이름을 입력" required> <!-- required 필수로 입력 -->
-        </div>
+				<section>
+					<h1>회원가입 페이지</h1>
+				</section>
 
-        <!-- Email -->
-        <div>
-            <label for="email">이메일</label>
-            <input required type="email" name="email" id="email"> 
-        </div>
+				<form th:action="@{#}" method="post">
+					<!-- 텍스트 -->
+					<div>
+						<label for="name">이름</label> <input type="text" name="name"
+							id="name" placeholder="이름을 입력" required>
+						<!-- required 필수로 입력 -->
+					</div>
 
-        <!-- 패스워드 -->
-        <div>
-            <label for="password">비밀번호</label>
-            <input required type="password" name="password" id="password">
-        </div>
-        
-         <div>
-            <label for="password">비밀번호 확인</label>
-            <input required type="password" name="password" id="password">
-        </div>
-        
-        <!-- select -->
+					<!-- Email -->
+					<div>
+						<label for="email">이메일</label> <input required type="email"
+							name="email" id="email">
+					</div>
+
+					<!-- 패스워드 -->
+					<div>
+						<label for="password">비밀번호</label> <input required type="password"
+							name="password" id="password">
+					</div>
+
+					<div>
+						<label for="password">비밀번호 확인</label> <input required
+							type="password" name="password" id="password">
+					</div>
+
+					<!-- select -->
 
 
-        <!-- 라디오 버튼:이름이 같음 -->
-        <div>
-            <label>성별</label>
-            <input type="radio" name="gender" value="male" checked>남
-            <input type="radio" name="gender" value="female">여
-        </div>
+					<!-- 라디오 버튼:이름이 같음 -->
+					<div>
+						<label>성별</label> <input type="radio" name="gender" value="male"
+							checked>남 <input type="radio" name="gender"
+							value="female">여
+					</div>
 
-        <!-- 리셋버튼 -->
-        <button type="reset">다시 입력</button>
-        <input type="submit" value="확인">
-    </form>
-    </div>
-    </section>
-    </div>
-    
+					<!-- 리셋버튼 -->
+					<button type="reset">다시 입력</button>
+					<input type="submit" value="확인">
+				</form>
+			</div>
+		</section>
+	</div>
+
 </body>
 </html>

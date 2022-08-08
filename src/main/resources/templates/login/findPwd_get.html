@@ -1,65 +1,84 @@
-
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/_layout">
 <head>
 <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>비밀번호 찾기</title>
- 
- 
-  <style>
- 
- h, td, tr, input, textarea, select, FORM
- {
-   font-family:고딕;
-  font-size:1em;
-  border-radius:5px;
-  
- }
- 
- table, FORM
- {
-  border:1px solid rgba(0, 0, 0, 0);
-  border-spacing:15px;
- }
 
- 
-  
-  </style>
+
+<style>
+h, td, tr, input, textarea, select, FORM {
+	font-family: 고딕;
+	font-size: 1em;
+	border-radius: 5px;
+}
+
+table, FORM {
+	border: 1px solid rgba(0, 0, 0, 0);
+	border-spacing: 15px;
+}
+</style>
 
 
 </head>
-<body style="background-color:white">
- <center>
- <h1> 비밀번호 재설정</h1>
- <p>새로운 비밀번호를 입력해주세요</p>
- <table boder = ""  cellspacing = "1" >
- <FORM>
- 	
- 	
-	<tr>
-	   <td> 아이디 </td>
-	   <td> <input type = "text"/> </td>
-	</tr>
-	
-	
-	<tr>
-	   <td> 비밀번호 </td>
-	   <td> <input type = "text"/> </td>
-	</tr>
-	
-	
-	<tr>
-	   <td> 비밀번호 확인 </td>
-	   <td> <input type = "text"/> </td>
-	</tr>
- 	
+<body style="background-color: white">
 
-  
-</table>
-<input type = "submit" value = "확인"/>
-<input type = "reset" value = "다시 입력"/>
+	<div layout:fragment="content">
+
+		<!-- ======= Breadcrumbs ======= -->
+		<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>페이지명(ex.자유게시판)</h2>
+					<ol>
+						<li><a href="#">페이지명(ex.자유게시판)</a></li>
+						<li>큰 페이지(ex.게시판)</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
+
+		<section class="myContent">
+			<div class="container">
+
+				<center>
+					<h1>비밀번호 재설정</h1>
+					<p>새로운 비밀번호를 입력해주세요</p>
+					<table boder="" cellspacing="1">
+						<FORM>
 
 
-</center>
+							<tr>
+								<td>아이디</td>
+								<td><input type="text" /></td>
+							</tr>
+
+
+							<tr>
+								<td>비밀번호</td>
+								<td><input type="text" /></td>
+							</tr>
+
+
+							<tr>
+								<td>비밀번호 확인</td>
+								<td><input type="text" /></td>
+							</tr>
+					</table>
+					<input type="submit" value="확인" /> <input type="reset"
+						value="다시 입력" />
+
+
+				</center>
+
+			</div>
+		</section>
+	</div>
+
+
+
 </body>
 </html>
