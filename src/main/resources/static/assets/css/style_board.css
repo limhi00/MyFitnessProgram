@@ -1,41 +1,27 @@
-/* 버튼 */
-#myStateButton {
-	margin-right: 5px;
-	margin-bottom: 10px;
-	width: 50px;
-	padding: 4px;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-
-
-#myStateButton_Add {
-    background: #000;
-    color: #fff;
-    position: relative;
-    left: 45%;
-
-    display: inline-block;
-    min-width: 80px;
-    margin-left: 10px;
-    padding: 10px;
-    border: 1px solid #000;
-    border-radius: 2px;
-    font-size: 1.4rem;
+html {
+    font-size: 10px;
 }
 
-.board_wrap a  {
+ul, li {
+    list-style: none;
+}
+
+a {
     text-decoration: none;
-    color:#000;
+    color: inherit;
 }
 
 .board_wrap {
     width: 1000px;
-    margin: 50px auto;
-    
+    margin: 100px auto;
 }
 
 .board_title {
-	
     margin-bottom: 30px;
 }
 
@@ -46,15 +32,8 @@
 .search_1 {
     margin-bottom: 10px;
     position: relative; left: 77%; 
-	width:350px;
-	font-weight:700;
-	font-size: 14px;
 }
 
-
-.search_1 #searchBtn {
-	padding:1px;
-}
 
 .board_title p {
     margin-top: 5px;
@@ -120,7 +99,7 @@
     width: 10%;
 }
 
-.board_list .title {
+.board_list .class_time {
     width: 40%;
     text-align: center;
 }
@@ -129,7 +108,7 @@
     text-align: center;
 }
 
-.board_list .writer {
+.board_list .student {
     width: 10%;
 }
 
@@ -323,10 +302,9 @@
     resize: vertical;
 }
 
-.board_write .upload {
+.board_write .upload{
 	padding: 5%;
 }
-
 @media (max-width: 1000px) {
     .board_wrap {
         width: 100%;
@@ -336,8 +314,8 @@
     }
 
     .board_list .num,
-    .board_list .writer,
-    .board_list .count {
+    .board_list .class_time,
+    .board_list .student {
         display: none;
     }
 
@@ -345,7 +323,7 @@
         width: 40%;
     }
 
-    .board_list .title {
+    .board_list .class_time {
         text-indent: 10px;
     }
 
