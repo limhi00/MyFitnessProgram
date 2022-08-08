@@ -1,12 +1,16 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/_layout">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>로그인</title>
 
-<html xmlns:th="http://www.thymeleaf.org">
-  <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>login</title>
-    <link rel="stylesheet" href="assets/css/style_login.css"/>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
+     <link rel="stylesheet" href="assets/css/style_login.css"/>
+
+<!-- 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript">   
 	$(document).ready( function() {
 	
@@ -14,52 +18,64 @@
 	$("#footers").load("common/footer.html");  // 추가 인클루드를 원할 경우 이런식으로 추가하면 된다
 	
 	});
-	</script>  
+	</script>  -->
 	
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet"/>
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet"/>
-   
-  </head>
-  <body>
-<!-- ======= header ======= -->
-<header id="header" class="d-flex align-items-center" th:replace="fragments/all :: allmenu">
-</header>
-<!-- ======= End Header ======= -->
+<style>
 
-    <div class="center">
-      <h1>Login</h1>
-      <form method="post">
-        <div class="txt_field">
-          <input type="text" required>
-          <span></span>
-          <label>Username</label>
-        </div>
-        <div class="txt_field">
-          <input type="password" required>
-          <span></span>
-          <label>Password</label>
-        </div>
-        <div class="pass">Forgot Password?</div>
-        <div class="Id">Forgot ID?</div>
-        <input type="submit" value="Login">
-        <div class="signup_link">
-          Not a member? <a href="#">Signup</a>
-        </div>
-      </form>
-    </div>
-<!-- ======= Footer ======= -->
-  <footer id="footer" th:replace="fragments/footer :: bottom">
-  </footer>
-<!-- ======= End Footer ======= -->
+#footer {
+	height: 210px;
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+	left: 0;
+}
+
+</style>	
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+		<!-- ======= Breadcrumbs ======= -->
+		<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>로그인</h2>
+					<ol>
+						<li><a href="#">로그인</a></li>
+						<li>로그인</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
+
+		<section class="myContent">
+			<div class="container">
+
+<!-- ======================== 로그인 ======================== -->
+
+				<div class="center">
+					<h1>로그인</h1>
+					<form th:action="@{/login}" th:method="post" >
+						<div class="txt_field">
+							<input type="text" name="id" required> <span></span> <label>아이디</label>
+						</div>
+						<div class="txt_field">
+							<input type="password" name="password" required> <span></span> <label>비밀번호</label>
+						</div>
+						<div class="Id"><a href="/findId">아이디 찾기</a></div>
+						<div class="pass"><a href="/findPwd">비밀번호 찾기</a></div>
+						<input type="submit" value="로그인">
+						<div class="signup_link">
+						<a href="/join">회원가입</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+
+
 </body>
-
 </html>
