@@ -51,7 +51,7 @@ public class UserController {
 	@GetMapping("/findPwd_get")
 	public String findPwd_getView() {
 		
-		return "login/findPwd";
+		return "login/findPwd_get";
 	}
 
 	
