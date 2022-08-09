@@ -47,10 +47,10 @@ public class Board {
 	@JoinColumn(name="MEMBER_ID", nullable=false, updatable=false)
 	private Member member;
 	
-	public void setMember(Member member) {
-		this.member = member;
-		member.getBoardList().add(this);
+	//public void setMember(Member member) {
+		//this.member = member;
+		//member.getBoardList().add(this);
 	}
 
 
-}
+

@@ -37,12 +37,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
         </dependency> 
-        
+
 		<!-- 타임리프 레이아웃 -->
 		<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
