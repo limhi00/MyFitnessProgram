@@ -37,20 +37,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-<<<<<<< HEAD
-		
-=======
->>>>>>> branch 'feature/ll' of https://github.com/limhi00/MyFitnessProgram.git
-
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
         </dependency> 
-<<<<<<< HEAD
- 
-=======
-        
->>>>>>> branch 'feature/ll' of https://github.com/limhi00/MyFitnessProgram.git
+
 		<!-- 타임리프 레이아웃 -->
 		<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>

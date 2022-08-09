@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myfitness.domain.Board;
-import com.myfitness.persistence.BoardRepository;
+import com.myFitness.domain.Board;
+import com.myFitness.persistence.BoardRepository;
 
 @Service
 public class BoardServiceImpl implements BoardService {

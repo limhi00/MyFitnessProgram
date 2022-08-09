@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.myfitness.domain.Board;
-import com.myfitness.service.BoardService;
+import com.myFitness.domain.Board;
+import com.myFitness.service.BoardService;
 
 
 @Controller
