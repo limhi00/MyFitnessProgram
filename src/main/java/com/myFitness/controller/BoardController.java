@@ -1,19 +1,37 @@
 package com.myFitness.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.myfitness.domain.Board;
+import com.myfitness.service.BoardService;
 
 
 @Controller
 public class BoardController {
-
+	
+	@Autowired
+	private BoardService boardService;
+	
 	@GetMapping("/allBoardList")
-	public String allBoardListView() {
+	public String allBoardList(Model model, Board board) {
+		
+		List<Board> boardList = boardService.getBoardList(board);
+		
+		model.addAttribute("boardList", boardList);
 		
 		return "board/allBoardList";
 	}
+
+//	@GetMapping("/allBoardList")
+//	public String allBoardListView() {
+//		
+//		return "board/allBoardList";
+//	}
 	
 	@GetMapping("/challengeBoardList")
 	public String challengeBoardListView() {
@@ -95,10 +113,6 @@ public class BoardController {
 		return "board/reportBoardList";
 	}
 	
-	@GetMapping("/categoryList")
-	public String categoryListView() {
-		
-		return "board/categoryList";
-	}
+
 	
 }
