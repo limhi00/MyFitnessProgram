@@ -1,4 +1,4 @@
-package com.myFitness.biz;
+package com.myFitness;
 
 
 import org.junit.Test;
