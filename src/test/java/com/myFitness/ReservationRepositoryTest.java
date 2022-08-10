@@ -1,4 +1,4 @@
-package com.myFitness.biz;
+package com.myFitness;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +24,7 @@ public class ReservationRepositoryTest {
 	@Test
 	public void testInsert() {
 		Reservation res1 = new Reservation();
-		res1.setResDate("2022년 08월 08일");
+		res1.setMember(null);
 		
 		resRepo.save(res1);
 		
@@ -35,7 +35,7 @@ public class ReservationRepositoryTest {
 		cdRepo.save(cd1);
 		
 		Reservation res2 = new Reservation();
-		res2.setResDate("2022년 08월 11일");
+		res2.setResDate("20220811");
 		
 		resRepo.save(res2);
 		

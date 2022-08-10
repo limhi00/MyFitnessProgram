@@ -1,4 +1,4 @@
-package com.myFitness.biz;
+package com.myFitness;
 
 
 import org.junit.Test;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.myfitness.domain.Board;
-import com.myfitness.persistence.BoardRepository;
+import com.myFitness.domain.Board;
+import com.myFitness.persistence.BoardRepository;
 
 
 

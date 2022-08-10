@@ -20,9 +20,9 @@ public class ClassDiary {
 	@GeneratedValue
 	private int cdseq;
 	
-//	@ManyToOne
-//	@JoinColumn(name="MEMBER_ID", nullable=false, updatable=false) 
-//	private Member member;
+	@ManyToOne
+	@JoinColumn(name="MEMBER_SEQ", nullable=false, updatable=false) 
+	private Member member;
 	
 	@OneToOne
 	@JoinColumn(name="RESERVATION_SEQ", nullable=false, updatable=false)
