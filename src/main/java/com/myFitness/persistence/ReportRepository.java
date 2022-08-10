@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.myFitness.domain.Report;
 
 
-public interface reportRepository extends CrudRepository<Report, Long> {
+public interface ReportRepository extends CrudRepository<Report, Long> {
 
 }
