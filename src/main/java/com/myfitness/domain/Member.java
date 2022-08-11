@@ -9,11 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,8 +22,6 @@ import lombok.ToString;
 @Entity
 public class Member {
 
-	
-	
 	@Id
 	private String mid;           // member ID
 	private String name;          // member 이름
