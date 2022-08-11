@@ -16,13 +16,14 @@ import lombok.Data;
 
 @Data
 @Entity
-@SequenceGenerator(
-		name = "BOARD_SEQ_GENERATOR",
-		sequenceName = "BOARD_SEQ")
+//@SequenceGenerator(
+//		name = "BOARD_SEQ_GENERATOR",
+//		sequenceName = "BOARD_SEQ")
 public class Board {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,
-					generator = "BOARD_SEQ_GENERATOR")
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE,
+	//				generator = "BOARD_SEQ_GENERATOR")
+	@GeneratedValue
 	private Long bseq;
 	
 	private String title;
