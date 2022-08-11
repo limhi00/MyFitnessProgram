@@ -18,7 +18,7 @@ import lombok.ToString;
 public class ClassDiary {
 	@Id
 	@GeneratedValue
-	private int cdseq;
+	private Long cdseq;
 	
 	@ManyToOne
 	@JoinColumn(name="MEMBER_SEQ", nullable=false, updatable=false) 
