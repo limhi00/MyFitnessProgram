@@ -17,16 +17,16 @@ import com.myfitness.persistence.MemberRepository;
 //	@Autowired
 //	private MemberRepository memRepo;
 //
-//	public UserDetails loadUserByUsername(Long mseq) throws UsernameNotFoundException {
+//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //
-//		Optional<Member> optionalUser = memRepo.findById(mseq);
+//		Optional<Member> optionalUser = memRepo.findById(username);
 //
 //		if (optionalUser.isPresent()) {
 //			Member member = optionalUser.get();
 //
 //			return new SecurityUser(member);
 //		} else {
-//			throw new UsernameNotFoundException(mseq + " 사용자 없음");
+//			throw new UsernameNotFoundException(username + " 사용자 없음");
 //		}
 //	}
 //}

@@ -21,11 +21,11 @@ public class ClassDiary {
 	private Long cdseq;
 	
 	@ManyToOne
-	@JoinColumn(name="MEMBER_SEQ", nullable=false, updatable=false) 
+	@JoinColumn(name="mid", nullable=false, updatable=false) 
 	private Member member;
 	
 	@OneToOne
-	@JoinColumn(name="RESERVATION_SEQ", nullable=false, updatable=false)
+	@JoinColumn(name="rseq", nullable=false, updatable=false)
 	private Reservation res;
 	
 	private String content;

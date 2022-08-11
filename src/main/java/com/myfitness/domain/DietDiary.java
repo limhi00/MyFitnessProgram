@@ -24,7 +24,7 @@ public class DietDiary {
 	@GeneratedValue
 	private Long dseq;
 	@ManyToOne
-	@JoinColumn(name = "id" , nullable=false)
+	@JoinColumn(name = "mid" , nullable=false)
 	private Member member;
 	private String	breakfast;
 	private String	lunch;
