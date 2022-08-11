@@ -20,7 +20,7 @@ import lombok.ToString;
 public class Board {
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long bseq;
 	
 	private String title;
 	private String writer;
