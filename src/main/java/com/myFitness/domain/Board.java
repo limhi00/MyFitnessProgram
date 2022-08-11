@@ -10,14 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import org.hibernate.annotations.CreationTimestamp;
+import lombok.Data;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@ToString//(exclude="member")
+@Data
 @Entity
 @SequenceGenerator(
 		name = "BOARD_SEQ_GENERATOR",
@@ -33,11 +30,14 @@ public class Board {
 	@Column(updatable = false)
 	private String writer;
 	
+	@Column(columnDefinition = "TEXT", nullable = false)
 	private String content;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "number default 0")
 	private Long up = 0L; // 추천수
 	
+	@CreationTimestamp
+	@Column(name = "createdate", updatable = false)
 	private LocalDateTime createDate; // 생성일자
 
 	@Column(updatable = false, columnDefinition = "number default 0")
