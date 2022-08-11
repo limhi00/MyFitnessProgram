@@ -20,13 +20,13 @@ import lombok.ToString;
 public class Reservation {
 	@Id
 	@GeneratedValue
-	private int rseq;
+	private Long rseq;
 	
 	@ManyToOne
 	@JoinColumn(name="MEMBER_SEQ", nullable=false, updatable=false) 
 	private Member member;
 	
-	private String resDate;
+	private Date resDate;
 	
 	// 'yyyyMMdd'형식을 Date형식으로 변환
 	public Date dateFormat(String selectedDate) {
