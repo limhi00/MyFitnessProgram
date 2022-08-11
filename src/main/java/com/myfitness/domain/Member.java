@@ -23,19 +23,13 @@ import lombok.ToString;
 @Setter
 @ToString //(exclude="boardList")
 @Entity
-@SequenceGenerator(
-	name = "MEMBER_SEQ_GENERATOR",
-	sequenceName = "MEMBER_SEQ")
-
 public class Member {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,
-					generator = "MEMBER_SEQ_GENERATOR")
-	private Long mseq; // member seq
 	
-	private String name;          // member 이름
+	
+	@Id
 	private String mid;           // member ID
+	private String name;          // member 이름
 	private String password;
 	private String zipNum;	      // 우편번호
 	private String address;       // 주소

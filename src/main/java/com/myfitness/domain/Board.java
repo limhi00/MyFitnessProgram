@@ -34,8 +34,8 @@ public class Board {
 	@Column(updatable = false, columnDefinition = "number default 0")
 	private Long cnt; // 조회수
 	
-//	@ManyToOne
-//	@JoinColumn(name="mid", nullable=false, updatable=false)
-//	private Member member;
+	@ManyToOne
+	@JoinColumn(name="mid", nullable=false, updatable=false)
+	private Member member;
 	
 }
