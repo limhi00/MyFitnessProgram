@@ -51,8 +51,8 @@ public class Member {
 //	@Temporal(TemporalType.TIMESTAMP)
 	private LocalDateTime createDate; // 생성일자
 	
-//	@Enumerated(EnumType.STRING)
-//	private Role role;
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	
 	private boolean enabled;
 	
