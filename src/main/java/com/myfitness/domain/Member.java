@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.management.relation.Role;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -22,7 +21,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString//(exclude="boardList")
+@ToString //(exclude="boardList")
 @Entity
 @SequenceGenerator(
 	name = "MEMBER_SEQ_GENERATOR",

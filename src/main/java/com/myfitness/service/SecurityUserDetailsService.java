@@ -8,24 +8,25 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.myfitness.domain.Member;
+import com.myfitness.domain.SecurityUser;
 import com.myfitness.persistence.MemberRepository;
 
 //@Service
-//public class UserDetailsService implements UserDetailsService {
+//public class SecurityUserDetailsService implements UserDetailsService {
 //
 //	@Autowired
 //	private MemberRepository memRepo;
 //
-//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//	public UserDetails loadUserByUsername(Long mseq) throws UsernameNotFoundException {
 //
-//		Optional<Member> optionalUser = memRepo.findById(username);
+//		Optional<Member> optionalUser = memRepo.findById(mseq);
 //
 //		if (optionalUser.isPresent()) {
 //			Member member = optionalUser.get();
 //
 //			return new SecurityUser(member);
 //		} else {
-//			throw new UsernameNotFoundException(username + " 사용자 없음");
+//			throw new UsernameNotFoundException(mseq + " 사용자 없음");
 //		}
 //	}
 //}
