@@ -9,5 +9,4 @@ public class MyFitnessProgramApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MyFitnessProgramApplication.class, args);
 	}
-
 }

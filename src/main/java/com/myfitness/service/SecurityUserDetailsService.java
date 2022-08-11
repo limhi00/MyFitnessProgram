@@ -8,10 +8,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.myfitness.domain.Member;
+import com.myfitness.domain.SecurityUser;
 import com.myfitness.persistence.MemberRepository;
 
 //@Service
-//public class UserDetailsService implements UserDetailsService {
+//public class SecurityUserDetailsService implements UserDetailsService {
 //
 //	@Autowired
 //	private MemberRepository memRepo;
