@@ -13,7 +13,7 @@ import com.myFitness.persistence.DietDiaryRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class dietDiaryRepositoryTest {
+public class DietDiaryRepositoryTest {
 	
 	@Autowired
 	private DietDiaryRepository ddiaryrepo;

@@ -1,13 +1,15 @@
 package com.myFitness;
 
 import java.time.LocalDateTime;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import com.example.springboot.model.Board;
-import com.example.springboot.repository.BoardRepository;
+
+import com.myFitness.domain.Board;
+import com.myFitness.persistence.BoardRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -9,14 +9,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.myFitness.domain.Report;
-import com.myFitness.persistence.reportRepository;
+import com.myFitness.persistence.ReportRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class reportRepositoryTest {
+public class ReportRepositoryTest {
 	
 	@Autowired
-	private reportRepository reportrepo;
+	private ReportRepository reportrepo;
 	
 	@Test
 	public void reportInsertTest() {

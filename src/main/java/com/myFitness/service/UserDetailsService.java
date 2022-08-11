@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.myFitness.domain.Member;
-import com.myFitness.domain.SecurityUser;
 import com.myFitness.persistence.MemberRepository;
 
 //@Service
