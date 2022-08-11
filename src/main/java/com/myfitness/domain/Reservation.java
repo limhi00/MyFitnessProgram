@@ -23,7 +23,7 @@ public class Reservation {
 	private Long rseq;
 	
 	@ManyToOne
-	@JoinColumn(name="MEMBER_SEQ", nullable=false, updatable=false) 
+	@JoinColumn(name="mid", nullable=false, updatable=false) 
 	private Member member;
 	
 	private Date resDate;
