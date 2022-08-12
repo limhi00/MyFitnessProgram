@@ -39,8 +39,8 @@ public class Board {
 	
 	private String category;
 	
-	@ManyToOne
-	@JoinColumn(name="mid", nullable=false, updatable=false)
- 	private Member member;
+//	@ManyToOne
+//	@JoinColumn(name="mid", nullable=false, updatable=false)
+// 	private Member member;
 	
 }

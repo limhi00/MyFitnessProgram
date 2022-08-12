@@ -46,7 +46,7 @@ public class Member {
 	
 //	private boolean enabled;
 	
-	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Board> boardList = new ArrayList<Board>();
+//	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	private List<Board> boardList = new ArrayList<Board>();
 	
 }

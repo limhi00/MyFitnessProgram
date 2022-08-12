@@ -1,7 +1,6 @@
  package com.myfitness;
 
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.junit.Test;
@@ -26,6 +25,7 @@ public class BoardControllerTest {
 		for(int i=1; i<=10; i++) {
 			Board board = new Board();
 			board.setTitle("안녕하세요." + i);
+			board.setCategory("전체게시판");
 			board.setWriter("홍길동");
 			board.setContent("테스트내용 " + i); 
 			board.setCreateDate(new Date());

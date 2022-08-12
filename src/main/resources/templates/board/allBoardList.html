@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>My Fitness Program - 전체 게시판</title>
+<title>My Fitness Program - 게시판</title>
 <!-- 작성하는 페이지에 별도의 CSS가 필요하면 추가. -->
 <link href="assets/css/style_board.css" rel="stylesheet">
 </head>
@@ -16,9 +16,9 @@
 		<section class="breadcrumbs">
 			<div class="container">
 				<div class="d-flex justify-content-between align-items-center">
-					<h2>전체게시판</h2>
+					<h2>게시글 목록</h2>
 					<ol>
-						<li><a href="#">전체게시판</a></li>
+						<li><a href="#">게시글 목록</a></li>
 						<li>게시판</li>
 					</ol>
 				</div>
@@ -31,7 +31,7 @@
 				<!-- 내용 작성. -->
 				<div class="board_wrap">
 					<div class="board_title">
-						<strong>전체게시판</strong>
+						<strong th:text=${board.category}></strong>
 					</div>
 					<div class="search_1">
 						<form id="search-form">
@@ -51,19 +51,17 @@
 								<div class="category">카테고리</div>
 								<div class="title">제목</div>
 								<div class="writer">글쓴이</div>
-								<div class="like">좋아요</div>
-								<div class="comment">댓글</div>
 								<div class="date">작성일</div>
 
 							</div>
-							<div th:each="board,state : ${boardList}">
-								<div th:text=${state.count} class="num"></div>
+							<div th:each="board : ${boardList}">
+								<div class="num" th:text=${board.bseq}></div>
+								<div class="category" th:text=${board.category}></div>
 								<div class="title">
-									<a href="/getBoard" th:text="${board.title}"></a>
+									<a th:href="@{/board/getBoard(seq=${board.bseq})}" th:text="${board.title}"></a>
 								</div>
-								<div th:text="${board.writer}" clas s="writer"></div>
-								<div th:text="${#dates.format(board.createDate, 'yyyy-MM-dd')}" class="date"></div>
-
+								<div class="writer" th:text="${board.writer}"></div>
+								<div class="date" th:text="${#dates.format(board.createDate, 'yyyy-MM-dd')}"></div>
 							</div>
 						</div>
 						<div class="board_page">
@@ -79,7 +77,6 @@
 						</div>
 						<div class="bt_wrap">
 							<a href="/insertBoard" class="on">등록</a>
-
 							<!--<a href="#">수정</a>-->
 						</div>
 					</div>
@@ -87,7 +84,5 @@
 			</div>
 		</section>
 	</div>
-
-
 </body>
 </html>
