@@ -2,14 +2,19 @@ package com.myfitness.domain;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -35,14 +40,14 @@ public class Member {
 	private String ptyn;          // PT 여부
 	private String cTrainer;      // PT 여부가 'y'인 경우 트레이너 이름으로 선택, 직접 작성
 	
-//	@Column(updatable = false)
-//	@Temporal(TemporalType.TIMESTAMP)
-	private LocalDateTime createDate; // 생성일자
+	@Temporal(value=TemporalType.TIMESTAMP)
+	@Column(updatable=false) 
+	private Date createDate = new Date();
 	
-	@Enumerated(EnumType.STRING)
-	private Role role;
-	
-	private boolean enabled;
+//	@Enumerated(EnumType.STRING)
+//	private Role role;
+//	
+//	private boolean enabled;
 	
 	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Board> boardList = new ArrayList<Board>();
