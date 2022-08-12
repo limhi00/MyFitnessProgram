@@ -1,6 +1,5 @@
 package com.myfitness.domain;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -25,8 +23,6 @@ import lombok.ToString;
 @Entity
 public class Member {
 
-	
-	
 	@Id
 	private String mid;           // member ID
 	private String name;          // member 이름

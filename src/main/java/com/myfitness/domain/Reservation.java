@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,10 @@ public class Reservation {
 	private Member member;
 	
 	private Date resDate;
+	
+	@OneToOne
+	@JoinColumn(name="cTrainer", nullable=false, updatable=false)
+	private Member cTrainer;
 	
 	// 'yyyyMMdd'형식을 Date형식으로 변환
 	public Date dateFormat(String selectedDate) {

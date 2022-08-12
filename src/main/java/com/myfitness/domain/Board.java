@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -43,6 +42,6 @@ public class Board {
 	
 	@ManyToOne
 	@JoinColumn(name="mid", nullable=false, updatable=false)
-	private Member member;
+ 	private Member member;
 	
 }
