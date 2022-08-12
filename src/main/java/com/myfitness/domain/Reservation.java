@@ -23,9 +23,9 @@ public class Reservation {
 	@GeneratedValue
 	private Long rseq;
 	
-	@ManyToOne
-	@JoinColumn(name="mid", nullable=false, updatable=false) 
-	private Member member;
+//	@ManyToOne
+//	@JoinColumn(name="mid", nullable=false, updatable=false) 
+//	private Member member;
 	
 	private Date resDate;
 	

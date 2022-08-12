@@ -26,9 +26,9 @@ public class Report {
 	@ManyToOne
 	@JoinColumn(name = "bseq" , nullable=false)
 	private Board board;
-	@ManyToOne
-	@JoinColumn(name = "mid" , nullable=false)
-	private Member member;
+//	@ManyToOne
+//	@JoinColumn(name = "mid" , nullable=false)
+//	private Member member;
 	private String r_content;
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date r_indate;

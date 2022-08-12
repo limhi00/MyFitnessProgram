@@ -36,7 +36,7 @@ public class ReservationRepositoryTest {
 //		memberRepo.save(mem1);
 		
 		Reservation res1 = new Reservation();
-		res1.setMember(null);
+//		res1.setMember(null);
 		res1.setResDate(res.dateFormat("20220716"));
 		resRepo.save(res1);
 		
@@ -51,7 +51,7 @@ public class ReservationRepositoryTest {
 //		memberRepo.save(mem2);
 		
 		Reservation res2 = new Reservation();
-		res2.setMember(null);
+//		res2.setMember(null);
 		res2.setResDate(res.dateFormat("20220511"));
 		resRepo.save(res2);
 		
