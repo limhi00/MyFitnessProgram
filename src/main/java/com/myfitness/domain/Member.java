@@ -43,7 +43,7 @@ public class Member {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
-	private boolean enabled;
+//	private boolean enabled;
 	
 	@OneToMany(mappedBy = "mid", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Board> boardList = new ArrayList<Board>();
