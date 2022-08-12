@@ -29,9 +29,22 @@
 	left: 0;
 }
 </style>
+ <script>
+        function popup(){
+            var url = "findId.html";
+            var name = "findId";
+            var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+            window.open(url, name, option);
+        }
+         function popup2(){
+            var url = "findPwd.html";
+            var name = "findId";
+            var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+            window.open(url, name, option);
+        }
+    </script>
 </head>
 <body>
-
 	<div layout:fragment="content">
 
 		<!-- ======= Breadcrumbs ======= -->
@@ -64,10 +77,10 @@
 							<label>비밀번호</label>
 						</div>
 						<div class="Id">
-							<a href="/findId">아이디 찾기</a>
+							 <a href = "javascript:popup()" target = "_blank">아이디 찾기</a>
 						</div>
 						<div class="pass">
-							<a href="/findPwd">비밀번호 찾기</a>
+							 <a href = "javascript:popup2()" target = "_blank">아이디 찾기</a>
 						</div>
 						<input type="submit" value="로그인">
 						<div class="signup_link">
@@ -78,7 +91,5 @@
 			</div>
 		</section>
 	</div>
-
-
 </body>
 </html>
