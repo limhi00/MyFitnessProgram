@@ -29,10 +29,6 @@ public class Reservation {
 	
 	private Date resDate;
 	
-	@OneToOne
-	@JoinColumn(name="cTrainer", nullable=false, updatable=false)
-	private Member cTrainer;
-	
 	// 'yyyyMMdd'형식을 Date형식으로 변환
 	public Date dateFormat(String selectedDate) {
 		SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyyMMdd");

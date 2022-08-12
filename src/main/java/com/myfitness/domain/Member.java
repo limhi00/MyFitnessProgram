@@ -40,10 +40,10 @@ public class Member {
 	@Column(updatable=false) 
 	private Date createDate;
 	
-//	@Enumerated(EnumType.STRING)
-//	private Role role;
-//	
-//	private boolean enabled;
+	@Enumerated(EnumType.STRING)
+	private Role role;
+	
+	private boolean enabled;
 	
 	@OneToMany(mappedBy = "mid", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Board> boardList = new ArrayList<Board>();
