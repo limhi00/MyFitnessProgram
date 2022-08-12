@@ -33,7 +33,7 @@ public class Member {
 	private String addressDetail; // 상세주소
 //	private String email;
 	private String phone;
-	private String gender;        // 성별
+	private String gender;        // 성별1
 	private String ptyn;          // PT 여부
 	private String cTrainer;      // PT 여부가 'y'인 경우 트레이너 이름으로 선택, 직접 작성
 	
