@@ -2,6 +2,7 @@
 
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,8 +28,8 @@ public class BoardControllerTest {
 			board.setTitle("안녕하세요." + i);
 			board.setWriter("홍길동");
 			board.setContent("테스트내용 " + i); 
-			board.setCreateDate(LocalDateTime.now());
-			board.setCnt(0L);
+			board.setCreateDate(new Date());
+
 			
 			boardRepo.save(board);
 

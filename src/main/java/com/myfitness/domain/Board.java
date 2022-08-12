@@ -1,8 +1,6 @@
 package com.myfitness.domain;
 
-import java.time.LocalDateTime;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +31,7 @@ public class Board {
 	
 	@Temporal(value=TemporalType.TIMESTAMP)
 	@Column(updatable=false) 
-	private Date createDate = new Date();
+	private Date createDate;
 
 //	@Column(updatable = false, columnDefinition = "number default 0")
 //	private Long cnt; // 조회수
