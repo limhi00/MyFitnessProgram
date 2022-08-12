@@ -38,7 +38,7 @@ public class Member {
 	
 	@Temporal(value=TemporalType.TIMESTAMP)
 	@Column(updatable=false) 
-	private Date createDate = new Date();
+	private Date createDate;
 	
 //	@Enumerated(EnumType.STRING)
 //	private Role role;
