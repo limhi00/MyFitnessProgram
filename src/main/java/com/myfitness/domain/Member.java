@@ -24,6 +24,7 @@ import lombok.ToString;
 public class Member {
 
 	@Id
+	@Column(name="mid")
 	private String mid;           // member ID
 	private String name;          // member 이름
 	private String password;
@@ -45,7 +46,7 @@ public class Member {
 	
 //	private boolean enabled;
 	
-	@OneToMany(mappedBy = "mid", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Board> boardList = new ArrayList<Board>();
 	
 }
