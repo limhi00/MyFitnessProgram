@@ -21,6 +21,7 @@ import lombok.ToString;
 public class Board {
 	@Id
 	@GeneratedValue
+	@Column(name="board_seq")
 	private Long bseq;
 	
 	private String title;
