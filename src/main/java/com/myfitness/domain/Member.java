@@ -40,8 +40,8 @@ public class Member {
 	@Column(updatable=false) 
 	private Date createDate;
 	
-	@Enumerated(EnumType.STRING)
-	private Role role;
+//	@Enumerated(EnumType.STRING)
+//	private Role role;
 	
 //	private boolean enabled;
 	
