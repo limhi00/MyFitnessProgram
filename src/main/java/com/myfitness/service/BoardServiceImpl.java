@@ -23,21 +23,29 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insertBoard(Board board) {
 		
+		boardRepo.save(board);
 	}
 	
 	@Override
 	public Board getBoard(Board board) {
 	
-		return null;
+		return boardRepo.findById(board.getBseq()).get();
 	}
 	
 	@Override
 	public void updateBoard(Board board) {
+		Board findBoard = boardRepo.findById(board.getBseq()).get();
+		
+		findBoard.setTitle(board.getTitle());
+		findBoard.setContent(board.getContent());
+		
+		boardRepo.save(findBoard);
 		
 	}
 	
 	@Override
 	public void deleteBoard(Board board) {
 		
+		boardRepo.deleteById(board.getBseq());
 	}
 }
