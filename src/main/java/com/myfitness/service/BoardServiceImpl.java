@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.myfitness.domain.Board;
 import com.myfitness.persistence.BoardRepository;
 
@@ -17,12 +16,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<Board> getBoardList(Board board) {
 		
-		return (List<Board>) boardRepo.findAll();
+		return boardRepo.findAll();
+		//return (List<Board>) boardRepo.findAll();
 	}
 	
 	@Override
 	public void insertBoard(Board board) {
-		
 		boardRepo.save(board);
 	}
 	
@@ -34,18 +33,24 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public void updateBoard(Board board) {
-		Board findBoard = boardRepo.findById(board.getBseq()).get();
+		boardRepo.save(board);
 		
-		findBoard.setTitle(board.getTitle());
-		findBoard.setContent(board.getContent());
+//		// 수정할 게시글 조회
+//		Board findBoard = boardRepo.findById(board.getBseq()).get();
+//		
+//		// board - 화면에서 입력된 데이터
+//		findBoard.setTitle(board.getTitle());
+//		findBoard.setCategory(board.getCategory());
+//		findBoard.setContent(board.getContent());
+//		findBoard.setTitle(board.getWriter());
+//		
+//		boardRepo.save(findBoard);
 		
-		boardRepo.save(findBoard);
-		
-	}
+		}
 	
 	@Override
 	public void deleteBoard(Board board) {
-		
+		// boardRepo.delete(board);
 		boardRepo.deleteById(board.getBseq());
 	}
 }

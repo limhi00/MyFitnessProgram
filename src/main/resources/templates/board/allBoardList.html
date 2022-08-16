@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>My Fitness Program - 전체게시판</title>
+<title>My Fitness Program - 게시판</title>
 <!-- 작성하는 페이지에 별도의 CSS가 필요하면 추가. -->
-<link href="assets/css/style_board.css" rel="stylesheet">
+<link th:href="@{assets/css/style_board.css}" rel="stylesheet">
 </head>
 <body>
 
@@ -31,7 +31,7 @@
 				<!-- 내용 작성. -->
 				<div class="board_wrap">
 					<div class="board_title">
-						<strong>전체게시판</strong>
+						<strong th:text=${board.category}></strong>
 					</div>
 					<div class="search_1">
 						<form id="search-form">
@@ -58,10 +58,10 @@
 								<div class="num" th:text=${board.bseq}></div>
 								<div class="category" th:text=${board.category}></div>
 								<div class="title">
-									<a th:href="@{/getBoard(bseq=${board.bseq})}" th:text="${board.title}"></a>
+									<a th:text="${board.title}" th:href="@{/getBoard(bseq=${board.bseq})}"></a>
 								</div>
 								<div class="writer" th:text="${board.writer}"></div>
-								<div class="date" th:text="${#dates.format(board.createDate, 'yyyy-MM-dd')}"></div>
+								<div th:text="${#temporals.format(board.createDate,'yyyy-MM-dd HH:mm')}">등록일</div>
 							</div>
 						</div>
 						<div class="board_page">

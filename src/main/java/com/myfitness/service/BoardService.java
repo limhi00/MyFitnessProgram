@@ -1,7 +1,6 @@
 package com.myfitness.service;
 
 import java.util.List;
-
 import com.myfitness.domain.Board;
 
 public interface BoardService {
