@@ -1,12 +1,15 @@
 package com.myfitness.domain;
 
-import java.time.LocalDateTime;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import org.hibernate.annotations.CreationTimestamp;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,14 +27,14 @@ public class Board {
 	private String title;
 	private String writer;
 	
-	@Column(columnDefinition = "TEXT", nullable = false) // null 값 비허용 @nonNull? column
+	@Column(nullable = false) // null 값 비허용 @nonNull? column
 	private String content;		
 	
 	private String category;	// 카테고리
 
 	@CreationTimestamp
 	@Column(name="create_date", updatable = false)
-	private LocalDateTime createDate; 
+	private Date createDate; 
 
 	
 //	@Column(updatable = false, columnDefinition = "number default 0")
