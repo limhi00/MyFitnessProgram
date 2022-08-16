@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.myfitness.domain.Board;
@@ -57,9 +58,17 @@ public class BoardController {
 		
 		return "board/freeBoardList";
 	}
-	
-	@GetMapping("/getBoard")
-	public String gerBoardView() {
+
+//	@GetMapping("/getBoard")
+//	public String gerBoardView() {
+//		
+//		return "board/getBoard";
+//	}
+
+	@RequestMapping("/getBoard")
+	public String getBoard(Board board, Model model) {
+		
+		model.addAttribute("board", boardService.getBoard(board));
 		
 		return "board/getBoard";
 	}
@@ -76,13 +85,13 @@ public class BoardController {
 		return "board/insertBoard";
 	}
 	
-//	@PostMapping("/insertBoard")
-//	public String insertBoard() {
-//		
-//		boardService.insertBoard(board);
-//		
-//		return "redirect:board/allBoardList";
-//	}
+	@PostMapping("/insertBoard")
+	public String insertBoard(Board board) {
+		
+		boardService.insertBoard(board);
+		
+		return "redirect:/allBoardList";
+	}
 	
 	@GetMapping("/noticeBoardList")
 	public String noticeBoardListView() {
@@ -97,9 +106,19 @@ public class BoardController {
 	}
 	
 	@GetMapping("/updateBoard")
-	public String updateBoardView() {
+	public String updateBoardView(Board board, Model model) {
+		
+		model.addAttribute("board", boardService.getBoard(board));
 		
 		return "board/updateBoard";
+	}
+	
+	@PostMapping("/updateBoard")
+	public String updateBoard(Board board) {
+		
+		boardService.updateBoard(board);
+		
+		return "redirect:/getBoard";
 	}
 	
 	@GetMapping("/videoBoardList")

@@ -10,8 +10,6 @@
 <link href="assets/css/style_board.css" rel="stylesheet">
 </head>
 <body>
-
-
 	<div layout:fragment="content">
 		<!-- ======= Breadcrumbs ======= -->
 		<section class="breadcrumbs">
@@ -29,66 +27,66 @@
 
 		<section class="myContent">
 			<div class="container">
-				<!-- 내용 작성. -->
+				<form th:action="@{board/getBoard}" method="get">
+					<input name="bseq" type="hidden" th:value="${board.bseq}"/>
+					<div class="board_wrap">
+						<div class="board_view_wrap">
+							<div class="board_view">
+								<div class="title" th:text="${board.title}"></div>
+								<div class="info">
+									<dl>
+										<dt th:text="글번호"></dt>
+										<dd th:text="${board.bseq}"></dd>
+									</dl>
+									<dl>
+										<dt th:text="글쓴이"></dt>
+										<dd th:text="${board.writer}"></dd>
+									</dl>
+									<dl>
+										<dt th:text="작성일"></dt>
+										<dd th:text="${#dates.format(board.createDate, 'yyyy-MM-dd')}"></dd>
+									</dl>
 
-				<div class="board_wrap">
-
-					<div class="board_view_wrap">
-						<div class="board_view">
-							<div class="title">글 제목이 들어갑니다.</div>
-							<div class="info">
-								<dl>
-									<dt>번호</dt>
-									<dd>1</dd>
-								</dl>
-								<dl>
-									<dt>글쓴이</dt>
-									<dd>김이름</dd>
-								</dl>
-								<dl>
-									<dt>작성일</dt>
-									<dd>2021.1.16</dd>
-								</dl>
-
+								</div>
+								<div class="cont" th:text="${board.content}">
+								</div>
 							</div>
-							<div class="cont">
-								글 내용이 들어갑니다<br> 글 내용이 들어갑니다<br> 글 내용이 들어갑니다<br> 글
-								내용이 들어갑니다<br> 글 내용이 들어갑니다<br> 글 내용이 들어갑니다<br> 글
-								내용이 들어갑니다<br> 글 내용이 들어갑니다
+							<div id="disqus_thread"></div>
+							<script>
+								/**
+								 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+								 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+								/*
+								var disqus_config = function () {
+								this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+								this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+								};
+								 */
+								(function() { // DON'T EDIT BELOW THIS LINE
+									var d = document, s = d
+											.createElement('script');
+									s.src = 'https://yjs-gym.disqus.com/embed.js';
+									s.setAttribute('data-timestamp',
+											+new Date());
+									(d.head || d.body).appendChild(s);
+								})();
+							</script>
+							<noscript>
+								Please enable JavaScript to view the <a
+									href="https://disqus.com/?ref_noscript">comments powered by
+									Disqus.</a>
+							</noscript>
+							<div class="bt_wrap">
+								<a href="/allBoardList">목록</a>
+								<a th:href="@{/updateBoard(bseq=${board.bseq})}">수정</a>
+								<a th:href="@{/reportPage(bseq=${board.bseq})}">신고</a>
+								<a th:href="@{/deleteBoard(bseq=${board.bseq})}">삭제</a>
 							</div>
-						</div>
-						<div id="disqus_thread"></div>
-						<script>
-			    /**
-			    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-			    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-			    /*
-			    var disqus_config = function () {
-			    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-			    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-			    };
-			    */
-			    (function() { // DON'T EDIT BELOW THIS LINE
-			    var d = document, s = d.createElement('script');
-			    s.src = 'https://yjs-gym.disqus.com/embed.js';
-			    s.setAttribute('data-timestamp', +new Date());
-			    (d.head || d.body).appendChild(s);
-			    })();
-			</script>
-						<noscript>
-							Please enable JavaScript to view the <a
-								href="https://disqus.com/?ref_noscript">comments powered by
-								Disqus.</a>
-						</noscript>
-						<div class="bt_wrap">
-							<a href="list.html">목록</a> <a href="edit.html">수정</a> <a
-								href="report.html">신고</a> <a href="/deleteBoard">삭제</a>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</section>
 	</div>
-
 </body>
 </html>
