@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.myfitness.domain.Member;
 import com.myfitness.domain.Role;
-import com.myfitness.repository.MemberRepository;
+import com.myfitness.persistence.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
