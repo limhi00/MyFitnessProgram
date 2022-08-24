@@ -1,24 +1,20 @@
-* {
-    margin: 0;
-    padding: 0;
-}
 
-html {
-    font-size: 10px;
-}
-
-ul, li {
+.board_wrap ul, li {
     list-style: none;
 }
 
-a {
+.board_wrap a {
     text-decoration: none;
     color: inherit;
 }
 
+.board_wrap a:hover {
+	color: #ED563B;
+}
+
 .board_wrap {
     width: 1000px;
-    margin: 100px auto;
+    margin: 0 auto;
 }
 
 .board_title {
@@ -26,44 +22,72 @@ a {
 }
 
 .board_title strong {
-    font-size: 3rem;
+    font-size: 30px;
 }
 
 .search_1 {
+	width: 300px;
+	font-size: 12px;
     margin-bottom: 10px;
-    position: relative; left: 77%; 
+    position: relative; 
+    left: 77%; 
 }
 
 
 .board_title p {
     margin-top: 5px;
-    font-size: 1.4rem;
+    font-size: 14px;
 }
 
 .bt_wrap {
     margin-top: 30px;
     text-align: center;
-    font-size: 0;
 }
 
-.bt_wrap a {
+.bt_wrap .btItem {
+	color:#000;
+	background-color: #fff;
     display: inline-block;
-    min-width: 80px;
+    width: 80px;
     margin-left: 10px;
     padding: 10px;
     border: 1px solid #000;
     border-radius: 2px;
-    font-size: 1.4rem;
+    font-size: 14px;
 }
 
-.bt_wrap a:first-child {
+.bt_wrap .cate {
+	width: 50px;
+	padding: 5px;
+	font-size: 11px;
+}
+
+.bt_wrap .btItem:first-child {
     margin-left: 0;
 }
 
-.bt_wrap a.on {
-    background: #000;
+.bt_wrap .on {
+	display: inline-block;
+    background-color: #000;
     color: #fff;
+    font-size: 14px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    margin-left: 10px;
+    padding: 10px 20px;
     position: relative; left: 45%;
+}
+
+.bt_wrap .on:hover {
+	background-color: #fff;
+	color: #000;
+	transition: .3s;
+}
+
+.bt_wrap .btItem:hover {
+	background-color: #000;
+	color: #fff;
+	transition: .3s;
 }
 
 .board_list {
@@ -88,7 +112,7 @@ a {
     display: inline-block;
     padding: 15px 0;
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 14px;
 }
 
 .board_list > div.top > div {
@@ -106,63 +130,80 @@ a {
 
 .board_list .top .title {
     text-align: center;
+    width: 35%
 }
-
+.board_list .top_repo .title {
+    text-align: center;
+    width: 70%
+}
+.board_list .top_repo .reportDate {
+	text-align: center;
+    width: 10%
+}
+.board_list .top_cate .title {
+	text-align: center;
+    width: 70%
+}
+.board_list .title {
+	width: 35%;
+}
+.board_list .title_repo {
+	width: 70%;
+}
+.board_list .title_cate {
+	width: 70%;
+}
+.board_list .cate .title {
+	width: 25%;
+}
+.board_list .writer {
+	width: 20%;
+}
 .board_list .student {
     width: 10%;
 }
-
 .board_list .category {
-    width: 10%;
+    width: 20%;
 }
-
 .board_list .like {
     width: 10%;
 }
-
 .board_list .comment {
     width: 10%;
 }
-
-
 .board_list .date {
     width: 10%;
 }
 
-
+.page_wrap {
+	text-align: center;
+}
 
 .board_page {
+	display: inline-block;
+	justify-content: center;
     margin-top: 30px;
     text-align: center;
     font-size: 0;
 }
 
-.board_page a {
+.board_page .num {
     display: inline-block;
     width: 32px;
     height: 32px;
     box-sizing: border-box;
     vertical-align: middle;
     border: 1px solid #ddd;
-    border-left: 0;
     line-height: 100%;
 }
 
-.board_page a.bt {
-    padding-top: 10px;
-    font-size: 1.2rem;
-    letter-spacing: -1px;
-}
-
-.board_page a.num {
+.board_page .num {
     padding-top: 9px;
-    font-size: 1.4rem;
+    font-size: 14px;
 }
 
-.board_page a.num.on {
-    border-color: #000;
-    background: #000;
-    color: #fff;
+.board_page .num.on {
+    color: #ED563B;
 }
 
 .board_page a:first-child {
@@ -177,7 +218,7 @@ a {
 .board_view .title {
     padding: 20px 15px;
     border-bottom: 1px dashed #ddd;
-    font-size: 2rem;
+    font-size: 20px;
 }
 
 .board_view .info {
@@ -214,11 +255,7 @@ a {
 .board_view .info dl dt,
 .board_view .info dl dd {
     display: inline-block;
-    font-size: 1.4rem;
-}
-
-.board_view .info dl dt {
-
+    font-size: 14px;
 }
 
 .board_view .info dl dd {
@@ -230,7 +267,14 @@ a {
     padding: 15px;
     border-bottom: 1px solid #000;
     line-height: 160%;
-    font-size: 1.4rem;
+    font-size: 14px;
+}
+
+.board_view .rIndate {
+	margin-left: 880px;
+	padding: 10px;
+	font-size: 12px;
+	width: 200px;
 }
 
 .board_write {
@@ -265,7 +309,7 @@ a {
 .board_write .info dd {
     display: inline-block;
     vertical-align: middle;
-    font-size: 1.4rem;
+    font-size: 14px;
 }
 
 .board_write .title dt,
@@ -359,7 +403,7 @@ a {
 
     .board_view .info dl dt,
     .board_view .info dl dd {
-        font-size: 1.2rem;
+        font-size: 14px;
     }
 
     .board_write .info dl {

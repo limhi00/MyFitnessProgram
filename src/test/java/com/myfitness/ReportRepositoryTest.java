@@ -1,7 +1,5 @@
 package com.myfitness;
 
-import java.util.Date;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +22,8 @@ public class ReportRepositoryTest {
 		for(int i=1; i<=10; i++) {
 			Report repo = new Report();
 			
-			repo.setR_content("content"+i);
-			repo.setR_indate(new Date());
+			repo.setRTitle("title"+i);
+			repo.setRContent("content"+i);
 			
 			reportrepo.save(repo);
 			

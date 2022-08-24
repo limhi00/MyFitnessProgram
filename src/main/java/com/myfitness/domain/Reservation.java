@@ -1,14 +1,10 @@
 package com.myfitness.domain;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,29 +23,7 @@ public class Reservation {
 //	@JoinColumn(name="mid", nullable=false, updatable=false) 
 //	private Member member;
 	
-	private Date resDate;
+	private Date classDate;
 	
-	// 'yyyyMMdd'형식을 Date형식으로 변환
-	public Date dateFormat(String selectedDate) {
-		SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyyMMdd");
-		Date tempDate = null;
-		
-		try {
-			tempDate = beforeFormat.parse(selectedDate);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return tempDate;
-	}
-	
-	// Date형식을 'yyyy년 MM월 dd일'형식으로 변환
-	public String stringFormat(Date selectedDate) {
-		SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String tempDate = null;
-		
-		tempDate = afterFormat.format(selectedDate);
-		
-		return tempDate;
-	}
+	private String classTime;
 }

@@ -31,15 +31,19 @@
 
 				<div class="board_wrap">
 					<div class="board_title">
-						<strong>회원 관리</strong>
+						<strong>회원 목록</strong>
 					</div>
 					<div class="search_1">
-						<form id="search-form">
-							<select name="search_select">
-								<option value="title">제목</option>
-								<option value="content">내용</option>
-							</select> <input type="text" id="search">
-							<button id="searchBtn">search</button>
+						<form th:action="@{/userManagement}" method="get" id="search-form"
+							name="searchForm">
+							<select name="searchSelect">
+								<option value="title">회원명</option>
+								<option value="content">전화번호</option>
+							</select> 
+							<input type="text" name="searchKeyword" id="search">
+							<button type="submit" id="searchBtn">
+								<i class="bx bx-search-alt-2"></i>
+							</button>
 						</form>
 					</div>
 					<div class="board_list_wrap">
@@ -52,53 +56,29 @@
 								<div class="trainer">담당 트레이너</div>
 								<div class="gender">성별</div>
 							</div>
-							<div>
-								<div class="num">5</div>
-								<div class="student">회원명</div>
-								<div class="id">아이디.</div>
-								<div class="phone_number">전화번호</div>
-								<div class="trainer">담당 트레이너</div>
-								<div class="gender">성별</div>
-							</div>
-							<div>
-								<div class="num">5</div>
-								<div class="student">회원명</div>
-								<div class="id">아이디.</div>
-								<div class="phone_number">전화번호</div>
-								<div class="trainer">담당 트레이너</div>
-								<div class="gender">성별</div>
-							</div>
-							<div>
-								<div class="num">5</div>
-								<div class="student">회원명</div>
-								<div class="id">아이디.</div>
-								<div class="phone_number">전화번호</div>
-								<div class="trainer">담당 트레이너</div>
-								<div class="gender">성별</div>
-							</div>
-							<div>
-								<div class="num">5</div>
-								<div class="student">회원명</div>
-								<div class="id">아이디.</div>
-								<div class="phone_number">전화번호</div>
-								<div class="trainer">담당 트레이너</div>
-								<div class="gender">성별</div>
-							</div>
-							<div>
-								<div class="num">5</div>
-								<div class="student">회원명</div>
-								<div class="id">아이디.</div>
-								<div class="phone_number">전화번호</div>
-								<div class="trainer">담당 트레이너</div>
-								<div class="gender">성별</div>
+							<div th:each="user, state: ${userList}">
+								<input name="mid" type="hidden" th:value="${user.mid}">
+								<div class="num" th:text="${state.count}"></div>
+								<div class="student">
+									<a th:href="@{/mypage(mid=${user.mid})}" th:text="${user.name}"></a>
+								</div>
+								<div class="id" th:text="${user.mid}"></div>
+								<div class="phone_number" th:text="${user.phone}"></div>
+								<div class="trainer" th:text="${user.cTrainer}"></div>
+								<div class="gender" th:text="${user.gender}"></div>
 							</div>
 						</div>
-						<div class="board_page">
-							<a href="#" class="bt first"><<</a> <a href="#" class="bt prev"><</a>
-							<a href="#" class="num on">1</a> <a href="#" class="num">2</a> <a
-								href="#" class="num">3</a> <a href="#" class="num">4</a> <a
-								href="#" class="num">5</a> <a href="#" class="bt next">></a> <a
-								href="#" class="bt last">>></a>
+						<div class="page_wrap">
+							<div class="board_page"
+								th:each="page : ${#numbers.sequence(startPage, endPage)}">
+								<a class="num" th:if="${page != nowPage}"
+									th:href="@{/userManagement(page=${page-1}, searchSelect=${param.searchSelect}, searchKeyword=${param.searchKeyword})}"
+									th:text="${page}">
+								</a> 
+								<strong class="num on"
+									th:if="${page == nowPage}" th:text="${page}">
+								</strong>
+							</div>
 						</div>
 					</div>
 				</div>
