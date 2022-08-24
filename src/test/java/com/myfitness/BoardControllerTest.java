@@ -31,7 +31,6 @@ public class BoardControllerTest {
 	private ReportRepository repRepo;
 	
 	@Test
-	@Ignore
 	public void categoryInsertTest() {
 		Category cate1 = new Category();
 		cate1.setCid(1L);
@@ -55,7 +54,6 @@ public class BoardControllerTest {
 	}
 	
 	@Test
-	@Ignore
 	public void boardInsertTest() {
 		for(int i=1; i<=20; i++) {
 			Board board = new Board();
