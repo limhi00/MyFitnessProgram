@@ -29,6 +29,8 @@ public class Reservation {
 	
 	private Date resDate;
 	
+	private int phonenum;
+	
 	// 'yyyyMMdd'형식을 Date형식으로 변환
 	public Date dateFormat(String selectedDate) {
 		SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyyMMdd");

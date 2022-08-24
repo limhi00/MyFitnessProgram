@@ -1,6 +1,8 @@
 package com.myfitness.domain;
 
-import java.time.LocalDateTime;
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,21 +19,20 @@ import lombok.ToString;
 @Entity
 public class Board {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="board_seq")
+	@GeneratedValue
 	private Long bseq;
 	
 	private String title;
 	private String writer;
 	
-	@Column(columnDefinition = "TEXT", nullable = false) // null 값 비허용 @nonNull? column
+	@Column(nullable = false) // null 값 비허용 @nonNull? column
 	private String content;		
 	
 	private String category;	// 카테고리
 
 	@CreationTimestamp
 	@Column(name="create_date", updatable = false)
-	private LocalDateTime createDate; 
+	private Date createDate = new Date();  
 
 	
 //	@Column(updatable = false, columnDefinition = "number default 0")
