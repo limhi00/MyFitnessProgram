@@ -1,6 +1,6 @@
 package com.myfitness.domain;
 
-
+//1
 import java.util.Date;
 
 import javax.persistence.Column;
