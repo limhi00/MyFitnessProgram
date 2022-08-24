@@ -8,7 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import org.hibernate.annotations.CreationTimestamp;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,7 +23,7 @@ import lombok.ToString;
 @Entity
 public class Board {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long bseq;
 	
 	private String title;
@@ -28,11 +32,14 @@ public class Board {
 	@Column(nullable = false) // null 값 비허용 @nonNull? column
 	private String content;		
 	
+//	@ManyToOne
+//	@JoinColumn(name = "board_category_id")
 	private String category;	// 카테고리
 
 	@CreationTimestamp
 	@Column(name="create_date", updatable = false)
 	private Date createDate = new Date();  
+	private String boardPwd;
 
 	
 //	@Column(updatable = false, columnDefinition = "number default 0")

@@ -6,9 +6,6 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,8 +24,9 @@ public class Reservation {
 //	@JoinColumn(name="mid", nullable=false, updatable=false) 
 //	private Member member;
 	
-	private Date resDate;
+	private Date classDate;
 	
+
 	private int phonenum;
 	
 	// 'yyyyMMdd'형식을 Date형식으로 변환
@@ -54,4 +52,7 @@ public class Reservation {
 		
 		return tempDate;
 	}
+
+	private String classTime;
+
 }
