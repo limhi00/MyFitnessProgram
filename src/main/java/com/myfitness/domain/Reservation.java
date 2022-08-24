@@ -1,5 +1,6 @@
 package com.myfitness.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -25,5 +26,33 @@ public class Reservation {
 	
 	private Date classDate;
 	
+
+	private int phonenum;
+	
+	// 'yyyyMMdd'형식을 Date형식으로 변환
+	public Date dateFormat(String selectedDate) {
+		SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyyMMdd");
+		Date tempDate = null;
+		
+		try {
+			tempDate = beforeFormat.parse(selectedDate);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return tempDate;
+	}
+	
+	// Date형식을 'yyyy년 MM월 dd일'형식으로 변환
+	public String stringFormat(Date selectedDate) {
+		SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String tempDate = null;
+		
+		tempDate = afterFormat.format(selectedDate);
+		
+		return tempDate;
+	}
+
 	private String classTime;
+
 }

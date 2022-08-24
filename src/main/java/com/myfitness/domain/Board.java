@@ -1,5 +1,6 @@
 package com.myfitness.domain;
 
+//1
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -37,8 +38,9 @@ public class Board {
 
 	@CreationTimestamp
 	@Column(name="create_date", updatable = false)
-	private Date createDate = new Date(); 
+	private Date createDate = new Date();  
 	private String boardPwd;
+
 	
 //	@Column(updatable = false, columnDefinition = "number default 0")
 //	private Long cnt; // 조회수

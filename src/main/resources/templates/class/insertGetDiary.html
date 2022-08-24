@@ -51,20 +51,26 @@ table.type04 td {
 		</section>
 		<!-- End Breadcrumbs -->
 		
-		<section class="myContent">
+		<section class="myContent" th:action="@{/insertGetDiary}" method="post">
 			<div class="bmi">
 				<table class="type04">
 				  <tr>
 				    <th scope="row" >체중</th>
-				    <td th:text="${DietDiary.weight}"></td>
+				    <td>
+				    	<input type="text" placeholder="체중">
+				    </td>
 				  </tr>
 				  <tr>
 				    <th scope="row">체지방</th>
-				    <td "${DietDiary.fat}"></td>
+				    <td>
+				    	<input type="text" placeholder="체지방">
+				    </td>
 				  </tr>
 				  <tr>
 				    <th scope="row">골격근</th>
-				    <td "${DietDiary.muscle}"></td>
+				    <td>
+				    	<input type="text" placeholder="골격근">
+				    </td>
 				  </tr>
 				</table>
 			</div>
@@ -72,26 +78,34 @@ table.type04 td {
 				<table class="type04">
 					<tr>
 			    <th scope="row" >아침</th>
-			    <td th:text="${DietDiary.weight}"></td>
+			     <td>
+			     	<input type="text" placeholder="아침">
+			     </td>
 			  </tr>
 			  <tr>
 			    <th scope="row">점심</th>
-			    <td "${DietDiary.fat}"></td>
+			    <td>
+			    	<input type="text" placeholder="점심">
+			    </td>
 			  </tr>
 			  <tr>
 			    <th scope="row">저녁</th>
-			    <td "${DietDiary.fat}"></td>
+			    <td>
+			    	<input type="text" placeholder="저녁">
+			    </td>
 			  </tr>
 			  <tr>
 			    <th scope="row">야식</th>
-			    <td "${DietDiary.snack}"></td>
+			    <td>
+			    	<input type="text" placeholder="야식">
+			    </td>
 			  </tr>
 				</table>
 			</div>
 			<div class= "waterdrink">
 				<button id="bt" type="button" class="btn btn-primary mt-5 S">한컵</button><br><br>
 			    <Br>
-			   
+			    
 			     
 			    <!-- 버튼 클릭시 변경될 이미지 -->
 			    <img id="A"  class=" mt-5 front_hp1" src="assets/img/cup1.png"></img> 
@@ -107,6 +121,12 @@ table.type04 td {
 			    <img id="btD"  class=" mt-5 bcak_hp3" src="assets/img/cup2.png"></img>
 			    <img id="btE"  class=" mt-5 bcak_hp3" src="assets/img/cup2.png"></img>
 		    </div>
+		    <br>
+		    
+		     <div class="Btn">
+				<button type="submit" class="btn btn-primary">등록</button><br><br>
+				<a href="/resCalendar" type="button" class="btn btn-primary mt-5 S">취소</a>
+			</div>
 		    
 		    <script>
 		    var num = 1; //변수 선언
