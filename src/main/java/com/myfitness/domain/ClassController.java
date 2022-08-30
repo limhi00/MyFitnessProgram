@@ -1,4 +1,4 @@
-package com.myfitness.controller;
+package com.myfitness.domain;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,7 +4,7 @@ import com.myfitness.domain.DietDiary;
 
 public interface DietDiaryService {
 
-	void insertDietDiary(DietDiary ddiary);
+	long insertDietDiary(DietDiary ddiary);
 
 	DietDiary getDietDiary(DietDiary ddiary);
 

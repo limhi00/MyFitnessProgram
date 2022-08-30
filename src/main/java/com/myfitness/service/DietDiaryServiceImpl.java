@@ -12,8 +12,21 @@ public class DietDiaryServiceImpl implements DietDiaryService {
 	private DietDiaryRepository dietrepo;
 	
 	@Override
-	public void insertDietDiary(DietDiary ddiary) {
-		dietrepo.save(ddiary);
+	public long insertDietDiary(DietDiary ddiary) {
+		ddiary.setBreakfast(ddiary.getBreakfast());
+		ddiary.setD_indate(ddiary.getD_indate());
+		ddiary.setDinner(ddiary.getDinner());
+		ddiary.setFat(ddiary.getFat());
+		ddiary.setLunch(ddiary.getLunch());
+		ddiary.setMuscle(ddiary.getMuscle());
+		ddiary.setReview(ddiary.getReview());
+		ddiary.setSnack(ddiary.getSnack());
+		ddiary.setWaterdrink(ddiary.getWaterdrink());
+		ddiary.setWeight(ddiary.getWeight());
+		
+		long dseq = dietrepo.save(ddiary).getDseq();
+		
+		return dseq;
 	}
 	
 	@Override
