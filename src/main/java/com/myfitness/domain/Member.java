@@ -36,8 +36,6 @@ public class Member {
 	
 	@Column(nullable = false, unique = true, length = 50)
 	private String phone;
-	
-	private String cTrainer;
 
 	@CreationTimestamp
 	@Column(updatable = false)
