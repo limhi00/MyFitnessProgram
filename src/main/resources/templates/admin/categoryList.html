@@ -6,117 +6,71 @@
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>My Fitness Program - 카테고리 관리</title>
-
-
-  <!-- 작성하는 페이지에 별도의 CSS가 필요하면 추가. -->
-  <link href="assets/css/style_board.css" rel="stylesheet">
+<link href="assets/css/style_board.css" rel="stylesheet">
   
 <script>
-
-/*
- * confirm, prompt, alert 팝업을 생성
- * 단순히 팝업만 보이는 상태. 처리하는 코드 필요
- */
- 
-function delOk(){
-    if(!confirm('카테고리를 삭제하시겠습니까? \n삭제된 카테고리는 전체 게시판으로 이동됩니다.')){
-    	return false;
-    } else {
-    	alert("삭제되었습니다.");
-    }
+function insertCate() {
+	var url = "/insertCategoryView";
+	var name = "insertCategoryView";
+	var features = "fullscreen=no,menubar=no,status=no,toolbar=no,titlebar=no,location=no,scrollbar=auto,width=800,height=450,top=200,left=600";
+	console.log("URL="+url);
+	window.open(url, name, features);
 }
-
-function AddCategory() {
-	var AddCategory = prompt("추가할 카테고리 이름을 입력해주세요.");
-	
-	if (AddCategory == null){
-		return false;
-	} else {
-		alert(AddCategory + " 카테고리가 생성되었습니다.");	
-	}
+function deleteCate(cid) {
+	var url = "/deleteCategoryView?cid="+cid;
+	var name = "deleteCategoryView";
+	var features = "fullscreen=no,menubar=no,status=no,toolbar=no,titlebar=no,location=no,scrollbar=auto,width=800,height=350,top=200,left=550";
+	alert("URL="+url);
+	window.open(url, name, features);
 }
-
-
 </script>
-
 </head>
-
 <body>
+	<div layout:fragment="content">
+		<!-- ======= Breadcrumbs ======= -->
+		<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>카테고리 관리</h2>
+					<ol>
+						<li><a href="#">게시판 관리</a></li>
+						<li>카테고리 관리</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
 
-<div layout:fragment="content">
-    <!-- ======= Breadcrumbs ======= -->
-    <section class="breadcrumbs">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>카테고리 관리</h2>
-          <ol>
-            <li><a href="#">게시판 관리</a></li>
-            <li>카테고리 관리</li>
-          </ol>
-        </div>
-      </div>
-    </section>
-    <!-- End Breadcrumbs -->
-
-    <section class="myContent">
-      <div class="container">
-<!-- 내용 작성. -->
-
-
-    <div class="board_wrap">
-        <div class="board_title">
-            <strong>카테고리 목록</strong>
-        </div>
-        <div class="board_list_wrap">
-            <div class="board_list">
-                <div class="top">
-                    <div class="num">카테고리 번호</div>
-                    <div class="category">카테고리 이름</div>  
-                </div>
-                <div>
-                    <div class="num">4</div>
-                    <div class="title"><a href="view.html">자유 게시판</a></div>
-                    <input type="submit" value="수정" onclick="modifyOk()" id="myStateButton" class="btn btn-primary"/>
-      				<input type="submit" value="삭제" onclick="delOk()" id="myStateButton" class="btn btn-primary"/>
-                    
-                </div>
-
-                <div>
-                    <div class="num">3</div>
-                    <div class="title"><a href="view.html">운동영상</a></div>
-    
-                </div>
-                <div>
-                    <div class="num">2</div>
-                    <div class="title"><a href="view.html">챌린지</a></div>
-
-                </div>
-                <div>
-                    <div class="num">추가</div>
-                    <div class="title"><a href="view.html"></a></div>
-                </div>
-            </div>
-            <div class="board_page">
-                <a href="#" class="bt first"><<</a>
-                <a href="#" class="bt prev"><</a>
-                <a href="#" class="num on">1</a>
-                <a href="#" class="num">2</a>
-                <a href="#" class="num">3</a>
-                <a href="#" class="num">4</a>
-                <a href="#" class="num">5</a>
-                <a href="#" class="bt next">></a>
-                <a href="#" class="bt last">>></a>
-            </div>
-            <div class="bt_wrap">
-            <input type="submit" value="카테고리 등록" onclick="AddCategory()" id="myStateButton_Add" class="on"/>
-                
-                
-                <!--<a href="#">수정</a>-->
-            </div>
-        </div>
-    </div>
-        </div>
-  </section>
-</div>
+		<section class="myContent">
+			<div class="container">
+				<div class="board_wrap">
+					<div class="board_title">
+						<strong>카테고리 목록</strong>
+					</div>
+					<div class="board_list_wrap">
+						<form>
+							<div class="board_list">
+								<div class="top_cate">
+									<div class="num">번호</div>
+									<div class="title">카테고리 이름</div>
+								</div>
+								<div th:each="category, state : ${categoryList}">
+									<div class="num" th:text="${state.count}"></div>
+									<input type="hidden" name="cid" th:value="${category.cid}" id="cid">
+									<div class="title_cate" th:text="${category.name}"></div>
+									<div class="bt_wrap m-0">
+										<a href="" th:onclick="'deleteCate('+${category.cid}+')'" class="btItem cate">삭제</a>
+									</div>
+								</div>
+							</div>
+						</form>
+							<div class="bt_wrap">
+								<a href="" onclick="insertCate()" class="on">카테고리 등록</a>
+							</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 </body>
 </html> 

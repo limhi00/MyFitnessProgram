@@ -20,13 +20,13 @@ public class ClassDiary {
 	@GeneratedValue
 	private Long cdseq;
 	
-	@ManyToOne
-	@JoinColumn(name="mid", nullable=false, updatable=false) 
-	private Member member;
+//	@ManyToOne
+//	@JoinColumn(name="mid", nullable=false, updatable=false) 
+//	private Member member;
 	
-	@OneToOne
-	@JoinColumn(name="rseq", nullable=false, updatable=false)
-	private Reservation res;
+//	@OneToOne
+//	@JoinColumn(name="rseq", nullable=false, updatable=false)
+//	private Reservation res;
 	
 	private String content;
 }

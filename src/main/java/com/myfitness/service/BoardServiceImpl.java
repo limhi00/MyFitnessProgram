@@ -1,12 +1,21 @@
 package com.myfitness.service;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.myfitness.domain.Board;
+import com.myfitness.domain.Category;
+import com.myfitness.domain.Report;
 import com.myfitness.persistence.BoardRepository;
+import com.myfitness.persistence.CategoryRepository;
+import com.myfitness.persistence.ReportRepository;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -14,30 +23,118 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardRepository boardRepo;
 	
-	@Override
-	public List<Board> getBoardList(Board board) {
-		
-		return (List<Board>) boardRepo.findAll();
-	}
+	@Autowired
+	private CategoryRepository cateRepo;
+	
+	@Autowired
+	private ReportRepository repRepo;
 	
 	@Override
-	public void insertBoard(Board board) {
+//	public List<Board> getBoardList(Board board) {
+//		
+//		return boardRepo.findAll();
+//		//return (List<Board>) boardRepo.findAll();
+//	}
+	
+	public Page<Board> getBoardList(Pageable pageable) {
 		
+		return boardRepo.findAll(pageable);
+	}
+	
+	public Page<Board> getBoardSearchTitleList(String searchKeyword, Pageable pageable) {
+		
+		return boardRepo.findByTitleContaining(searchKeyword, pageable);
+	}
+	
+	public Page<Board> getBoardSearchContList(String searchKeyword, Pageable pageable) {
+		
+		return boardRepo.findByContentContaining(searchKeyword, pageable);
+	}
+	
+	public Page<Board> getBoardSearchCategoryList(String searchKeyword, Pageable pageable) {
+		
+		return boardRepo.findByCategoryContaining(searchKeyword, pageable);
 	}
 	
 	@Override
 	public Board getBoard(Board board) {
 	
-		return null;
+		return boardRepo.findById(board.getBseq()).get();
 	}
 	
 	@Override
-	public void updateBoard(Board board) {
+	public void writeBoard(Board board, MultipartFile file) throws Exception {
 		
+//		String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files\\";
+		String projectPath = "C:/fileUpload/images/";
+		
+		UUID uuid = UUID.randomUUID();
+		String fileName = uuid + "_" + file.getOriginalFilename();
+		
+		File saveFile = new File(projectPath, fileName);
+		
+		file.transferTo(saveFile);
+		
+		board.setFilename(fileName);
+		board.setFilepath("/files/" + fileName);
+		
+		boardRepo.save(board);
 	}
-	
+
 	@Override
 	public void deleteBoard(Board board) {
 		
+		boardRepo.deleteById(board.getBseq());
+	}
+	
+	public List<Category> getCategoryList(Category category) {
+		
+		return cateRepo.findAll();
+	}
+	
+	public Category getCategory(Category category) {
+		
+		System.out.println("category=" + category);
+		return cateRepo.findById(category.getCid()).get();
+	}
+	
+	public void insertCategory(Category category) {
+		
+		cateRepo.save(category);
+	}
+	
+	public void updateCategory(Category category) {
+		
+		cateRepo.save(category);
+	}
+	
+	public void deleteCategory(Category category) {
+		
+		cateRepo.deleteById(category.getCid());
+	}
+	
+	public Page<Report> getReportList(Pageable pageable) {
+		
+		return repRepo.findAll(pageable);
+	}
+	
+	public Report getReport(Report report) {
+		
+		return repRepo.findById(report.getRseq()).get();
+	}
+	
+	public void insertReport(Report report) {
+		
+		repRepo.save(report);
+	}
+	
+	public void updateReport(Report report) {
+		
+		repRepo.save(report);
+	}
+	
+	public void deleteReport(Report report) {
+		
+		repRepo.deleteById(report.getRseq());
 	}
 }

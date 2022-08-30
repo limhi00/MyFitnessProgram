@@ -34,6 +34,24 @@ html, body {
 	width: 300;
 	height: 250;
 }
+.bt_wrap .on {
+    display: inline-block;
+    width: 80px;
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    margin-left: 10px;
+    padding: 10px;
+    position: relative; left: 45%;
+}
+
+.bt_wrap .on:hover {
+    background-color: #fff;
+    color: #000;
+    transition: .3s;
+}
 </style>
 </head>
 <body>
@@ -132,6 +150,7 @@ html, body {
 											end : '2021-07-13'
 										}, {
 											title : 'Meeting',
+											url : 'getDiary2.html', // 클릭시 해당 url로 이동
 											start : '2021-07-12T10:30:00',
 											end : '2021-07-12T12:30:00'
 										}, {
@@ -193,6 +212,9 @@ html, body {
 							});
 				</script>
 			</div>
+			<div class="bt_wrap">
+                      <a href="insertGetDiary.html" class="btItem">등록</a>
+                </div>
 		</section>
 	</div>
 </body>

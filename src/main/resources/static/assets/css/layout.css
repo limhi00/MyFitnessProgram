@@ -281,7 +281,7 @@ input[id="menuicon"]:checked + label + div {
 }
 .sidebar .dropdown ul {
   list-style: none;
-  font-size: 1.2rem;
+  font-size: 17px;
   font-weight: 500;
   display: block;
   position: absolute;
@@ -316,14 +316,14 @@ input[id="menuicon"]:checked + label + div {
 }
 
 .sidebar .dropdown .deepdropdown ul {
-  top: 238px;
+  top: 55px;
   left: calc(100% - 30px);
   visibility: hidden;
 }
 
 .sidebar .dropdown .deepdropdown:hover>ul {
   opacity: 1;
-  top: 238px;
+  top: 55px;
   left: 100%;
   visibility: visible;
 }
