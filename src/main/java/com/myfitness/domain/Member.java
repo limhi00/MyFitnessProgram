@@ -1,6 +1,8 @@
 package com.myfitness.domain;
 
 import java.time.LocalDateTime;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,21 +19,26 @@ import lombok.ToString;
 @Entity
 public class Member {
 	
-	@Id
 	//@JoinColumn(name = "MEMBER_ID")
-	private String mid;
 	
-	@Column(unique = true)
-	private String name;
+	@Id
+	@Column(length = 10)
+	private String username;
 	
-	//@Column(length = 20) 50~60
+	@Column(nullable = false, length = 30)
+	private String name;	
+	
+	@Column(nullable = false, length = 100)
 	private String password;
 	
-	@Column(length = 50, unique = true)
+	@Column(nullable = false, unique = true, length = 50)
 	private String email;
+	
+	@Column(nullable = false, unique = true, length = 50)
+	private String phone;
 
 	@CreationTimestamp
-	@Column(name="create_date", updatable = false)
+	@Column(updatable = false)
 	private LocalDateTime createDate; 
 	
 	@Enumerated(EnumType.STRING)
