@@ -13,10 +13,11 @@
 	table.type04 {
   border-collapse: separate;
   border-spacing: 1px;
-  text-align: left;
+  text-align: center;
   line-height: 1.5;
   border-top: 1px solid #ccc;
-  margin : 20px 10px;
+  margin-left:auto; 
+  margin-right:auto;
 }
 table.type04 th {
   width: 150px;
@@ -31,6 +32,10 @@ table.type04 td {
   vertical-align: top;
   border-bottom: 1px solid #ccc;
 }
+body{
+	text-align: center;
+}
+
 </style>
 </head>
 
@@ -51,26 +56,26 @@ table.type04 td {
 			</div>
 		</section>
 		<!-- End Breadcrumbs -->
-		
-		<section class="myContent" th:action="@{/insertGetDiary}" method="post">
+		<form th:action="@{/insertGetDiary}" method="POST">
+		<section class="myContent">
 			<div class="bmi">
 				<table class="type04">
 				  <tr>
 				    <th scope="row" >체중</th>
 				    <td>
-				    	<input type="text" placeholder="체중">
+				    	<input type="text" name="weight" placeholder="체중">
 				    </td>
 				  </tr>
 				  <tr>
 				    <th scope="row">체지방</th>
 				    <td>
-				    	<input type="text" placeholder="체지방">
+				    	<input type="text" name="fat" placeholder="체지방">
 				    </td>
 				  </tr>
 				  <tr>
 				    <th scope="row">골격근</th>
 				    <td>
-				    	<input type="text" placeholder="골격근">
+				    	<input type="text"  name="muscle" placeholder="골격근">
 				    </td>
 				  </tr>
 				</table>
@@ -80,29 +85,30 @@ table.type04 td {
 					<tr>
 			    <th scope="row" >아침</th>
 			     <td>
-			     	<input type="text" placeholder="아침">
+			     	<input type="text" name="breakfast" placeholder="아침">
 			     </td>
 			  </tr>
 			  <tr>
 			    <th scope="row">점심</th>
 			    <td>
-			    	<input type="text" placeholder="점심">
+			    	<input type="text" name="lunch" placeholder="점심">
 			    </td>
 			  </tr>
 			  <tr>
 			    <th scope="row">저녁</th>
 			    <td>
-			    	<input type="text" placeholder="저녁">
+			    	<input type="text" name="dinner" placeholder="저녁">
 			    </td>
 			  </tr>
 			  <tr>
 			    <th scope="row">야식</th>
 			    <td>
-			    	<input type="text" placeholder="야식">
+			    	<input type="text"  name="snack" placeholder="야식">
 			    </td>
 			  </tr>
 				</table>
 			</div>
+<<<<<<< HEAD
 			<div class= "waterdrink">
 				<button id="bt" type="button" class="btn btn-primary mt-5 S">한컵</button><br><br>
 			    <Br>
@@ -127,37 +133,14 @@ table.type04 td {
 		     <div class="bt_wrap">
 				<button type="submit" class="btItem">등록</button>
 				<a href="/resCalendar" type="button" class="btItem">취소</a>
+=======
+			  
+		     <div class="Btn">
+				<button type="submit" class="btn btn-primary">등록</button>
+				<button type="reset" class="btn btn-primary mt-5 S">취소</button>
+>>>>>>> branch 'feature/yjs' of https://github.com/limhi00/MyFitnessProgram.git
 			</div>
-		    
-		    <script>
-		    var num = 1; //변수 선언
-		    $(".front_hp1").hide(); //클래스명 front_hp1을 숨깁니다.
-		    $(".front_hp2").hide(); //클래스명 front_hp2을 숨깁니다.
-		    $(".front_hp3").hide(); //클래스명 front_hp3을 숨깁니다.
-		    $(".front_hp4").hide(); //클래스명 front_hp3을 숨깁니다.
-		    $(".front_hp5").hide(); //클래스명 front_hp3을 숨깁니다.
-		
-		      $("#bt").click(function(){ //ID가 bt인 버튼을 클릭시 이벤트
-		         next(); //함수 next를 실행
-		     });
-		
-		     function next() { 
-		         if (num == 10) { //만약 num이 4가 되면 모든 버튼을 숨김
-		             $(".front_hp1").hide();
-		             $(".front_hp2").hide();
-		             $(".front_hp3").hide();
-		             $(".front_hp4").hide();
-		             $(".front_hp5").hide();
-		             $("#bt").hide();
-		         } else {
-		             $(".bcak_hp"+num).hide(); //class명 bcak_hp1 ~ bcak_hp3 까지를 num으로 변경하며 숨김
-		             $(".front_hp"+num).show(); //class명 front_hp1 ~ front_hp3 까지를 num으로 변경하며 보여줌
-		             num++; //num을 1증가
-		         }
-		     }
-			</script>
 		</section>
-	</div>
-		
+		</form>
 </body>
 </html>
