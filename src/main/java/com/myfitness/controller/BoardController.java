@@ -134,21 +134,21 @@ public class BoardController {
 		return "board/freeBoardList";
 	}
 	
-	// 운동영상 게시판 게시글 목록
-	@GetMapping("/videoBoardList")
-	public String videoBoardList(Model model, @PageableDefault(page=0, size=20, sort="bseq", direction=Sort.Direction.DESC) Pageable pageable) {
-		model.addAttribute("boardList", boardService.getBoardList(pageable));
-		
-		return "board/videoBoardList";
-	}
-	
-	// 챌린지 게시판 게시글 목록
-	@GetMapping("/challengeBoardList")
-	public String challengeBoardList(Model model, @PageableDefault(page=0, size=20, sort="bseq", direction=Sort.Direction.DESC) Pageable pageable) {
-		model.addAttribute("boardList", boardService.getBoardList(pageable));
-		
-		return "board/challengeBoardList";
-	}
+//	// 운동영상 게시판 게시글 목록
+//	@GetMapping("/videoBoardList")
+//	public String videoBoardList(Model model, @PageableDefault(page=0, size=20, sort="bseq", direction=Sort.Direction.DESC) Pageable pageable) {
+//		model.addAttribute("boardList", boardService.getBoardList(pageable));
+//		
+//		return "board/videoBoardList";
+//	}
+//	
+//	// 챌린지 게시판 게시글 목록
+//	@GetMapping("/challengeBoardList")
+//	public String challengeBoardList(Model model, @PageableDefault(page=0, size=20, sort="bseq", direction=Sort.Direction.DESC) Pageable pageable) {
+//		model.addAttribute("boardList", boardService.getBoardList(pageable));
+//		
+//		return "board/challengeBoardList";
+//	}
 
 	// 게시글 상세
 	@GetMapping("/getBoard")

@@ -38,7 +38,7 @@
             <tr th:each="member, memberStat : ${memberList}">
             	<td th:text="${memberStat.count}"></td>
                 <!-- <td th:text="${member.mid}"> -->
-                <td th:text="${member.mid}" th:href="@{|/getMember/${member.mid}|}"></td>                
+                <td th:text="${member.username}" th:href="@{|/getMember/${member.username}|}"></td>                
                 <td th:text="${member.name}"></td>
                 <td th:text="${member.password}"></td>
                 <td th:text="${#temporals.format(member.createDate,'yyyy-MM-dd HH:mm')}"></td>

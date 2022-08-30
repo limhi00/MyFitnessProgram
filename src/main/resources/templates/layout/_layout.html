@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <meta charset="utf-8">
@@ -12,15 +13,15 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet"/>
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+  <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet"/>
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
 
   <!-- Template Main CSS File -->
-<link href="assets/css/layout.css" rel="stylesheet">
+<link href="/assets/css/layout.css" rel="stylesheet">
 
 
 </head>
@@ -37,8 +38,13 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="/">Home</a></li>
-          <li><a class="getstarted scrollto" href="/login">로그인</a></li>
+          	<li>
+          		<a class="nav-link scrollto active" href="/">Home</a>
+          	</li>
+          	<li>
+     			<a class="getstarted scrollto" sec:authorize="isAnonymous()" th:href="@{/members/login}">로그인</a>
+				<a class="getstarted scrollto" sec:authorize="isAuthenticated()" th:href="@{logout}">로그아웃</a>
+          	</li>
         </ul>
       </nav>
       <!-- .navbar -->
@@ -56,11 +62,7 @@
 	        <li class="dropdown"><a href="/"><span>Home</span></a>
 	        <li class="dropdown"><a href="/allBoardList"><span>게시판</span> <i class="bi bi-chevron-down"></i></a>
 	          <ul>
-	          	<li><a href="/noticeBoardList">공지사항</a></li>
 	            <li><a href="/allBoardList">전체 게시판</a></li>
-	            <li><a href="/freeBoardList">자유 게시판</a></li>
-	            <li><a href="/videoBoardList">운동영상 게시판</a></li>
-	            <li><a href="/challengeBoardList">챌린지</a></li>
 	            <li class="deepdropdown"><a href="/reportBoardList"><span>게시판 관리</span> <i class="bi bi-chevron-right"></i></a>
 	              <ul>
 	                <li><a href="/reportBoardList">신고글 관리</a></li>
@@ -131,14 +133,14 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="/assets/js/main.js"></script>
 
 </body>
 

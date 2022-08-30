@@ -1,5 +1,6 @@
 package com.myfitness.persistence;
 
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,4 +13,6 @@ public interface MemberRepository extends JpaRepository<Member, String> {
 	Page<Member> findByNameContaining(String SearchKeyword, Pageable pageable);
 	
 	Page<Member> findByPhoneContaining(String SearchKeyword, Pageable pageable);
+	
+	Optional<Member> findByUsername(String username);
 }
