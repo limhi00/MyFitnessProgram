@@ -6,6 +6,10 @@
 <link href="assets/css/style_board.css" rel="stylesheet">
 <script>
 	function sendOk() {
+		window.opener.name="parentPage";
+		document.deleteCateResult.target="parentPage";
+		document.deleteCateResult.action="/categoryList";
+		document.deleteCateResult.submit();
 		self.close();
 	}
 </script>
@@ -15,7 +19,7 @@
 		<div class="board_title">
 			<strong>카테고리 삭제</strong>
 		</div>
-		<form>
+		<form name="deleteCateResult">
 		<input type="hidden" th:value="${category.cid}" id="cid">
 			<dl>
 				<dd>

@@ -30,9 +30,22 @@
 	font-size: 12px;
     margin-bottom: 10px;
     position: relative; 
-    left: 77%; 
+    left: 76%; 
 }
-
+.search_1_user {
+	width: 300px;
+	font-size: 12px;
+    margin-bottom: 10px;
+    position: relative; 
+    left: 74%; 
+}
+.search_1_trainer {
+	width: 300px;
+	font-size: 12px;
+    margin-bottom: 10px;
+    position: relative; 
+    left: 73%; 
+}
 
 .board_title p {
     margin-top: 5px;
@@ -144,6 +157,26 @@
 	text-align: center;
     width: 70%
 }
+.board_list .top_member .id {
+	text-align: center;
+    width: 20%
+}
+.board_list .top_member .name {
+	text-align: center;
+    width: 15%
+}
+.board_list .top_member .phone {
+	text-align: center;
+    width: 25%
+}
+.board_list .top_member .cTrainer {
+	text-align: center;
+    width: 15%
+}
+.board_list .top_member .joinDate {
+	text-align: center;
+    width: 15%
+}
 .board_list .title {
 	width: 35%;
 }
@@ -159,9 +192,6 @@
 .board_list .writer {
 	width: 20%;
 }
-.board_list .student {
-    width: 10%;
-}
 .board_list .category {
     width: 20%;
 }
@@ -173,6 +203,21 @@
 }
 .board_list .date {
     width: 10%;
+}
+.board_list .id_member {
+	width: 20%
+}
+.board_list .name_member {
+	width: 15%
+}
+.board_list .phone_member {
+	width: 25%
+}
+.board_list .cTrainer_member {
+	width: 15%
+}
+.board_list .joinDate_member {
+	width: 15%
 }
 
 .page_wrap {
@@ -270,6 +315,16 @@
     font-size: 14px;
 }
 
+.board_view .upload {
+	padding: 15px;
+	border-bottom: 1px solid #000;
+	font-size: 14px;
+}
+
+.board_view .upload a {
+	text-decoration: underline;
+}
+
 .board_view .rIndate {
 	margin-left: 880px;
 	padding: 10px;
@@ -334,6 +389,7 @@
 
 .board_write .cont {
     border-bottom: 1px solid #000;
+    font-size: 14px;
 }
 
 .board_write .cont textarea {
@@ -347,7 +403,7 @@
 }
 
 .board_write .upload{
-	padding: 5%;
+	margin: 10px;
 }
 @media (max-width: 1000px) {
     .board_wrap {

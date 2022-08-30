@@ -1,11 +1,14 @@
 package com.myfitness.service;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.myfitness.domain.Board;
 import com.myfitness.domain.Category;
@@ -48,6 +51,11 @@ public class BoardServiceImpl implements BoardService {
 		return boardRepo.findByContentContaining(searchKeyword, pageable);
 	}
 	
+	public Page<Board> getBoardSearchCategoryList(String searchKeyword, Pageable pageable) {
+		
+		return boardRepo.findByCategoryContaining(searchKeyword, pageable);
+	}
+	
 	@Override
 	public Board getBoard(Board board) {
 	
@@ -55,27 +63,24 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public void insertBoard(Board board) {
+	public void writeBoard(Board board, MultipartFile file) throws Exception {
+		
+//		String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files\\";
+		String projectPath = "C:/fileUpload/images/";
+		
+		UUID uuid = UUID.randomUUID();
+		String fileName = uuid + "_" + file.getOriginalFilename();
+		
+		File saveFile = new File(projectPath, fileName);
+		
+		file.transferTo(saveFile);
+		
+		board.setFilename(fileName);
+		board.setFilepath("/files/" + fileName);
+		
 		boardRepo.save(board);
 	}
-	
-	@Override
-	public void updateBoard(Board board) {
-		boardRepo.save(board);
-		
-//		// 수정할 게시글 조회
-//		Board findBoard = boardRepo.findById(board.getBseq()).get();
-//		
-//		// board - 화면에서 입력된 데이터
-//		findBoard.setTitle(board.getTitle());
-//		findBoard.setCategory(board.getCategory());
-//		findBoard.setContent(board.getContent());
-//		findBoard.setTitle(board.getWriter());
-//		
-//		boardRepo.save(findBoard);
-		
-		}
-	
+
 	@Override
 	public void deleteBoard(Board board) {
 		
@@ -89,6 +94,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	public Category getCategory(Category category) {
 		
+		System.out.println("category=" + category);
 		return cateRepo.findById(category.getCid()).get();
 	}
 	

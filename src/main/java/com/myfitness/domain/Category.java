@@ -15,7 +15,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude="boardList")
 @Entity
 public class Category {
 	
@@ -26,10 +26,7 @@ public class Category {
 	@Column(unique = true)
 	private String name;
 	
-//	@OneToMany(mappedBy = "category")
-//	private List<Board> BoardList = new ArrayList<>();
+	@OneToMany(mappedBy = "category")
+	private List<Board> boardList = new ArrayList<>();
 
-//	public void mappingBoard(Board board) {
-//		this.BoardList.add(board);
-//	}
 }

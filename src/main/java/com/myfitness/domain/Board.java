@@ -1,7 +1,9 @@
 package com.myfitness.domain;
 
+import java.util.ArrayList;
 //1
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,21 +28,33 @@ public class Board {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long bseq;
 	
+	@Column(nullable = false)
 	private String title;
+	
+	@Column(nullable = false)
 	private String writer;
 	
-	@Column(nullable = false) // null 값 비허용 @nonNull? column
+	@Column(nullable = false, length = 1000)
 	private String content;		
 	
-//	@ManyToOne
-//	@JoinColumn(name = "board_category_id")
-	private String category;	// 카테고리
+	@ManyToOne
+	@JoinColumn(name = "CATEGORY_ID")
+	private Category category;	// 카테고리
 
 	@CreationTimestamp
 	@Column(name="create_date", updatable = false)
-	private Date createDate = new Date();  
+	private Date createDate = new Date();
+	
+	@Column(nullable = false)
 	private String boardPwd;
-
+	
+	private String filename;
+	private String filepath;
+	
+	public void setCategory(Category category) {
+		this.category = category;
+		category.getBoardList().add(this);
+	}
 	
 //	@Column(updatable = false, columnDefinition = "number default 0")
 //	private Long cnt; // 조회수
