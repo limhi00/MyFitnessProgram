@@ -1,9 +1,9 @@
 package com.myfitness.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+
 import com.myfitness.domain.Member;
 import com.myfitness.domain.MemberCreateForm;
 import com.myfitness.service.MemberService;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -83,8 +85,8 @@ public class MemberController {
 	
 	// 전체 회원 목록
 	@GetMapping("memberList")
-	public String memberList(Model model) {
-		List<Member> memberList = memberService.getMemberList();
+	public String memberList(Model model, Pageable pageable) {
+		Page<Member> memberList = memberService.getMemberList(pageable);
 		model.addAttribute("memberList", memberList);
 		return "members/memberList";
 	}

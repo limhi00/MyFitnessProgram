@@ -1,9 +1,9 @@
 package com.myfitness.service;
 
-import java.util.List;
-
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +19,21 @@ public class MemberServiceImpl implements MemberService {
 
 	private final MemberRepository memberRepo;
 	private final PasswordEncoder passwordEncoder;
+	
+	public Page<Member> getMemberList(Pageable pageable) {
+		
+		return memberRepo.findAll(pageable);
+	}
+	
+	public Page<Member> getSearchNameMemberList(String searchKeyword, Pageable pageable) {
+		
+		return memberRepo.findByNameContaining(searchKeyword, pageable);
+	}
+	
+	public Page<Member> getSearchPhoneMemberList(String searchKeyword, Pageable pageable) {
+		
+		return memberRepo.findByPhoneContaining(searchKeyword, pageable);
+	}
 	
 	@Override // 회원가입
 	public Member createForm(String username, String name, String email, String password, String phone) {
@@ -36,21 +51,6 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return null;
 	}
-	
-	public Page<Member> getMemberList(Pageable pageable) {
-
-        return memberRepo.findAll(pageable);
-    }
-
-    public Page<Member> getSearchNameMemberList(String searchKeyword, Pageable pageable) {
-
-        return memberRepo.findByNameContaining(searchKeyword, pageable);
-    }
-
-    public Page<Member> getSearchPhoneMemberList(String searchKeyword, Pageable pageable) {
-
-        return memberRepo.findByPhoneContaining(searchKeyword, pageable);
-    }
 	
 	@Override // 아이디를 조건으로 회원 검색
 	public Member getMember(String username) {
@@ -75,11 +75,4 @@ public class MemberServiceImpl implements MemberService {
 		memberRepo.deleteById(username);
 	}
 	
-	@Override
-	public List<Member> getMemberList() {
-		List<Member> memberList = memberRepo.findAll();
-
-		return memberList;
-	}
 }
-
