@@ -42,8 +42,8 @@
           		<a class="nav-link scrollto active" href="/">Home</a>
           	</li>
           	<li>
-     			<a class="getstarted scrollto" sec:authorize="isAnonymous()" th:href="@{/members/login}">로그인</a>
-				<a class="getstarted scrollto" sec:authorize="isAuthenticated()" th:href="@{logout}">로그아웃</a>
+     			<a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/members/login" th:href="@{/members/login}">로그인</a>
+				<a class="getstarted scrollto" sec:authorize="isAuthenticated()" href="/logout" th:href="@{logout}">로그아웃</a>
           	</li>
         </ul>
       </nav>
