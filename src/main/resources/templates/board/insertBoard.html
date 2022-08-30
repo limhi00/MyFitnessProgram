@@ -69,7 +69,7 @@
 										<dt>카테고리</dt>
 										<dd>
 											<select name="category">
-												<option  th:each="category : ${categoryList}" th:text="${category.name}"></option>
+												<option th:each="category : ${categoryList}" th:value="${category.cid}" th:text="${category.name}"></option>
 											</select>
 										</dd>
 									</dl>
