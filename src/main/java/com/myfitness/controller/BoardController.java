@@ -71,27 +71,6 @@ public class BoardController {
 		return "board/allBoardList";
 	}
 	
-//	// 공지사항 게시글 목록
-//	@GetMapping("/noticeBoardList")
-//	public String noticeBoardList(Model model, Category category,
-//			   @PageableDefault(page=0, size=20, sort="bseq", direction=Sort.Direction.DESC) Pageable pageable,
-//			   String searchSelect, String searchKeyword) {
-//		
-//		Page<Board> boardList = boardService.getCategoryBoardList(category, pageable);
-//		
-//		int nowPage = boardList.getPageable().getPageNumber() + 1;
-//		int startPage = Math.max(nowPage - 9, 1);
-//		int endPage = Math.min(nowPage +5, boardList.getTotalPages());
-//		
-//		model.addAttribute("boardList", boardList);
-//		model.addAttribute("nowPage", nowPage);
-//		model.addAttribute("startPage", startPage);
-//		model.addAttribute("endPage", endPage);
-//		
-//		return "board/noticeBoardList";
-//	}
-	
-	// 자유게시판 게시글 목록
 	@GetMapping("/freeBoardList")
 	public String freeBoardList(Model model, Category category,
 			@PageableDefault(page=0, size=20, sort="bseq", direction=Sort.Direction.DESC) Pageable pageable,
@@ -134,22 +113,6 @@ public class BoardController {
 		return "board/freeBoardList";
 	}
 	
-//	// 운동영상 게시판 게시글 목록
-//	@GetMapping("/videoBoardList")
-//	public String videoBoardList(Model model, @PageableDefault(page=0, size=20, sort="bseq", direction=Sort.Direction.DESC) Pageable pageable) {
-//		model.addAttribute("boardList", boardService.getBoardList(pageable));
-//		
-//		return "board/videoBoardList";
-//	}
-//	
-//	// 챌린지 게시판 게시글 목록
-//	@GetMapping("/challengeBoardList")
-//	public String challengeBoardList(Model model, @PageableDefault(page=0, size=20, sort="bseq", direction=Sort.Direction.DESC) Pageable pageable) {
-//		model.addAttribute("boardList", boardService.getBoardList(pageable));
-//		
-//		return "board/challengeBoardList";
-//	}
-
 	// 게시글 상세
 	@GetMapping("/getBoard")
 	public String getBoard(Board board, Model model) {
