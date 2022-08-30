@@ -33,13 +33,13 @@ public class MemberController {
 		return "redirect:/"; 
 	}
 	
-	// 전체 회원 목록
-	@GetMapping("memberList")
-	public String memberList(Model model) {
-		List<Member> memberList = memberService.getMemberList();
-		model.addAttribute("memberList", memberList);
-		return "member/memberList";
-	}
+//	// 전체 회원 목록
+//	@GetMapping("memberList")
+//	public String memberList(Model model) {
+//		List<Member> memberList = memberService.getMemberList();
+//		model.addAttribute("memberList", memberList);
+//		return "member/memberList";
+//	}
 	
 	// 로그인 페이지
 	@GetMapping("login")

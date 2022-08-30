@@ -16,12 +16,11 @@ function insertCate() {
 	console.log("URL="+url);
 	window.open(url, name, features);
 }
-function deleteCate() {
-	var cid = document.getElementById("cid").value;
+function deleteCate(cid) {
 	var url = "/deleteCategoryView?cid="+cid;
 	var name = "deleteCategoryView";
 	var features = "fullscreen=no,menubar=no,status=no,toolbar=no,titlebar=no,location=no,scrollbar=auto,width=800,height=350,top=200,left=550";
-	console.log("URL="+url);
+	alert("URL="+url);
 	window.open(url, name, features);
 }
 </script>
@@ -57,11 +56,10 @@ function deleteCate() {
 								</div>
 								<div th:each="category, state : ${categoryList}">
 									<div class="num" th:text="${state.count}"></div>
-									<input type="hidden" th:value="${category.cid}" id="cid">
-									<div class="title_cate" th:text="${category.name}">
-									</div>
+									<input type="hidden" name="cid" th:value="${category.cid}" id="cid">
+									<div class="title_cate" th:text="${category.name}"></div>
 									<div class="bt_wrap m-0">
-										<a href="" onclick="deleteCate()" class="btItem cate">삭제</a>
+										<a href="" th:onclick="'deleteCate('+${category.cid}+')'" class="btItem cate">삭제</a>
 									</div>
 								</div>
 							</div>

@@ -24,9 +24,9 @@ public class Report {
 	@GeneratedValue
 	private Long rseq;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "bseq" , nullable=false)
-//	private Board board;
+	@ManyToOne
+	@JoinColumn(name = "BOARD_SEQ" , nullable=false)
+	private Board board;
 	
 //	@ManyToOne
 //	@JoinColumn(name = "mid" , nullable=false)

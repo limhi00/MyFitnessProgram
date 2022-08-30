@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.myfitness.domain.Board;
 import com.myfitness.domain.Category;
@@ -20,12 +21,12 @@ public interface BoardService {
 	Page<Board> getBoardSearchTitleList(String searchKeyword, Pageable pageable);
 	
 	Page<Board> getBoardSearchContList(String searchKeyword, Pageable pageable);
+	
+	Page<Board> getBoardSearchCategoryList(String searchKeyword, Pageable pageable);
 
 	Board getBoard(Board board);
 	
-	void insertBoard(Board board);
-
-	void updateBoard(Board board);
+	void writeBoard(Board board, MultipartFile file) throws Exception;
 
 	void deleteBoard(Board board);
 	

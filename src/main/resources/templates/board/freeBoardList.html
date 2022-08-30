@@ -32,12 +32,16 @@
 						<strong>게시글 목록</strong>
 					</div>
 					<div class="search_1">
-						<form id="search-form">
-							<select name="search_select">
+						<form th:action="@{/freeBoardList}" method="get" id="search-form" name="searchForm">
+							<select name="searchCategory">
+								<option th:each="category : ${categoryList}" th:text="${category.name}"></option>
+							</select>
+							<select name="searchSelect">
 								<option value="title">제목</option>
 								<option value="content">내용</option>
-							</select> <input type="text" id="search">
-							<button id="searchBtn">
+							</select>
+							<input type="text" name="searchKeyword" id="search">
+							<button type="submit" id="searchBtn">
 								<i class="bx bx-search-alt-2"></i>
 							</button>
 						</form>
@@ -50,13 +54,11 @@
 								<div class="title">제목</div>
 								<div class="writer">글쓴이</div>
 								<div class="date">작성일</div>
-
 							</div>
-							<div th:each="board, state : ${boardList}"
-								 th:if="${board.category.equals('자유게시판')}">
+							<div th:each="board : ${boardList}">
 								<input name="bseq" type="hidden" th:value="${board.bseq}">
-								<div class="num" th:text=${state.count}></div>
-								<div class="category" th:text=${board.category}></div>
+								<div class="num" th:text="${board.bseq}"></div>
+								<div class="category" th:text="${board.category.name}"></div>
 								<div class="title">
 									<a th:href="@{/getBoard(bseq=${board.bseq})}"
 										th:text="${board.title}"></a>
@@ -67,24 +69,24 @@
 							</div>
 						</div>
 						<div class="bt_wrap">
-								<a th:href="@{/insertBoard}" class="on" th:text="등록"></a>
-								<!--<a href="#">수정</a>-->
+							<a th:href="@{/insertBoard}" class="on" th:text="등록"></a>
+							<!--<a href="#">수정</a>-->
 						</div>
-						<div class="board_page">
-							<a href="#" class="bt first"><<</a>
-							<a href="#" class="bt prev"><</a>
-							<a href="#" class="num on">1</a>
-							<a href="#" class="num">2</a>
-							<a href="#" class="num">3</a>
-							<a href="#" class="num">4</a>
-							<a href="#" class="num">5</a>
-							<a href="#" class="bt next">></a>
-							<a href="#" class="bt last">>></a>
+						<div class="page_wrap">
+							<div class="board_page"
+								th:each="page : ${#numbers.sequence(startPage, endPage)}">
+								<a class="num" th:if="${page != nowPage}"
+									th:href="@{/freeBoardList(page=${page-1}, searchSelect=${param.searchSelect}, searchKeyword=${param.searchKeyword})}"
+									th:text="${page}">
+								</a> 
+								<strong class="num on"
+									th:if="${page == nowPage}" th:text="${page}">
+								</strong>
+							</div>
 						</div>
-						
 					</div>
 				</div>
-				</div>
+			</div>
 		</section>
 	</div>
 </body>

@@ -12,7 +12,7 @@
 			<strong>글 삭제</strong>
 		</div>
 		<div class="board_write_wrap">
-			<form th:action="@{/deleteBoardCheck}" method="post">
+			<form th:action="@{/deleteBoardCheck}" name="deleteBoard">
 				<input type="hidden" th:value="${board.bseq}" id="bseq">
 				<input type="hidden" th:value="${board.boardPwd}" id="boardPwd">
 				<div class="board_write">
@@ -51,6 +51,12 @@
 							if(returnValue) {
 								alert('삭제되었습니다.');
 								location.href="/deleteBoardCheck?bseq="+seq;
+								
+								window.opener.name="parentPage";
+								document.deleteBoard.target="parentPage";
+								document.deleteBoard.action="/allBoardList";
+								document.deleteBoard.submit();
+								
 								self.close();
 							} else {
 								alert('삭제가 취소되었습니다.');

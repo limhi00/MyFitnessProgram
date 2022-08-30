@@ -29,6 +29,11 @@ public class Member {
 	
 	@Column(length = 50, unique = true)
 	private String email;
+	
+	@Column(unique = true)
+	private String phone;
+	
+	private String cTrainer;
 
 	@CreationTimestamp
 	@Column(name="create_date", updatable = false)

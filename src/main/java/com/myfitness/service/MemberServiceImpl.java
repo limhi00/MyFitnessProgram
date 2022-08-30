@@ -1,13 +1,17 @@
 package com.myfitness.service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import com.myfitness.domain.Member;
 import com.myfitness.domain.Role;
 import com.myfitness.persistence.MemberRepository;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -37,12 +41,27 @@ public class MemberServiceImpl implements MemberService {
 //	}
 	
 	
-	@Override
-	public List<Member> getMemberList() {
-		// 1. findAll 메서드 호출 Entity타입의 List에 호출 결과를 저장한다.
-		List<Member> memberList = memberRepo.findAll();
-		// 필요한 DTO의 정보가 동일하기 때문에 따로 사용하지 않고 객체를 바로 사용
-		return memberList;
+//	@Override
+//	public List<Member> getMemberList() {
+//		// 1. findAll 메서드 호출 Entity타입의 List에 호출 결과를 저장한다.
+//		List<Member> memberList = memberRepo.findAll();
+//		// 필요한 DTO의 정보가 동일하기 때문에 따로 사용하지 않고 객체를 바로 사용
+//		return memberList;
+//	}
+	
+	public Page<Member> getMemberList(Pageable pageable) {
+		
+		return memberRepo.findAll(pageable);
+	}
+	
+	public Page<Member> getSearchNameMemberList(String searchKeyword, Pageable pageable) {
+		
+		return memberRepo.findByNameContaining(searchKeyword, pageable);
+	}
+	
+	public Page<Member> getSearchPhoneMemberList(String searchKeyword, Pageable pageable) {
+		
+		return memberRepo.findByPhoneContaining(searchKeyword, pageable);
 	}
 
 	@Override
