@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 <meta charset="utf-8">
@@ -30,18 +31,29 @@
 	<!-- ======= Header ======= -->
 	<header id="header_custom" class="d-flex align-items-center">
 		<div class="container d-flex align-items-center">
-
 			<h1 class="logo me-auto">
 				<a href="/">My Fitness Gym</a>
 			</h1>
+				<!-- <span th:text="${session.member.username}"></span>[<span th:text="${#authentication.name}"></span>]님 안녕하세요. -->
+					<span th:text="${#authentication.name}">님 안녕하세요!</span>
+
 			<!-- Uncomment below if you prefer to use an image logo -->
 			<!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
 			<nav id="navbar_custom" class="navbar_custom">
 				<ul>
-					<li><a class="nav-link scrollto active" href="/">Home</a></li>
-					<li><a class="getstarted scrollto" href="/login">로그인</a></li>
-					<li><a class="getstarted scrollto" href="/save">회원가입</a></li>
+					<li>
+						<a class="nav-link scrollto active" href="/">Home</a>
+					</li>
+					<li>
+						<a class="getstarted scrollto" sec:authorize="isAnonymous()" th:href="@{/members/login}">로그인</a>
+					</li>
+					<li>
+<!-- Role:<span sec:authentication="principal.authorities"></span> -->
+					</li>
+					<li>
+						<a class="getstarted scrollto" sec:authorize="isAuthenticated()" th:href="@{logout}">로그아웃</a>
+					</li>
 				</ul>
 			</nav>
 			<!-- .navbar -->
@@ -83,8 +95,8 @@
 							</h2>
 							<p class="animate__animated animate__fadeInUp">Work Harder,
 								Get Stronger. 저희와 함께라면 할 수 있습니다.</p>
-							<a href="/join"
-								class="btn-get-started animate__animated animate__fadeInUp scrollto">회원가입</a>
+							<a th:href="@{/members/join}" class="btn-get-started animate__animated animate__fadeInUp scrollto">회원가입</a>
+
 						</div>
 					</div>
 				</div>
@@ -98,7 +110,7 @@
 								업로드하고 소통하세요</h2>
 							<p class="animate__animated animate__fadeInUp">게시판에서 커뮤니티를
 								활동을 즐겨보세요. 운동에 대한 모든 의견을 사람들과 소통할 수 있습니다.</p>
-							<a href="/join"
+							<a th:href="@{/members/join}"
 								class="btn-get-started animate__animated animate__fadeInUp scrollto">회원가입</a>
 						</div>
 					</div>
@@ -113,7 +125,7 @@
 								PT수업과 피드백</h2>
 							<p class="animate__animated animate__fadeInUp">지난 수업을 까먹곤 하지
 								않았나요? 트레이너의 수업요약일지를 통해 복습해보세요. 댓글을 남겨 피드백을 받을 수도 있습니다.</p>
-							<a href="/join"
+							<a th:href="@{/members/join}"
 								class="btn-get-started animate__animated animate__fadeInUp scrollto">회원가입</a>
 						</div>
 					</div>
