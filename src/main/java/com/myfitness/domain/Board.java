@@ -1,9 +1,6 @@
 package com.myfitness.domain;
 
-import java.util.ArrayList;
-//1
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,6 +21,7 @@ import lombok.ToString;
 @ToString
 @Entity
 public class Board {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long bseq;
@@ -33,6 +31,10 @@ public class Board {
 	
 	@Column(nullable = false)
 	private String writer;
+	
+	@ManyToOne
+	@JoinColumn(name="MEMBER_ID", updatable=false, nullable = false)
+	private Member member;
 	
 	@Column(nullable = false, length = 1000)
 	private String content;		
@@ -55,17 +57,10 @@ public class Board {
 		this.category = category;
 		category.getBoardList().add(this);
 	}
-	
-//	@Column(updatable = false, columnDefinition = "number default 0")
-//	private Long cnt; // 조회수
-	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name="MEMBER_ID", insertable=false, updatable=false, nullable = false) // nullable=false
-//	private Member member;
 
-//	public void setMember(Member member) {
-//		this.member = member;
-//		member.getBoardList().add(this);
-//	}
+	public void setMember(Member member) {
+		this.member = member;
+		member.getBoardList().add(this);
+	}
 	
 }

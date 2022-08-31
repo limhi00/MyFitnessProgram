@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class Category {
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "CATEGORY_ID")
 	private Long cid;
 	
 	@Column(unique = true)

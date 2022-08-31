@@ -6,7 +6,6 @@ package com.myfitness.domain;
 
 public enum Role {
 	ROLE_MEMBER,    // 일반회원
-	ROLE_PTMEMBER,  // PT등록 회원
 	ROLE_TRAINER,   // 트레이너
 	ROLE_ADMIN      // 관리자
 }

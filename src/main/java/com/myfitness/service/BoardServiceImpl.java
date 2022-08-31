@@ -51,9 +51,19 @@ public class BoardServiceImpl implements BoardService {
 		return boardRepo.findByContentContaining(searchKeyword, pageable);
 	}
 	
-	public Page<Board> getBoardSearchCategoryList(String searchKeyword, Pageable pageable) {
+	public Page<Board> getCategoryBoardList(Long searchCategory, Pageable pageable) {
 		
-		return boardRepo.findByCategoryContaining(searchKeyword, pageable);
+		return boardRepo.getCategoryBoardList(searchCategory, pageable);
+	}
+	
+	public Page<Board> getCategoryBoardSearchTitleList(Long searchCategory, String searchKeyword, Pageable pageable) {
+		
+		return boardRepo.getCategoryBoardSearchTitleList(searchCategory, searchKeyword, pageable);
+	}
+	
+	public Page<Board> getCategoryBoardSearchContList(Long searchCategory, String searchKeyword, Pageable pageable) {
+		
+		return boardRepo.getCategoryBoardSearchContentList(searchCategory, searchKeyword, pageable);
 	}
 	
 	@Override
@@ -65,18 +75,21 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void writeBoard(Board board, MultipartFile file) throws Exception {
 		
-//		String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files\\";
-		String projectPath = "C:/fileUpload/images/";
-		
-		UUID uuid = UUID.randomUUID();
-		String fileName = uuid + "_" + file.getOriginalFilename();
-		
-		File saveFile = new File(projectPath, fileName);
-		
-		file.transferTo(saveFile);
-		
-		board.setFilename(fileName);
-		board.setFilepath("/files/" + fileName);
+		if(file.isEmpty()) {
+			board.setFilename("");
+		} else {
+			String projectPath = "C:/fileUpload/images/";
+			
+			UUID uuid = UUID.randomUUID();
+			String fileName = uuid + "_" + file.getOriginalFilename();
+			
+			File saveFile = new File(projectPath, fileName);
+				
+			file.transferTo(saveFile);
+			
+			board.setFilename(fileName);
+			board.setFilepath("/files/" + fileName);
+		}
 		
 		boardRepo.save(board);
 	}

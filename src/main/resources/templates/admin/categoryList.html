@@ -6,18 +6,18 @@
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>My Fitness Program - 카테고리 관리</title>
-<link href="assets/css/style_board.css" rel="stylesheet">
+<link href="../assets/css/style_board.css" rel="stylesheet">
   
 <script>
 function insertCate() {
-	var url = "/insertCategoryView";
+	var url = "/admin/insertCategoryView";
 	var name = "insertCategoryView";
 	var features = "fullscreen=no,menubar=no,status=no,toolbar=no,titlebar=no,location=no,scrollbar=auto,width=800,height=450,top=200,left=600";
 	console.log("URL="+url);
 	window.open(url, name, features);
 }
 function deleteCate(cid) {
-	var url = "/deleteCategoryView?cid="+cid;
+	var url = "/admin/deleteCategoryView?cid="+cid;
 	var name = "deleteCategoryView";
 	var features = "fullscreen=no,menubar=no,status=no,toolbar=no,titlebar=no,location=no,scrollbar=auto,width=800,height=350,top=200,left=550";
 	//alert("URL="+url);

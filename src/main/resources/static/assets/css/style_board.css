@@ -26,11 +26,12 @@
 }
 
 .search_1 {
-	width: 300px;
+	display: inline-block;
+	width: 350px;
 	font-size: 12px;
     margin-bottom: 10px;
     position: relative; 
-    left: 76%; 
+    left: 68%; 
 }
 .search_1_user {
 	width: 300px;
@@ -169,7 +170,7 @@
 	text-align: center;
     width: 25%
 }
-.board_list .top_member .cTrainer {
+.board_list .top_member .role {
 	text-align: center;
     width: 15%
 }
@@ -204,19 +205,19 @@
 .board_list .date {
     width: 10%;
 }
-.board_list .id_member {
+.board_list .id {
 	width: 20%
 }
-.board_list .name_member {
+.board_list .name {
 	width: 15%
 }
-.board_list .phone_member {
+.board_list .phone {
 	width: 25%
 }
-.board_list .cTrainer_member {
+.board_list .role {
 	width: 15%
 }
-.board_list .joinDate_member {
+.board_list .joinDate {
 	width: 15%
 }
 

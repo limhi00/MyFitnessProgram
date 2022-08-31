@@ -96,12 +96,4 @@ public class MemberController {
 
 		return "redirect:/members/mypage/{username}";
 	}
-	
-	// 전체 회원 목록
-	@GetMapping("memberList")
-	public String memberList(Model model, Pageable pageable) {
-		Page<Member> memberList = memberService.getMemberList(pageable);
-		model.addAttribute("memberList", memberList);
-		return "members/memberList";
-	}
 }

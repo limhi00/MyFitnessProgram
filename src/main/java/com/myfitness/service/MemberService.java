@@ -9,11 +9,11 @@ public interface MemberService {
 
 //	List<Member> getMemberList();
 	
-	Page<Member> getMemberList(Pageable pageable);
+	Page<Member> getRoleList(String role, Pageable pageable);
 	
-	Page<Member> getSearchNameMemberList(String searchKeyword, Pageable pageable);
+	Page<Member> getSearchNameMemberList(String role, String searchKeyword, Pageable pageable);
 	
-	Page<Member> getSearchPhoneMemberList(String searchKeyword, Pageable pageable);
+	Page<Member> getSearchPhoneMemberList(String role, String searchKeyword, Pageable pageable);
 	
 	Member createForm(String name, String username, String email, String password, String phone);
 	Member getMember(String username); // 아이디를 조건으로 회원 검색
