@@ -1,5 +1,7 @@
 package com.myfitness.domain;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -15,7 +17,7 @@ public class MemberCreateForm {
 	@NotBlank(message = "ID는 필수항목이며, 공백이 들어갈 수 없습니다.")
 	private String username;
 	
-	@Size(min = 3, max = 10)
+	@Size(min = 3, max = 10, message = "최소 2글자 이상 입력해 주세요.")
 	@NotBlank(message = "이름은 필수항목이며, 공백이 들어갈 수 없습니다.")
 	private String name;
 	
@@ -34,9 +36,9 @@ public class MemberCreateForm {
 	@Email
 	private String email;
 	
-//	@Enumerated(EnumType.STRING)
-//	private Role role;
-//	
+	@Enumerated(EnumType.STRING)
+	private Role role;
+	
 //	@CreationTimestamp
 //	private LocalDateTime createDate; 
 	

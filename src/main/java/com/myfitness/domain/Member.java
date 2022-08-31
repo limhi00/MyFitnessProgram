@@ -20,9 +20,8 @@ import lombok.ToString;
 public class Member {
 	
 	//@JoinColumn(name = "MEMBER_ID")
-	
 	@Id
-	@Column(length = 10)
+	@Column(length = 15)
 	private String username;
 	
 	@Column(nullable = false, length = 30)
@@ -36,14 +35,13 @@ public class Member {
 	
 	@Column(nullable = false, unique = true, length = 50)
 	private String phone;
-	
-	private String cTrainer;
 
 	@CreationTimestamp
 	@Column(updatable = false)
 	private LocalDateTime createDate; 
 	
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private Role role;
 
 }
