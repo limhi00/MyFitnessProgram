@@ -38,7 +38,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override // 회원가입
 	public Member createForm(String username, String name, String email, String password, String phone) {
 		if(memberRepo.findById(username).isPresent()) {
-			return null; //
+			throw new IllegalStateException("중복된 회원 ID가 존재합니다.");
 		} else {
 			Member member = new Member();
 			member.setUsername(username);
@@ -47,6 +47,8 @@ public class MemberServiceImpl implements MemberService {
 			member.setPassword(passwordEncoder.encode(password));
 			member.setPhone(phone);
 			member.setRole(Role.ROLE_MEMBER);
+			//member.setRole(null);
+			//member.getRole();
 			memberRepo.save(member);
 		}
 		return null;
@@ -54,7 +56,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override // 아이디를 조건으로 회원 검색
 	public Member getMember(String username) {
-		Optional<Member> findMember = memberRepo.findById(username);
+		Optional<Member> findMember = memberRepo.findByUsername(username);
 		if (findMember.isPresent()) {
 			return findMember.get();
 		} else {

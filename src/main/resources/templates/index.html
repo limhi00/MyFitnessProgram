@@ -34,12 +34,9 @@
 			<h1 class="logo me-auto">
 				<a href="/">My Fitness Gym</a>
 			</h1>
-				<!-- <span th:text="${session.member.username}"></span>[<span th:text="${#authentication.name}"></span>]님 안녕하세요. -->
-					<span th:text="${#authentication.name}">님 안녕하세요!</span>
-
+			<!-- <span th:text="${session.member.username}"></span>[<span th:text="${#authentication.name}"></span>]님 안녕하세요. -->
 			<!-- Uncomment below if you prefer to use an image logo -->
 			<!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
 			<nav id="navbar_custom" class="navbar_custom">
 				<ul>
 					<li>
@@ -49,13 +46,21 @@
 						<a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/members/login" th:href="@{/members/login}">로그인</a>
 					</li>
 					<li>
-<!-- Role:<span sec:authentication="principal.authorities"></span> -->
-					</li>
-					<li>
 						<a class="getstarted scrollto" sec:authorize="isAuthenticated()" href="/logout" th:href="@{logout}">로그아웃</a>
 					</li>
+					<li>
+						<a class="getstarted scrollto" sec:authorize="isAuthenticated()" th:href="@{'/members/mypage/'+ ${#authentication.principal.username}}">마이페이지</a>
+					</li>
+					<li>
+					<!-- [ROLE_MEMBER]를 [회원]으로 출력되게 하고 싶음. 화면을 줄이면 박스가 어긋나는 현상 있음.
+					<span sec:authorize="isAuthenticated()" th:if="${principal.role} == ${'ROLE_MEMBER'}" th:text="${'회원'}"></span> -->
+					<span sec:authorize="isAuthenticated()" class="getstarted scrollto">
+					<span th:text="${#authentication.name}"></span>
+					[<span sec:authentication="principal.role"></span>]
+					</span>
+					</li>
 				</ul>
-			</nav>
+			</nav> 
 			<!-- .navbar -->
 
 			<div class="sidemenu">

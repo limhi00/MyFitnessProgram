@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,6 +31,18 @@ public class MemberController {
 	@GetMapping("login")
 	public String loginForm() {	return "members/login"; }
 	
+	@GetMapping("findId") // 아이디찾기
+	public String findId(Model model) {
+		
+		return "members/findId";
+	}
+	
+	@GetMapping("findPwd") // 아이디찾기
+	public String findPwd(Model model) {
+		
+		return "members/findPwd";
+	}
+	
 	@GetMapping("logout")
 	public String logout(SessionStatus status) {
 		status.setComplete(); // 세션 만료.
@@ -37,6 +50,7 @@ public class MemberController {
 	}
 	
 	// 마이페이지 폼
+	@PreAuthorize("isAuthenticated() and (( #username == principal.username ) or hasRole('ROLE_ADMIN'))")
 	@GetMapping("mypage/{username}")
 	public String myPage(Model model, @PathVariable("username") String username) {
 		Member member = memberService.getMember(username);

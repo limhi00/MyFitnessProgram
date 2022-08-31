@@ -25,9 +25,8 @@ import lombok.ToString;
 public class Member {
 	
 	//@JoinColumn(name = "MEMBER_ID")
-	
 	@Id
-	@Column(length = 10)
+	@Column(length = 15)
 	private String username;
 	
 	@Column(nullable = false, length = 30)
@@ -47,6 +46,7 @@ public class Member {
 	private LocalDateTime createDate; 
 	
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private Role role;
 	
 	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
