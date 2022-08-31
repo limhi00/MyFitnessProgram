@@ -71,7 +71,7 @@
 	          </ul>
 	        </li>
 	        
-	        <li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN', 'ROLE_TRAINER')">
+	        <li class="dropdown" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')">
 	        	<a href="/classSchedule"><span>수업 일정</span>
 	        	 <i class="bi bi-chevron-down"></i>
 	        	</a>
