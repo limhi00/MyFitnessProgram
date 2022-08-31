@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>My Fitness Program - 카테고리 삭제</title>
-<link rel="stylesheet" href="assets/css/style_board.css">
+<link rel="stylesheet" href="../assets/css/style_board.css">
 <script>
 function cancle() {
 	window.close();
@@ -33,7 +33,7 @@ function cancle() {
 						<br> <br>
 					</div>
 					<div class="bt_wrap">
-						<a th:href="@{/deleteCategory(cid=${category.cid})}" class="btItem">삭제</a>
+						<a th:href="@{/admin/deleteCategory(cid=${category.cid})}" class="btItem">삭제</a>
 						<a href="" onclick="cancle()" class="btItem">취소</a>
 					</div>
 				</div>

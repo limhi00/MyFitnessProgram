@@ -60,16 +60,7 @@
 	      <h3>menu</h3>
 	      <ul class="side_list">
 	        <li class="dropdown"><a href="/"><span>Home</span></a>
-	        <li class="dropdown"><a href="/allBoardList"><span>게시판</span> <i class="bi bi-chevron-down"></i></a>
-	          <ul>
-	            <li><a href="/allBoardList">전체 게시판</a></li>
-	            <li class="deepdropdown"><a href="/reportBoardList"><span>게시판 관리</span> <i class="bi bi-chevron-right"></i></a>
-	              <ul>
-	                <li><a href="/reportBoardList">신고글 관리</a></li>
-	                <li><a href="/categoryList">카테고리 관리</a></li>
-	              </ul>
-	            </li>
-	          </ul>
+	        <li class="dropdown"><a href="/allBoardList"><span>게시판</span></a>
 	        </li>
 	        <li class="dropdown"><a href="/classCalendar"><span>수업 예약</span> <i class="bi bi-chevron-down"></i></a>
 	          <ul>
@@ -88,10 +79,16 @@
 	            <li><a href="/afterClassList">지난 수업 목록</a></li>
 	          </ul>
 	        </li>
-	        <li class="dropdown"><a href="/userManagement"><span>관리자 기능</span> <i class="bi bi-chevron-down"></i></a>
+	        <li class="dropdown"><a href="/admin/userManagement"><span>관리자 기능</span> <i class="bi bi-chevron-down"></i></a>
 	          <ul>
-	            <li><a href="/userManagement">회원 관리</a></li>
-	            <li><a href="/trainerManagement">트레이너 관리</a></li>
+	          	<li class="deepdropdown"><a href="/admin/reportBoardList"><span>게시판 관리</span> <i class="bi bi-chevron-right"></i></a>
+	              <ul>
+	                <li><a href="/admin/reportBoardList">신고글 관리</a></li>
+	                <li><a href="/admin/categoryList">카테고리 관리</a></li>
+	              </ul>
+	            </li>
+	            <li><a href="/admin/userManagement">회원 관리</a></li>
+	            <li><a href="/admin/trainerManagement">트레이너 관리</a></li>
 	          </ul>
 	        </li>
 	      </ul>

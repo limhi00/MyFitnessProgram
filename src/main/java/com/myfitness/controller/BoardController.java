@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myfitness.domain.Board;
@@ -25,78 +26,66 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	// 전체 게시글 목록
-//	@GetMapping("/allBoardList")
-//	public String allBoardList(Model model, Board board) {
-//		model.addAttribute("boardList", boardService.getBoardList(board));
-//		
-//		return "board/allBoardList";
-//	}
-	
 	@GetMapping("/allBoardList")
 	public String allBoardList(Model model, Category category,
-							   @PageableDefault(page=0, size=20, sort="bseq", direction=Sort.Direction.DESC) Pageable pageable,
-							   String searchSelect, String searchKeyword) {
-		Page<Board> boardList = null;
-		
-		if(searchSelect == null) {
-			boardList = boardService.getBoardList(pageable);
-		} else {
-			if(searchSelect.equals("title")) {
-				if(searchKeyword == null) {
-					boardList = boardService.getBoardList(pageable);
-				} else {
-					boardList = boardService.getBoardSearchTitleList(searchKeyword, pageable);
-				}
-			} else if(searchSelect.equals("content")) {
-				if(searchKeyword == null) {
-					boardList = boardService.getBoardList(pageable);
-				} else {
-					boardList = boardService.getBoardSearchContList(searchKeyword, pageable);
-				}
-			} else {
-				boardList = boardService.getBoardList(pageable);
-			}
-		}
-		
-		int nowPage = boardList.getPageable().getPageNumber() + 1;
-		int startPage = Math.max(nowPage - 9, 1);
-		int endPage = Math.min(nowPage +5, boardList.getTotalPages());
-		
-		model.addAttribute("boardList", boardList);
-		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
-		
-		return "board/allBoardList";
-	}
-	
-	@GetMapping("/freeBoardList")
-	public String freeBoardList(Model model, Category category,
 			@PageableDefault(page=0, size=20, sort="bseq", direction=Sort.Direction.DESC) Pageable pageable,
-			String searchSelect, String searchKeyword) {
+			Long searchCategory, String searchSelect, String searchKeyword) {
 		
 		List<Category> categoryList = boardService.getCategoryList(category);
 		
 		Page<Board> boardList = null;
 		
-		if(searchSelect == null) {
-			boardList = boardService.getBoardList(pageable);
-		} else {
-			if(searchSelect.equals("title")) {
-				if(searchKeyword == null) {
-					boardList = boardService.getBoardList(pageable);
-				} else {
-					boardList = boardService.getBoardSearchTitleList(searchKeyword, pageable);
-				}
-			} else if(searchSelect.equals("content")) {
-				if(searchKeyword == null) {
-					boardList = boardService.getBoardList(pageable);
-				} else {
-					boardList = boardService.getBoardSearchContList(searchKeyword, pageable);
-				}
-			} else {
+		if(searchCategory == null || searchCategory.equals(0L)) {
+			if(searchSelect == null) {
 				boardList = boardService.getBoardList(pageable);
+				System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+			} else {
+				if(searchSelect.equals("title")) {
+					if(searchKeyword == null) {
+						boardList = boardService.getBoardList(pageable);
+						System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+					} else {
+						boardList = boardService.getBoardSearchTitleList(searchKeyword, pageable);
+						System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+					}
+				} else if(searchSelect.equals("content")) {
+					if(searchKeyword == null) {
+						boardList = boardService.getBoardList(pageable);
+						System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+					} else {
+						boardList = boardService.getBoardSearchContList(searchKeyword, pageable);
+						System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+					}
+				} else {
+					boardList = boardService.getBoardList(pageable);
+					System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+				}
+			}
+		} else {
+			if(searchSelect == null) {
+				boardList = boardService.getCategoryBoardList(searchCategory, pageable);
+				System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+			} else {
+				if(searchSelect.equals("title")) {
+					if(searchKeyword.equals("")) {
+						System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+						boardList = boardService.getCategoryBoardList(searchCategory, pageable);
+					} else {
+						System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+						boardList = boardService.getCategoryBoardSearchTitleList(searchCategory, searchKeyword, pageable);
+					}
+				} else if(searchSelect.equals("content")) {
+					if(searchKeyword == null) {
+						System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+						boardList = boardService.getCategoryBoardList(searchCategory, pageable);
+					} else {
+						System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+						boardList = boardService.getCategoryBoardSearchContList(searchCategory, searchKeyword, pageable);
+					}
+				} else {
+					System.out.println("searchCategory = " + searchCategory +", searchSelect = " + searchSelect + ", searchKeyword = " + searchKeyword);
+					boardList = boardService.getCategoryBoardList(searchCategory, pageable);
+				}
 			}
 		}
 		
@@ -110,7 +99,7 @@ public class BoardController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		
-		return "board/freeBoardList";
+		return "board/allBoardList";
 	}
 	
 	// 게시글 상세
@@ -123,7 +112,7 @@ public class BoardController {
 	}
 	
 	// 게시글 등록 폼
-	@GetMapping("/insertBoard")
+	@RequestMapping("/insertBoardView")
 	public String insertBoardForm(Model model, Category category) {
 		
 		model.addAttribute("categoryList", boardService.getCategoryList(category));
@@ -132,7 +121,7 @@ public class BoardController {
 	}
 	
 	// 게시글 등록
-	@PostMapping("/insertBoard")
+	@RequestMapping("/insertBoard")
 	public String insertBoard(Board board, MultipartFile file) throws Exception {
 		
 		boardService.writeBoard(board, file);
@@ -191,63 +180,3 @@ public class BoardController {
 	}
 
 }	
-
-	
-//	@GetMapping("/board/getBoard/{bseq}")
-//	public String getBoardView(@ModelAttribute("member") Member member,
-//						Board board, Model model) {
-//		
-//		if (member.getMid() == null) {
-//			return "redirect:login";
-//		}
-//		
-//		boardService.getBoard(board);
-//		
-//		model.addAttribute("board", boardService.getBoard(board));
-//		
-//		return "board/getBoard";
-//	}
-	
-//	@GetMapping("/board/getBoard/{bseq}")
-//	public String getBoard(@PathVariable("bseq") Long bseq, Model model) {
-		
-//		if (member.getMid() == null) {
-//			return "redirect:login";
-//		}
-		
-//		boardService.getBoard(board);
-//		
-//		model.addAttribute("board", boardService.getBoard(board));
-		
-//		return "board/getBoard";
-//	}
-	
-//	@GetMapping("/board/getBoard")
-//	public String getBoardvdsvds(@PathVariable("bseq") Long bseq, Model model) {
-		
-//		if (member.getMid() == null) {
-//			return "redirect:login";
-//		}
-		
-//		boardService.getBoard(board);
-//		
-//		model.addAttribute("board", boardService.getBoard(board));
-		
-//		return "board/getBoard";
-//	}
-	
-
-	
-//	@PostMapping("/insertBoard")
-//	public String insertBoard(@ModelAttribute("member") Member member, Board board) {
-//		
-////		if (member.getMid() == null) {
-////			return "redirect:login";
-////		}
-//		
-//		boardService.insertBoard(board);
-//		
-//		return "redirect:board/allBoardList";
-//	}
-	
-	

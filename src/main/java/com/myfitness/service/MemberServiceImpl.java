@@ -20,19 +20,19 @@ public class MemberServiceImpl implements MemberService {
 	private final MemberRepository memberRepo;
 	private final PasswordEncoder passwordEncoder;
 	
-	public Page<Member> getMemberList(Pageable pageable) {
+	public Page<Member> getRoleList(String role, Pageable pageable) {
 		
-		return memberRepo.findAll(pageable);
+		return memberRepo.getRoleList(role, pageable);
 	}
 	
-	public Page<Member> getSearchNameMemberList(String searchKeyword, Pageable pageable) {
+	public Page<Member> getSearchNameMemberList(String role, String searchKeyword, Pageable pageable) {
 		
-		return memberRepo.findByNameContaining(searchKeyword, pageable);
+		return memberRepo.getByNameContaining(role, searchKeyword, pageable);
 	}
 	
-	public Page<Member> getSearchPhoneMemberList(String searchKeyword, Pageable pageable) {
+	public Page<Member> getSearchPhoneMemberList(String role, String searchKeyword, Pageable pageable) {
 		
-		return memberRepo.findByPhoneContaining(searchKeyword, pageable);
+		return memberRepo.getByPhoneContaining(role, searchKeyword, pageable);
 	}
 	
 	@Override // 회원가입

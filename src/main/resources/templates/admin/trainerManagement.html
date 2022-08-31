@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>My Fitness Program - 트레이너 관리</title>
-<link rel="stylesheet" href="assets/css/style_board.css">
+<link rel="stylesheet" href="../assets/css/style_board.css">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 				<div class="d-flex justify-content-between align-items-center">
 					<h2>트레이너 관리</h2>
 					<ol>
-						<li><a href="/trainerManagement">트레이너 관리</a></li>
+						<li><a href="/admin/trainerManagement">트레이너 관리</a></li>
 						<li>관리자 기능</li>
 					</ol>
 				</div>
@@ -34,7 +34,7 @@
 						<strong>트레이너 목록</strong>
 					</div>
 					<div class="search_1_trainer">
-						<form th:action="@{trainerManagement}" method="get" id="search-form" name="searchForm">
+						<form th:action="@{/admin/trainerManagement}" method="get" id="search-form" name="searchForm">
 							<select name="searchSelect">
 								<option value="name">트레이너명</option>
 								<option value="phone">전화번호</option>
@@ -56,26 +56,28 @@
 								<div class="stuCount">총 회원 수</div>
 								 -->
 								<div class="joinDate">가입일</div>
+								<div class="role">권한</div>
 							</div>
 							<div th:each="member, memberStat: ${memberList}">
-								<input name="mid" type="hidden" th:value="${member.mid}">
+								<input name="mid" type="hidden" th:value="${member.username}">
 								<div class="num" th:text="${memberStat.count}"></div>
-								<div class="id_member" th:text="${member.mid}"></div>
-								<div class="name_member">
-									<a th:text="${member.name}" th:href="@{|/getMember/${member.mid}|}"></a>
+								<div class="id" th:text="${member.username}"></div>
+								<div class="name">
+									<a th:text="${member.name}" th:href="@{|/members/mypage/${member.username}|}"></a>
 								</div>
-								<div class="phone_member" th:text="${member.phone}"></div>
+								<div class="phone" th:text="${member.phone}"></div>
 								<!-- 
 								<div class="stuCount" th:text="${member.stuCount}"></div>
 								 -->
-								<div class="joinDate_member" th:text="${#temporals.format(member.createDate,'yyyy-MM-dd')}"></div>
+								<div class="joinDate" th:text="${#temporals.format(member.createDate,'yyyy-MM-dd')}"></div>
+								<div class="role" th:text="${member.role}"></div>
 							</div>
 						</div>
 						<div class="page_wrap">
 							<div class="board_page"
 								th:each="page : ${#numbers.sequence(startPage, endPage)}">
 								<a class="num" th:if="${page != nowPage}"
-									th:href="@{/trainerManagement(page=${page-1}, searchSelect=${param.searchSelect}, searchKeyword=${param.searchKeyword})}"
+									th:href="@{/admin/trainerManagement(page=${page-1}, searchSelect=${param.searchSelect}, searchKeyword=${param.searchKeyword})}"
 									th:text="${page}">
 								</a> 
 								<strong class="num on"
@@ -89,8 +91,5 @@
 			</div>
 		</section>
 	</div>
-
-
-
 </body>
 </html>
