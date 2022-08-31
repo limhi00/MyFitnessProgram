@@ -39,9 +39,6 @@
       <nav id="navbar" class="navbar">
         <ul>
           	<li>
-          		<a class="nav-link scrollto active" href="/">Home</a>
-          	</li>
-          	<li>
      			<a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/members/login" th:href="@{/members/login}">로그인</a>
 				<a class="getstarted scrollto" sec:authorize="isAuthenticated()" href="/logout" th:href="@{logout}">로그아웃</a>
           	</li>
@@ -73,13 +70,22 @@
 	            <li><a href="/dietCalendar">식단 달력</a></li>
 	          </ul>
 	        </li>
-	        <li class="dropdown"><a href="/classSchedule"><span>수업 일정</span> <i class="bi bi-chevron-down"></i></a>
+	        
+	        <li class="dropdown" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')">
+	        	<a href="/classSchedule"><span>수업 일정</span>
+	        	 <i class="bi bi-chevron-down"></i>
+	        	</a>
 	          <ul>
 	            <li><a href="/classSchedule">수업 시간표</a></li>
 	            <li><a href="/afterClassList">지난 수업 목록</a></li>
 	          </ul>
 	        </li>
-	        <li class="dropdown"><a href="/admin/userManagement"><span>관리자 기능</span> <i class="bi bi-chevron-down"></i></a>
+	        
+	        <li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+	        	<a href="/admin/userManagement">
+	        	<span>관리자 기능</span>
+	        	 <i class="bi bi-chevron-down">
+	        	 </i></a>
 	          <ul>
 	          	<li class="deepdropdown"><a href="/admin/reportBoardList"><span>게시판 관리</span> <i class="bi bi-chevron-right"></i></a>
 	              <ul>
