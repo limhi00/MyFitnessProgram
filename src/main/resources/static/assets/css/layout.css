@@ -168,7 +168,7 @@ h6 {
 .navbar .getstarted:focus {
   color: #ffffff;
   background-color: #ED563B;
-  padding: 8px 25px;
+  padding: 8px 20px;
   margin-left: 30px;
   border-radius: 4px;
   border: 2px solid #ED563B;
@@ -182,7 +182,12 @@ h6 {
   background: #fff;
   color: #ED563B;
 }
-
+@media (max-width: 800px) {
+	.navbar a,
+	.navbar a:focus {
+	  padding: 10px 0 10px 10px;
+	}
+}
 @media (max-width: 500px) {
 	.navbar ul {
 		margin-right: 40px;
