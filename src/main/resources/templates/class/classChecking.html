@@ -44,7 +44,12 @@
 				<div class="row g-3 justify-content-center">
 					<div class="col-md-7 col-lg-8">
 						<hr class="mb-5">
-						<h4 class="mb-5">2022.08.05.WED</h4>
+						<h4 class="mb-5">
+							<script>
+								 var a= new Date();
+								 document.write(a.toDateString()+"<br>");
+							</script>
+						</h4>
 						<form class="needs-validation" novalidate>
 							<div class="row g-3">
 
@@ -67,6 +72,7 @@
 							<div class="bt_wrap">
 								<button class="btItem" type="submit" >예약 취소</button>
 								<button class="btItem" onclick="cancel()" type="button">뒤로 가기</button>
+								<a href="classCancel" class="btItem">예약취소</a>
 							</div>
 						</form>
 					</div>

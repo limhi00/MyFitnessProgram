@@ -3,6 +3,7 @@ package com.myfitness.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.myfitness.domain.Board;
 import com.myfitness.domain.Reservation;
 import com.myfitness.persistence.ReservationRepository;
 @Service
@@ -21,5 +22,9 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		return resrepo.findById(res.getRseq()).get();
 	}
-	
+	@Override
+	public void deleteRes(Reservation res) {
+		
+		resrepo.deleteById(res.getRseq());
+	}
 }
