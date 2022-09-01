@@ -9,4 +9,6 @@ public interface ReservationService {
 
 	Reservation getRes(Reservation res);
 
+	void deleteRes(Reservation res);
+
 }
