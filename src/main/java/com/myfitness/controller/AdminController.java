@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.myfitness.domain.Board;
 import com.myfitness.domain.Category;
 import com.myfitness.domain.Member;
 import com.myfitness.domain.Report;
-import com.myfitness.domain.Role;
 import com.myfitness.service.BoardService;
 import com.myfitness.service.MemberService;
 
@@ -100,11 +100,19 @@ public class AdminController {
 		
 		return "admin/reportView";
 	}
+	
+	@RequestMapping("/deleteBoardAdmin")
+	public String deleteBoardAdmin(Board board) {
+		
+		boardService.deleteBoard(board);
+		
+		return "redirect:/admin/reportBoardList";
+	}
 
 	// 트레이너 관리
 	@GetMapping("/trainerManagement")
 	public String trainerManagementView(Model model, String role, 
-			@PageableDefault(page=0, size=20, sort="createDate", direction=Sort.Direction.DESC) Pageable pageable,
+			@PageableDefault(page=0, size=20, sort="name", direction=Sort.Direction.DESC) Pageable pageable,
 			   String searchSelect, String searchKeyword) {
 		
 		Page<Member> memberList = null;
@@ -144,7 +152,7 @@ public class AdminController {
 	// 회원 관리
 	@GetMapping("/userManagement")
 	public String userManagementView(Model model, String role,
-			@PageableDefault(page=0, size=20, sort="createDate", direction=Sort.Direction.DESC) Pageable pageable,
+			@PageableDefault(page=0, size=20, sort="name", direction=Sort.Direction.DESC) Pageable pageable,
 			   String searchSelect, String searchKeyword) {
 		
 		Page<Member> memberList = null;
