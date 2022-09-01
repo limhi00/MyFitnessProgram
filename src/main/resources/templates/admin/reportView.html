@@ -41,6 +41,7 @@
 								<div class="cont" th:text="${report.rContent}"></div>
 								<div class="rIndate" th:text="${#dates.format(report.rIndate, 'yyyy-MM-dd hh:mm')}"></div>
 								<div class="bt_wrap">
+									<a href="/admin/reportBoardList" class="btItem">목록</a>
 									<input type="submit" value="해당 게시글로 이동" class="btItem" style="width: 150px;">
 								</div>
 							</form>
