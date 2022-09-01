@@ -471,6 +471,57 @@ section {
 # content
 --------------------------------------------------------------*/
 
+.bt_wrap {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.bt_wrap .btItem {
+	color:#000;
+	background-color: #fff;
+    display: inline-block;
+    width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    font-size: 14px;
+}
+
+.bt_wrap .cate {
+	width: 50px;
+	padding: 5px;
+	font-size: 11px;
+}
+
+.bt_wrap .btItem:first-child {
+    margin-left: 0;
+}
+
+.bt_wrap .on {
+	display: inline-block;
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    margin-left: 10px;
+    padding: 10px 20px;
+    position: relative; left: 45%;
+}
+
+.bt_wrap .on:hover {
+	background-color: #fff;
+	color: #000;
+	transition: .3s;
+}
+
+.bt_wrap .btItem:hover {
+	background-color: #000;
+	color: #fff;
+	transition: .3s;
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
