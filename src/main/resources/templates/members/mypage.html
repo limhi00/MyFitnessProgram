@@ -68,8 +68,10 @@
 			<label for="createDate" class="form-label">가입한 날짜 :</label>
 			<span th:text="${#temporals.format(member.createDate,'yyyy년 MM월 dd일')}"></span>
 		</div>
-		<button type="submit" class="btn btn-primary">수정하기</button>
-		<a th:href="@{/members/mypage/delete(username=${member.username})}" class="btn btn-danger">회원탈퇴</a>
+		<div class="bt_wrap">
+			<button type="submit" class="btn btn-primary">수정하기</button>
+			<a th:href="@{/members/mypage/delete(username=${member.username})}" class="btn btn-danger">회원탈퇴</a>
+		</div>
 		
 	</div>
 </form>
