@@ -1,12 +1,16 @@
 package com.myfitness.controller;
 
 
+import org.aspectj.apache.bcel.classfile.Module.Require;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myfitness.domain.ClassDiary;
@@ -14,14 +18,15 @@ import com.myfitness.domain.DietDiary;
 import com.myfitness.domain.Reservation;
 import com.myfitness.service.ClassDiaryService;
 import com.myfitness.service.DietDiaryService;
+import com.myfitness.service.MemberService;
 import com.myfitness.service.ReservationService;
 
 
-
 @Controller
-public class ClassController<getDiary> {
+public class ClassController {
 	
 
+	
 	@Autowired(required=false)
 	private DietDiaryService ddiaryservice;
 	
@@ -39,7 +44,15 @@ public class ClassController<getDiary> {
 	}
 	
 	@GetMapping("/classCancel")
-	public String classCancelView() {
+	public String classCancel(@RequestParam("rseq") long rseq, Reservation res, Model model ) {
+		res.setRseq(rseq);
+		model.addAttribute("Reservation", reservice.getRes(res));
+		return "class/classCancel";
+	}
+	@RequestMapping("/deleteclassCancel")
+	public String deleteclassCancel(Reservation res, Model model) {
+		
+		model.addAttribute("Reservation", reservice.getRes(res));
 		
 		return "class/classCancel";
 	}
@@ -51,8 +64,9 @@ public class ClassController<getDiary> {
 	}
 	
 	@GetMapping("/classDiary")
-	public String classDiaryView() {
-		
+	public String classDiary(@RequestParam("cdseq") long cdseq, ClassDiary cdiary, Model model) {
+		cdiary.setCdseq(cdseq);
+		model.addAttribute("ClassDiary", cdiaryservice.getcdiary(cdiary));
 		return "class/classDiary";
 	}
 	
@@ -61,11 +75,25 @@ public class ClassController<getDiary> {
 		
 		return "class/classReservation";
 	}
-	@PostMapping("/insertRes")
+	@GetMapping("/insertRes")
 	public String insertResForm(Model model) {
 		model.addAttribute("Reservation", new Reservation());
 		
 		return "Reservation/insertRes";
+	}
+	
+	@PostMapping("/insertRes")
+	public String insertRes(Reservation res, RedirectAttributes redirectAttributes) {
+		long rseq = reservice.insertRes(res);
+		redirectAttributes.addAttribute("rseq", rseq);
+		return "redirect:/classChecking";
+	}
+	
+	@GetMapping("/getRes")
+	public String getRes(@RequestParam("rseq") long rseq, Reservation res, Model model) {
+		res.setRseq(rseq);
+		model.addAttribute("Reservation", reservice.getRes(res));
+		return "class/classChecking";
 	}
 	
 	
@@ -85,7 +113,7 @@ public class ClassController<getDiary> {
 	public String getDiary(@RequestParam("dseq") long dseq, DietDiary ddiary, Model model){
 		System.out.println("dseq=" + dseq);
 		ddiary.setDseq(dseq);
-		model.addAttribute("ddiary", ddiaryservice.getDietDiary(ddiary));
+		model.addAttribute("DietDiary", ddiaryservice.getDietDiary(ddiary));
 		
 		return "diet/getDiary";
 	}
@@ -142,11 +170,15 @@ public class ClassController<getDiary> {
 	}
 	
 	@PostMapping("/insertClassDiary")
-	public String insertClassDiary(ClassDiary cdiary) {
+	public String insertClassDiary(ClassDiary cdiary, RedirectAttributes redirectAttributes) {
 		cdiaryservice.insertcdiary(cdiary);
-		
+		long cdseq = cdiaryservice.insertcdiary(cdiary);
+		redirectAttributes.addAttribute("cdseq", cdseq);
 		return "redirect:classDiary";
 	}
+	
+	
+	
 	
 	
 	

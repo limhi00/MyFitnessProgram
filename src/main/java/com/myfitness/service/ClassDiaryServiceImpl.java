@@ -13,9 +13,10 @@ public class ClassDiaryServiceImpl implements ClassDiaryService {
 	private ClassDiaryRepository cdrepo;
 	
 	@Override
-	public void insertcdiary(ClassDiary cdiary) {
+	public long insertcdiary(ClassDiary cdiary) {
 		
-		cdrepo.save(cdiary);
+		long cdseq = cdrepo.save(cdiary).getCdseq();
+		return cdseq;
 	}
 	
 	@Override

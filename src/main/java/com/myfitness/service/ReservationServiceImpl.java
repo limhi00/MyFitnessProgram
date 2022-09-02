@@ -13,9 +13,10 @@ public class ReservationServiceImpl implements ReservationService{
 	private ReservationRepository resrepo;
 	
 	@Override
-	public void insertRes(Reservation res) {
+	public long insertRes(Reservation res) {
 		
-		resrepo.save(res);
+		long rseq = resrepo.save(res).getRseq();
+		return rseq;
 	}
 	@Override
 	public Reservation getRes(Reservation res) {

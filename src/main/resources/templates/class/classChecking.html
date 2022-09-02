@@ -55,7 +55,7 @@
 
 								<div class="col-md-6">
 									<label class="form-label">회원명</label>
-									<input type="text" readonly class="form-control-plaintext fw-bolder" value="홍길동" required>
+									<input name="member" id="member" type="text" th:value="${#authentication.name}" readonly  class="form-control-plaintext fw-bolder">
 								</div>
 
 								<div class="col-md-8">
@@ -70,8 +70,8 @@
 							</div>
 
 							<div class="bt_wrap">
-								<button class="btItem" type="submit" >예약취소</button>
-								<button class="btItem" href="/checkCalendar" style="width: 130px">달력으로 이동</button>
+								<a class="btItem" href="/classCancel" >예약취소</a>
+								<a class="btItem" href="/checkCalendar" style="width: 130px">달력으로 이동</a>
 							</div>
 						</form>
 					</div>
