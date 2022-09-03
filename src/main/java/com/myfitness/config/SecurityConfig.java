@@ -20,27 +20,32 @@ import lombok.RequiredArgsConstructor;
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig {
 	
-	private final MemberDetailService memberSecurityService;
+	private final MemberDetailsServiceImpl memberDetailsServiceImpl;
 	
 	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf().disable();
+		//http.exceptionHandling().accessDeniedPage("/access-denied"); 권한이 없는데 접근했을 시 보여줄 html
 		
 		http.authorizeRequests()
-			.antMatchers("/").permitAll()
+			.antMatchers("/**").permitAll()
 			.antMatchers("/admin/**").hasRole("ADMIN")	// URL에 따른 권한만 허용
-			.antMatchers("/trainer/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRAINER')");
+			.antMatchers("/trainer/**").access("hasRole('ROLE_TRAINER') or hasRole('ROLE_ADMIN')")
+			.antMatchers("/mypage/**").access("hasRole('ROLE_MEMBER') or hasRole('ROLE_ADMIN')");
 		
-		http.exceptionHandling().accessDeniedPage("/access-denied");
-		
-        http.formLogin() 
-        	.loginPage("/members/login")
-        	.loginProcessingUrl("/members/login")
-        	.defaultSuccessUrl("/");
+        http.formLogin()
+	    	.loginPage("/login")
+	    	.loginProcessingUrl("/login")
+	    	.defaultSuccessUrl("/");
         	
         http.logout()
-        	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-        	.invalidateHttpSession(true);
+	    	.logoutUrl("/logout")
+	    	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+	    	.invalidateHttpSession(true)
+	    	.logoutSuccessUrl("/login?logout").permitAll();
+        
+//	    http.sessionManagement()
+//			.maximumSessions(-1);
      
         return http.build();
     }
@@ -51,6 +56,6 @@ public class SecurityConfig {
     }
     
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    	auth.userDetailsService(memberSecurityService).passwordEncoder(passwordEncoder());
+    	auth.userDetailsService(memberDetailsServiceImpl).passwordEncoder(passwordEncoder());
     }
 }

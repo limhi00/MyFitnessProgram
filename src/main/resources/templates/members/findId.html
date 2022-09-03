@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-		layout:decorate="layout/_layout">
+		layout:decorate="~{layout/_layout}">
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -59,22 +59,24 @@ section {
 
 		<div class="container">
 			<!-- 내용 -->
-			<form th:action="@{/members/join}" th:object="${memberCreateForm}" method="post">
+			<form th:action="@{/join}" th:object="${memberJoinDTO}" method="post">
 
-				<div class="mb-3">
+				<div class="col-md-6">
 					<label for="name" class="form-label">이름</label> 
 					<input type="text" name="name" class="form-control">
 					<div class="alert alert-danger" id="alert"></div>
 				</div>
 
-				<div class="mb-3">
+				<div class="col-md-6">
 					<label for="email" class="form-label">이메일</label> 
 					<input type="email" name="email" class="form-control">
 					<div class="alert alert-danger" id="alert"></div>
 				</div>
-				<button type="submit" class="btn btn-primary">확인</button>
-				<a href="/members/findPwd" class="btn btn-primary">비밀번호 찾기</a>
-				<a href="/members/login" class="btn btn-primary">로그인</a>
+				<div class="bt_wrap">
+				<button type="submit" class="btItem">확인</button>
+				<a href="/findPwd" class="btItem">비밀번호 찾기</a>
+				<a href="/login" class="btItem">로그인</a>
+				</div>
 			</form>
 		</div>
 	</div>

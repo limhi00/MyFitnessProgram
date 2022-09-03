@@ -39,8 +39,8 @@
       <nav id="navbar" class="navbar">
         <ul>
           	<li>
-     			<a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/members/login" th:href="@{/members/login}">로그인</a>
-				<a class="getstarted scrollto" sec:authorize="isAuthenticated()" href="/logout" th:href="@{logout}">로그아웃</a>
+     			<a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/login" th:href="@{/login}">로그인</a>
+				<a class="getstarted scrollto" sec:authorize="isAuthenticated()" href="/logout" th:href="@{/logout}">로그아웃</a>
           	</li>
         </ul>
       </nav>
