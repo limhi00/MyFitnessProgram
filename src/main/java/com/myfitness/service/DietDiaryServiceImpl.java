@@ -1,38 +1,63 @@
 package com.myfitness.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.myfitness.domain.DietDiary;
 import com.myfitness.persistence.DietDiaryRepository;
+
 @Service
 public class DietDiaryServiceImpl implements DietDiaryService {
 	
 	@Autowired
-	private DietDiaryRepository dietrepo;
+	private DietDiaryRepository dietRepo;
 	
-	@Override
-	public long insertDietDiary(DietDiary ddiary) {
-		ddiary.setBreakfast(ddiary.getBreakfast());
+	public List<DietDiary> getDiaryList(String username) {
+		
+		return dietRepo.getDietDiaryList(username);
+	}
+	
+	public DietDiary getDiary(Long dseq) {
+		
+		return dietRepo.findById(dseq).get();
+	}
+	
+	public Long insertDiary(DietDiary ddiary) {
+		
 		ddiary.setD_indate(ddiary.getD_indate());
-		ddiary.setDinner(ddiary.getDinner());
-		ddiary.setFat(ddiary.getFat());
-		ddiary.setLunch(ddiary.getLunch());
-		ddiary.setMuscle(ddiary.getMuscle());
-		ddiary.setReview(ddiary.getReview());
-		ddiary.setSnack(ddiary.getSnack());
-		ddiary.setWaterdrink(ddiary.getWaterdrink());
-		ddiary.setWeight(ddiary.getWeight());
+		Long Dseq = dietRepo.save(ddiary).getDseq();
 		
-		long dseq = dietrepo.save(ddiary).getDseq();
-		
-		return dseq;
+		return Dseq;
 	}
 	
-	@Override
-	public DietDiary getDietDiary(DietDiary ddiary) {
+	public void updateDiary(DietDiary ddiary) {
 		
-		return dietrepo.findById(ddiary.getDseq()).get();
+		dietRepo.save(ddiary);
 	}
+	
+//	@Override
+//	public long insertDietDiary(DietDiary ddiary) {
+//		ddiary.setBreakfast(ddiary.getBreakfast());
+//		ddiary.setDinner(ddiary.getDinner());
+//		ddiary.setFat(ddiary.getFat());
+//		ddiary.setLunch(ddiary.getLunch());
+//		ddiary.setMuscle(ddiary.getMuscle());
+//		ddiary.setSnack(ddiary.getSnack());
+//		ddiary.setWeight(ddiary.getWeight());
+//
+//		ddiary.setD_indate(ddiary.getD_indate());
+//		
+//		long dseq = dietrepo.save(ddiary).getDseq();
+//		
+//		return dseq;
+//	}
+//	
+//	@Override
+//	public DietDiary getDietDiary(DietDiary ddiary) {
+//		
+//		return dietrepo.findById(ddiary.getDseq()).get();
+//	}
 
 }

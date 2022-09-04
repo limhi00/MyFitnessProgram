@@ -153,6 +153,7 @@
 
 		<!-- ======= Featured Services Section ======= -->
 		<section id="featured-services" class="featured-services section-bg">
+			<form id="services">
 			<div class="container">
 
 				<div class="row no-gutters">
@@ -173,25 +174,26 @@
 								<a href="/resCalendar"><i class="bi bi-calendar4-week"></i></a>
 							</div>
 							<h4 class="title">
-								<a href="/resCalendar">예약 달력</a>
+								<a href="/resCalendar">수업예약</a>
 							</h4>
-							<p class="description">몇 번의 클릭으로 편하게 수업 예약 및 식단 작성을 하실 수 있습니다.</p>
+							<p class="description">몇 번의 클릭으로 편하게 수업 예약 및 확인을 하실 수 있습니다.</p>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6">
 						<div class="icon-box">
 							<div class="icon">
-								<a href="/checkCalendar"><i class="bi bi-calendar4-week"></i></a>
+								<a href="#" onclick="dietCalendar()"><i class="bi bi-cup-straw"></i></a>
 							</div>
 							<h4 class="title">
-								<a href="/checkCalendar">확인 달력</a>
+								<a href="#" onclick="dietCalendar()">식단 올리기</a>
 							</h4>
-							<p class="description">수업 예약 확인 및 식단을 확인 할 수 있습니다.</p>
+							<p class="description">식단을 달력에 기록하여 편하게 확인하세요.</p>
 						</div>
 					</div>
 				</div>
 
 			</div>
+			</form>
 		</section>
 		<!-- End Featured Services Section -->
 
@@ -520,7 +522,13 @@
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
-
+	<script>
+		function dietCalendar() {
+			var theForm = document.getElementById("services");
+			var today = new Date();
+			location.href = "/dietCalendarView";
+		}
+	</script>
 </body>
 
 </html>

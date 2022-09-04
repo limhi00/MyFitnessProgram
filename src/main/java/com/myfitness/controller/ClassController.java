@@ -31,7 +31,6 @@ public class ClassController<getDiary> {
 	@Autowired
 	private ClassDiaryService cdiaryservice;
 	
-
 	@GetMapping("/afterClassList")
 	public String afterClassListView() {
 		
@@ -73,40 +72,6 @@ public class ClassController<getDiary> {
 	public String classScheduleView() {
 		
 		return "class/classSchedule";
-	}
-	
-	@GetMapping("/dietCalendar")
-	public String dietCalendarView() {
-		
-		return "diet/dietCalendar";
-	}
-	
-	@GetMapping("/getDiary")
-	public String getDiary(@RequestParam("dseq") long dseq, DietDiary ddiary, Model model){
-		System.out.println("dseq=" + dseq);
-		ddiary.setDseq(dseq);
-		model.addAttribute("ddiary", ddiaryservice.getDietDiary(ddiary));
-		
-		return "diet/getDiary";
-	}
-	
-	@GetMapping("/insertGetDiary")
-	public String insertGetDiaryForm(Model model ,DietDiary ddiary) {
-		model.addAttribute("insertGetDiary", new DietDiary());
-		
-		return "class/insertGetDiary";	
-		
-	}
-	
-	@PostMapping("/insertGetDiary")
-	public String insertGetDiary(DietDiary ddiary,RedirectAttributes redirectAttributes) {
-		
-		System.out.println("Diary =" + ddiary);
-		long dseq = ddiaryservice.insertDietDiary(ddiary);
-		System.out.println("insertGetDiary() : dseq="+dseq);
-		redirectAttributes.addAttribute("dseq", dseq);
-		
-		return "redirect:/getDiary";
 	}
 	
 	@GetMapping("/howToClassCalendar")
