@@ -70,7 +70,7 @@ html, body {
 								select : function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
 									var selectedDate = moment(arg.start).format('YYYY-MM-DD');
 									var url = "/insertDiaryView?d_indate="+selectedDate;
-									var classResView = confirm(' 해당 날짜의 식단을 등록하시겠습니까??');
+									var classResView = confirm('해당 날짜의 식단을 등록하시겠습니까??');
 									if (classResView) {
 										console.log("url = "+url);
 										location.href = url;
@@ -103,9 +103,7 @@ html, body {
 	</script>
 </head>
 <body>
-
 	<div layout:fragment="content">
-
 		<!-- ======= Breadcrumbs ======= -->
 		<section class="breadcrumbs">
 			<div class="container">
@@ -127,11 +125,8 @@ html, body {
 					style="width: 1000px; margin: 30px auto;">
 					<div id='calendar'></div>
 				</div>
-
-				
 			</div>
 		</section>
 	</div>
-
 </body>
 </html>

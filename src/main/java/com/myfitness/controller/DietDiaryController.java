@@ -1,6 +1,5 @@
 package com.myfitness.controller;
 
-
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -16,10 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myfitness.domain.DietDiary;
-import com.myfitness.domain.FullCalendarDto;
+import com.myfitness.domain.DietDiaryListDto;
 import com.myfitness.service.DietDiaryService;
-
-
 
 @Controller
 public class DietDiaryController {
@@ -35,15 +32,15 @@ public class DietDiaryController {
 	
 	@GetMapping("/dietCalendarList")
 	@ResponseBody
-	public Map<String, FullCalendarDto> dietCalendarList(Principal principal) {
+	public Map<String, DietDiaryListDto> dietCalendarList(Principal principal) {
 		
-		Map<String, FullCalendarDto> eventMap = new HashMap<>();
+		Map<String, DietDiaryListDto> eventMap = new HashMap<>();
 		List<DietDiary> ddiaryList = ddiaryService.getDiaryList(principal.getName());
 		
 		int count = 0;
 		for (DietDiary dd : ddiaryList) {
 //			System.out.println("ddiaryList" + dd);
-			FullCalendarDto vo = new FullCalendarDto();
+			DietDiaryListDto vo = new DietDiaryListDto();
 			vo.setTitle("식단 확인");
 			vo.setStart(dd.getD_indate());
 			vo.setUrl("/getDiary?dseq="+dd.getDseq());
@@ -88,7 +85,7 @@ public class DietDiaryController {
 	}
 	
 	@GetMapping("/updateDiary")
-	public String updateDdiary(Model model, DietDiary ddiary) {
+	public String updateDdiaryView(Model model, DietDiary ddiary) {
 		
 		ddiary = ddiaryService.getDiary(ddiary.getDseq());
 		model.addAttribute("ddiary", ddiary);

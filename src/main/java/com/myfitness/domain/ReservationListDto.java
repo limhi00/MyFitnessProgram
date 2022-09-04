@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class FullCalendarDto {
+public class ReservationListDto {
 	private String title;
 	private String start;
 	private String url;

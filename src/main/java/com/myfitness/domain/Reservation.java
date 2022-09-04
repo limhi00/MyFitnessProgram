@@ -1,8 +1,6 @@
 package com.myfitness.domain;
 
-import java.util.Date;
-import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,16 +19,13 @@ public class Reservation {
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "RES_ID")
 	private Long rseq;
 	
 	@ManyToOne
 	@JoinColumn(name="MEMBER_ID", nullable=false, updatable=false) 
 	private Member member;
 	
-	private Date classDate;
-	
-	private String[] classTime = {"09:00 ~ 09:50", "10:00 ~ 10:50"};
-	
-	private int phonenum;
+	private String classDate;
 	
 }

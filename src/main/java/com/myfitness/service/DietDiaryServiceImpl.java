@@ -27,9 +27,9 @@ public class DietDiaryServiceImpl implements DietDiaryService {
 	public Long insertDiary(DietDiary ddiary) {
 		
 		ddiary.setD_indate(ddiary.getD_indate());
-		Long Dseq = dietRepo.save(ddiary).getDseq();
+		Long dseq = dietRepo.save(ddiary).getDseq();
 		
-		return Dseq;
+		return dseq;
 	}
 	
 	public void updateDiary(DietDiary ddiary) {
