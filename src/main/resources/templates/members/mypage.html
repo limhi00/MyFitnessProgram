@@ -7,7 +7,6 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 <title>마이페이지</title>
-
 </head>
 <body>
 <div layout:fragment="content">
@@ -35,7 +34,7 @@
 		</section>
 		<hr>
 
-		<div class="mb-3">
+		<div class="col-md-6">
 		<label for="mid" class="form-label">아이디</label>
 			<input type="text" name="username" class="form-control" th:placeholder="${session.member.username}" disabled>
 			<small id="emailHelp" class="form-text text-muted">
@@ -43,34 +42,34 @@
 			</small>
 		</div>
 		
-		<div class="mb-3">
+		<div class="col-md-6">
 			<label for="name" class="form-label">이름</label> 
 			<input type="text" name="name" class="form-control" th:value="${member.name}">
 		</div>
 
-		<div class="mb-3">
+		<div class="col-md-6">
 			<label for="password" class="form-label">비밀번호</label> 
 			<input type="password" name="password" class="form-control" th:value="${member.password}">
 		</div>
 		
-		<div class="mb-3">
+		<div class="col-md-6">
 			<label for="email" class="form-label">이메일</label> 
 			<input type="email" name="email" class="form-control" th:value="${member.email}">
 		</div>
 		
-		<div class="mb-3">
+		<div class="col-md-6">
 			<label for="phone" class="form-label">전화번호</label> 
 			<input type="text" name="phone" class="form-control" th:value="${member.phone}">
 		</div>
 		
 
-		<div class="mb-3">
+		<div class="col-md-6">
 			<label for="createDate" class="form-label">가입한 날짜 :</label>
 			<span th:text="${#temporals.format(member.createDate,'yyyy년 MM월 dd일')}"></span>
 		</div>
 		<div class="bt_wrap">
-			<button type="submit" class="btn btn-primary">수정하기</button>
-			<a th:href="@{/members/mypage/delete(username=${member.username})}" class="btn btn-danger">회원탈퇴</a>
+			<button type="submit" class="btItem">수정하기</button>
+			<a th:href="@{/members/mypage/delete(username=${member.username})}" class="btItem">회원탈퇴</a>
 		</div>
 		
 	</div>
