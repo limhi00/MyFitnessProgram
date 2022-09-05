@@ -36,6 +36,7 @@
       <!-- 이미지 로고를 사용하려면 아래에서 주석을 제거해서 사용하기. -->
       <!-- <a href="/" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
+<<<<<<< HEAD
 		<nav id="navbar" class="navbar">
 			<ul>
 				<li>
@@ -58,6 +59,19 @@
 		<!-- .navbar -->
 
 		<div class="sidemenu">
+=======
+      <nav id="navbar" class="navbar">
+        <ul>
+          	<li>
+     			<a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/login" th:href="@{/login}">로그인</a>
+				<a class="getstarted scrollto" sec:authorize="isAuthenticated()" href="/logout" th:href="@{/logout}">로그아웃</a>
+          	</li>
+        </ul>
+      </nav>
+      <!-- .navbar -->
+      
+	  <div class="sidemenu">
+>>>>>>> branch 'feature/jdg010' of https://github.com/limhi00/MyFitnessProgram.git
 	    <input type="checkbox" id="menuicon">
 	    <label for="menuicon">
 	      <span></span>

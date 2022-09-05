@@ -40,21 +40,19 @@
 			<nav id="navbar_custom" class="navbar_custom">
 				<ul>
 					<li>
-						<!-- [ROLE_MEMBER]를 [회원]으로 출력되게 하고 싶음. 화면을 줄이면 박스가 어긋나는 현상 있음.
-						<span sec:authorize="isAuthenticated()" th:if="${principal.role} == ${'ROLE_MEMBER'}" th:text="${'회원'}"></span> -->
 						<span sec:authorize="isAuthenticated()" class="nav-link scrollto active">
 							<span th:text="${#authentication.name}"></span>
 							[<span sec:authentication="principal.role"></span>]
 						</span>
 					</li>
 					<li>
-						<a class="nav-link scrollto active" sec:authorize="isAuthenticated()" th:href="@{'/members/mypage/'+ ${#authentication.principal.username}}">마이페이지</a>
+						<a class="nav-link scrollto active" sec:authorize="isAuthenticated()" th:href="@{'/mypage/'+ ${#authentication.principal.username}}">마이페이지</a>
 					</li>
 					<li>
-						<a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/members/login" th:href="@{/members/login}">로그인</a>
+						<a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/members/login" th:href="@{/login}">로그인</a>
 					</li>
 					<li>
-						<a class="getstarted scrollto" sec:authorize="isAuthenticated()" href="/logout" th:href="@{logout}">로그아웃</a>
+						<a class="getstarted scrollto" sec:authorize="isAuthenticated()" href="/logout" th:href="@{/logout}">로그아웃</a>
 					</li>
 				</ul>
 			</nav> 
@@ -97,7 +95,7 @@
 							</h2>
 							<p class="animate__animated animate__fadeInUp">Work Harder,
 								Get Stronger. 저희와 함께라면 할 수 있습니다.</p>
-							<a th:href="@{/members/join}" href="/members/join" class="btn-get-started animate__animated animate__fadeInUp scrollto">회원가입</a>
+							<a th:href="@{/join}" href="/join" class="btn-get-started animate__animated animate__fadeInUp scrollto">회원가입</a>
 
 						</div>
 					</div>
@@ -112,7 +110,7 @@
 								업로드하고 소통하세요</h2>
 							<p class="animate__animated animate__fadeInUp">게시판에서 커뮤니티를
 								활동을 즐겨보세요. 운동에 대한 모든 의견을 사람들과 소통할 수 있습니다.</p>
-							<a href="/members/join" th:href="@{/members/join}"
+							<a href="/join" th:href="@{/join}"
 								class="btn-get-started animate__animated animate__fadeInUp scrollto">회원가입</a>
 						</div>
 					</div>
@@ -127,7 +125,7 @@
 								PT수업과 피드백</h2>
 							<p class="animate__animated animate__fadeInUp">지난 수업을 까먹곤 하지
 								않았나요? 트레이너의 수업요약일지를 통해 복습해보세요. 댓글을 남겨 피드백을 받을 수도 있습니다.</p>
-							<a href="/members/join" th:href="@{/members/join}"
+							<a href="/join" th:href="@{/join}"
 								class="btn-get-started animate__animated animate__fadeInUp scrollto">회원가입</a>
 						</div>
 					</div>

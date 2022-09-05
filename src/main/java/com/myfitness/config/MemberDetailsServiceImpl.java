@@ -1,6 +1,9 @@
 package com.myfitness.config;
 
+import java.util.Optional;
+
 import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -12,16 +15,16 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class MemberDetailService implements UserDetailsService {
+public class MemberDetailsServiceImpl implements UserDetailsService {
 
 	private final MemberRepository memberRepo; 
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Member member = memberRepo.findByUsername(username)
-				.orElseThrow(()->{
-					return new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다.:"+username);
-		});
-		return new MemberDetail(member); // 시큐리티 세션에 유저 정보 저장.
-	}
+		Optional<Member> findMember = memberRepo.findByUsername(username); // 실제 저장된 유저 정보 가져옴
+		if (findMember.isPresent()) {
+			return new MemberDetail(findMember.get());
+		}
+		throw new UsernameNotFoundException("존재하지 않는" + username + "입니다."); 
+	}	
 }

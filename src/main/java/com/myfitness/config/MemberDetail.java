@@ -10,6 +10,7 @@ import com.myfitness.domain.Member;
 import com.myfitness.domain.Role;
 
 public class MemberDetail implements UserDetails {
+	
 	private Member member;
 	
 	public MemberDetail(Member member) {

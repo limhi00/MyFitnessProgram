@@ -26,7 +26,6 @@ import lombok.ToString;
 @Entity
 public class Member {
 	
-	//@JoinColumn(name = "MEMBER_ID")
 	@Id
 	@Column(name = "MEMBER_ID", length = 15)
 	private String username;

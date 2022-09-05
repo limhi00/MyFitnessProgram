@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout/_layout">
+	layout:decorate="~{layout/_layout}">
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -24,9 +24,9 @@
 		</section>
 	<!-- End Breadcrumbs -->
 <!-- <form th:action="@{/save}" method="post">  -->
-<form th:action="@{|/members/mypage/${username}|}" method="post">
+<form th:action="@{|/mypage/${username}|}" method="post">
 
-<input type="hidden" name="username" th:value="${session.member.username}"/>
+<!-- <input type="hidden" name="username" th:value="${session.member.username}"/> -->
 	<div class="container">
 
 		<section th:align="center">
@@ -34,46 +34,77 @@
 		</section>
 		<hr>
 
+<<<<<<< HEAD
 		<div class="col-md-6">
+=======
+		<div class="col-mb-6">
+>>>>>>> branch 'feature/jdg010' of https://github.com/limhi00/MyFitnessProgram.git
 		<label for="mid" class="form-label">아이디</label>
-			<input type="text" name="username" class="form-control" th:placeholder="${session.member.username}" disabled>
+			<input type="text" name="username" class="form-control" th:placeholder="${member.username}" disabled>
 			<small id="emailHelp" class="form-text text-muted">
 				<span th:style="${'color: red'}">*아이디는 변경할 수 없습니다.</span>
 			</small>
 		</div>
 		
+<<<<<<< HEAD
 		<div class="col-md-6">
+=======
+		<div class="col-mb-6">
+>>>>>>> branch 'feature/jdg010' of https://github.com/limhi00/MyFitnessProgram.git
 			<label for="name" class="form-label">이름</label> 
 			<input type="text" name="name" class="form-control" th:value="${member.name}">
 		</div>
 
+<<<<<<< HEAD
 		<div class="col-md-6">
+=======
+		<div class="col-mb-6">
+>>>>>>> branch 'feature/jdg010' of https://github.com/limhi00/MyFitnessProgram.git
 			<label for="password" class="form-label">비밀번호</label> 
-			<input type="password" name="password" class="form-control" th:value="${member.password}">
+			<input type="password" name="password" class="form-control" th:value="${#authentication.getPrincipal().password}">
 		</div>
 		
+<<<<<<< HEAD
 		<div class="col-md-6">
+=======
+		<div class="col-mb-6">
+>>>>>>> branch 'feature/jdg010' of https://github.com/limhi00/MyFitnessProgram.git
 			<label for="email" class="form-label">이메일</label> 
 			<input type="email" name="email" class="form-control" th:value="${member.email}">
 		</div>
 		
+<<<<<<< HEAD
 		<div class="col-md-6">
+=======
+		<div class="col-mb-6">
+>>>>>>> branch 'feature/jdg010' of https://github.com/limhi00/MyFitnessProgram.git
 			<label for="phone" class="form-label">전화번호</label> 
 			<input type="text" name="phone" class="form-control" th:value="${member.phone}">
 		</div>
 		
 
+<<<<<<< HEAD
 		<div class="col-md-6">
+=======
+		<div class="col-mb-6">
+>>>>>>> branch 'feature/jdg010' of https://github.com/limhi00/MyFitnessProgram.git
 			<label for="createDate" class="form-label">가입한 날짜 :</label>
 			<span th:text="${#temporals.format(member.createDate,'yyyy년 MM월 dd일')}"></span>
 		</div>
 		<div class="bt_wrap">
+<<<<<<< HEAD
 			<button type="submit" class="btItem">수정하기</button>
 			<a th:href="@{/members/mypage/delete(username=${member.username})}" class="btItem">회원탈퇴</a>
 		</div>
 		
+=======
+		<button type="submit" class="btItem">수정하기</button>		
+		<a th:href="@{/mypage/delete(username=${member.username})}" class="btItem">회원탈퇴</a>
+		</div>
+>>>>>>> branch 'feature/jdg010' of https://github.com/limhi00/MyFitnessProgram.git
 	</div>
 </form>
+		<!-- <a th:href="@{/mypage/delete(username=${#authentication.principal.username})}" class="btn btn-danger">회원탈퇴</a> -->
 </div>
 </body>
-</html>	
+</html>

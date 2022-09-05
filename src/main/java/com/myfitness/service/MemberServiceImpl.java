@@ -35,9 +35,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberRepo.getByPhoneContaining(role, searchKeyword, pageable);
 	}
 	
-	@Override // 회원가입
-	public Member createForm(String username, String name, String email, String password, String phone) {
-		if(memberRepo.findById(username).isPresent()) {
+	@Override // 회원가입 (리턴타입이 Member? String)
+	public String joinMember(String username, String name, String email,
+							String password, String phone, Role role) {
+		
+		if(memberRepo.findByUsername(username).isPresent()) {
 			throw new IllegalStateException("중복된 회원 ID가 존재합니다.");
 		} else {
 			Member member = new Member();
@@ -46,9 +48,8 @@ public class MemberServiceImpl implements MemberService {
 			member.setName(name);
 			member.setPassword(passwordEncoder.encode(password));
 			member.setPhone(phone);
-			member.setRole(Role.ROLE_MEMBER);
-			//member.setRole(null);
-			//member.getRole();
+			//member.setRole(Role.ROLE_MEMBER);
+			member.setRole(role);
 			memberRepo.save(member);
 		}
 		return null;
@@ -66,10 +67,14 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override // 마이페이지 회원정보 수정
 	public void modifyMemberInfo(Member member) {
+		member.getPassword();
 		String encodePassword = passwordEncoder.encode(member.getPassword());
 		member.setPassword(encodePassword);
-		member.setRole(Role.ROLE_MEMBER);
 		memberRepo.save(member);
+		/*
+		 * 비밀번호를 변경하지 않고 다른 정보만 수정하면 기존 비밀번호가 다시 암호화되어 다른 값이 되어버린다.
+		 * 비밀번호 단독 수정이나 그 외 모든 수정은 비밀번호를 꼭 같이 수정해줘야 한다. 
+		 */
 	}
 	
 	@Override // 마이페이지 회원탈퇴
