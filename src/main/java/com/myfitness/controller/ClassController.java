@@ -66,15 +66,15 @@ public class ClassController {
 		return "class/classChecking";
 	}
 	
-	@GetMapping("/classReservation")
+	@GetMapping("/classReservation") //get
 	public String classReservationView(Model model, @RequestParam String classDate) {
 		
-		model.addAttribute("classDate", classDate);
+		model.addAttribute("classDate");
 		
 		return "class/classReservation";
 	}
 	
-	@PostMapping("/classReservation")
+	@PostMapping("/classReservation") //insert
 	public String classReservation(RedirectAttributes rattr, Reservation res) {
 		
 		Long rseq = resService.insertReservation(res);

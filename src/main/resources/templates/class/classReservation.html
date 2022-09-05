@@ -9,28 +9,10 @@
 <title>My Fitness Program - 수업예약</title>
 
 <!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-	rel="stylesheet" />
-
-<!-- Vendor CSS Files -->
-<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
-<link href="assets/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet" />
-<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-	rel="stylesheet" />
-<link href="assets/vendor/boxicons/css/boxicons.min.css"
-	rel="stylesheet" />
-<link href="assets/vendor/glightbox/css/glightbox.min.css"
-	rel="stylesheet" />
-<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
 <!-- Template Main CSS File -->
 <link href="assets/css/style_board.css" rel="stylesheet">
 <script type="text/javascript">
-	function cancel() {
-		window.close();
-	}
 	function alertNull() {
 		 var form = document.getElementById("classReservation");
 		 
@@ -75,7 +57,7 @@
 								 document.write(a.toDateString()+"<br>");
 							</script>
 						</h4>
-						<form th:action="@{/classChecking}" method="get">
+						<form th:action="@{/classReservation}" method="post">
 							<div class="row g-3">
 								<div class="col-md-6">
 									<label class="form-label">회원명</label>
@@ -84,7 +66,7 @@
 
 								<div class="col-md-8">
 									<label class="form-label">회원 전화번호</label>
-									<input type="text" readonly class="form-control" value="010-1234-1234" required>
+									<input type="text"  class="form-control"  required>
 								</div>
 
 								<div class="col-md-5">
@@ -120,7 +102,7 @@
 							</div>
 							<div class="bt_wrap">
 								<button class="btItem" type="submit">예약하기</button>
-								<button class="btItem"  type="reset">취소</button>
+								<button class="btItem"  type="reset">취소</button> 
 							</div>
 						</form>
 					</div>
