@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/_layout">
 
 <head>
 <meta charset="utf-8">
@@ -34,6 +35,18 @@
 </script>
 </head>
 <body>
+	<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>수업 에약</h2>
+					<ol>
+						<li><a href="/classCalendar">수업 예약</a></li>
+						<li>수업 예약</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
 	<section class="myContent">
 		<div class="container reservation">
 			<main>

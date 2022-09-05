@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/_layout">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -29,9 +31,34 @@
 	function cancel() {
 		window.close();
 	}
+	function alertNull() {
+		 var form = document.getElementById("classReservation");
+		 
+		 var agree = document.getElementById("agree");
+		 if (agree.value == "") {
+			 alert("약관에 동의해주세요");
+			 agree.focus();
+			 
+			 return false;
+		 }
+		 form.action = "/classReservation";
+		 form.submit();
+	}
 </script>
 </head>
 <body>
+	<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>수업 예약</h2>
+					<ol>
+						<li><a href="/classCalendarView">수업 예약</a></li>
+						<li>수업 예약</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
 	<section class="myContent">
 		<div class="container reservation">
 			<main>
@@ -52,7 +79,7 @@
 							<div class="row g-3">
 								<div class="col-md-6">
 									<label class="form-label">회원명</label>
-									<input type="text" readonly class="form-control" value="홍길동" required>
+									<input name="member" id="member" type="text" th:value="${#authentication.name}" class="form-control" readonly>
 								</div>
 
 								<div class="col-md-8">
@@ -88,12 +115,12 @@
 								<p>위 내용을 확인하였으며, 해당 시간에 불참시 그 책임은 본인에게 있음에 동의합니다.</p>
 							</div>
 							<div class="form-check mb-5">
-								<input type="checkbox" class="form-check-input" id="save-info">
+								<input type="checkbox" class="form-check-input" id="save-info" name="agree">
 								<label class="form-check-label" for="save-info">동의합니다.</label>
 							</div>
 							<div class="bt_wrap">
 								<button class="btItem" type="submit">예약하기</button>
-								<button class="btItem" onclick="cancel()" type="button">취소</button>
+								<button class="btItem"  type="reset">취소</button>
 							</div>
 						</form>
 					</div>
