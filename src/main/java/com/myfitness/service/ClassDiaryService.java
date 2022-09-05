@@ -1,3 +1,4 @@
+
 package com.myfitness.service;
 
 import com.myfitness.domain.ClassDiary;
@@ -9,3 +10,4 @@ public interface ClassDiaryService {
 	ClassDiary getcdiary(ClassDiary cdiDiary);
 
 }
+

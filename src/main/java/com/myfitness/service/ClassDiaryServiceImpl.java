@@ -1,3 +1,4 @@
+
 package com.myfitness.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,3 +26,7 @@ public class ClassDiaryServiceImpl implements ClassDiaryService {
 		return cdrepo.findById(cdiDiary.getCdseq()).get();
 	}
 }
+
+
+
+
