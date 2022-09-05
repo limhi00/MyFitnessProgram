@@ -28,24 +28,23 @@
 
 		<section class="myContent">
 			<div class="container">
-
 				<!-- 내용 작성. -->
 				<div class="board_wrap">
-
+				<form method="get">
+				<input type="hidden" th:value="${ClassDiary.cdseq}" id="cdseq">
 					<div class="board_view_wrap">
 						<div class="board_view">
 							<div class="title">
-								김계란 회원님 08월 04일 수업일지
-								<!-- 자동으로 시간 및 날짜 선택 가능하도록 -->
+								<dl>
+									<dt>제목</dt>
+									<dd th:text="${ClassDiary.cdtitle}"></dd>
+								<dl>
 							</div>
 							<div class="info">
-								<dl>
-									<dt>번호</dt>
-									<dd>1</dd>
-								</dl>
+								
 								<dl>
 									<dt>글쓴이</dt>
-									<dd>김이름</dd>
+									<dd><input name="member" id="member" type="text" th:value="${#authentication.name}" readonly></dd>
 								</dl>
 								<dl>
 									<dt>수업 시간</dt>
@@ -55,9 +54,8 @@
 
 							</div>
 							<div class="cont">
-								글 내용이 들어갑니다<br> 글 내용이 들어갑니다<br> 글 내용이 들어갑니다<br> 글
-								내용이 들어갑니다<br> 글 내용이 들어갑니다<br> 글 내용이 들어갑니다<br> 글
-								내용이 들어갑니다<br> 글 내용이 들어갑니다
+								<dt>내용</dt>
+								<dd th:text="${ClassDiary.content}"></dd>
 							</div>
 						</div>
 						<div id="disqus_thread"></div>
@@ -84,10 +82,11 @@
 								Disqus.</a>
 						</noscript>
 						<div class="bt_wrap">
-							<a href="list.html">목록</a> <a href="edit.html">수정</a> <a
-								href="report.html">신고</a> <a href="delete.html">삭제</a>
+							<a href="list.html"class="btItem">목록</a> <a href="edit.html">수정</a> 
+							<a href="report.html"class="btItem">신고</a> <a href="delete.html">삭제</a>
 						</div>
 					</div>
+					</form>
 				</div>
 
 			</div>
