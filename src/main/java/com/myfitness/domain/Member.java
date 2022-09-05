@@ -4,15 +4,17 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,13 +22,13 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude="dietDiaryList")
 @Entity
 public class Member {
 	
 	//@JoinColumn(name = "MEMBER_ID")
 	@Id
-	@Column(length = 15)
+	@Column(name = "MEMBER_ID", length = 15)
 	private String username;
 	
 	@Column(nullable = false, length = 30)
@@ -49,7 +51,14 @@ public class Member {
 	@Column(nullable = false)
 	private Role role;
 	
-	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	private List<Board> boardList = new ArrayList<Board>();
+	
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+	private List<Reservation> resList = new ArrayList<Reservation>();
+	
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+	@JsonBackReference
+	private List<DietDiary> dietDiaryList = new ArrayList<DietDiary>();
 
 }
