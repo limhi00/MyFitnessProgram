@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout/_layout">
@@ -35,11 +35,12 @@
 			alert("비밀번호가 일치하지 않습니다.");
 		}
 	}
-	
-	function cancel() {
-		window.close();
-	}
 </script>
+<style>
+body{
+	font-size: 20px
+}
+</style>
 </head>
 <body>
 		<section class="breadcrumbs">
@@ -56,9 +57,9 @@
 		<!-- End Breadcrumbs -->
 	<section class="myContent">
 		<div class="container reservation">
-			<form>
-				<input type="hidden" th:value="${reservation.rseq}" id="rseq">
-				<input type="hidden" th:value="${member.password}" id="mPwd">
+			<div layout:fragment="content">
+			<form th:action="@{/classCancel}" method="post">
+				<input type="hidden" th:value="${reservation.rseq}" name="rseq" id="rseq">
 				<div class="py-5 text-center">
 					<h2 class="">비밀번호 확인</h2>
 					<hr class="mt-4">
@@ -67,15 +68,19 @@
 					<div class="text-center">
 						<div class="mx-auto">
 							<label class="form-label">회원 비밀번호</label>
-							<input type="text" id="mPwdPut" class="border border-secondary ms-3 mb-5" required>
+							<input type="password" id="mPwdPut" name="password" class="border border-secondary ms-3 mb-5" required >
 						</div>
 						<div class="bt_wrap">
 							<button class="btItem" type="submit">예약취소</button>
-							<a href="classReservation" class="btItem">취소</a>
+							<input type="reset" class="btItem" value="취소">
+						</div>
+						<div>
+							<span style="color:red;" th:text="${message}"></span>
 						</div>
 					</div>
 				</div>
 			</form>
+			</div>
 		</div>
 	</section>
 
