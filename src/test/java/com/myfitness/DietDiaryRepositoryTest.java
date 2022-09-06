@@ -29,12 +29,10 @@ public class DietDiaryRepositoryTest {
 			ddiary.setLunch("사과" +i);
 			ddiary.setDinner("사과" +i);
 			ddiary.setSnack("사과" +i);
-			ddiary.setWaterdrink("사과" +i);
 			ddiary.setWeight("사과" +i);
 			ddiary.setFat("사과" +i);
 			ddiary.setMuscle("사과" +i);
-			ddiary.setReview("사과" +i);
-			ddiary.setD_indate(new Date());
+			ddiary.setD_indate("");
 			
 			ddiaryrepo.save(ddiary);
 			

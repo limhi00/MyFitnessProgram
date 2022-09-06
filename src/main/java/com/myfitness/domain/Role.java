@@ -2,10 +2,6 @@ package com.myfitness.domain;
 
 import lombok.Getter;
 
-/*
- *  Security 권한 지정을 위한 Enum 클래스 
- */
-
 @Getter
 public enum Role {
 	

@@ -1,12 +1,18 @@
 package com.myfitness.service;
 
 
+import java.util.List;
+
 import com.myfitness.domain.Reservation;
 
 public interface ReservationService {
 	
-	void insertRes(Reservation res);
-
-	Reservation getRes(Reservation res);
+	List<Reservation> getReservationList(String username);
+	
+	Reservation getReservation(Long rseq);
+	
+	Long insertReservation(Reservation res);
+	
+	void deleteReservation(Reservation res);
 
 }

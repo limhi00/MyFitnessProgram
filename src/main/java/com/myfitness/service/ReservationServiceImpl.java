@@ -1,25 +1,47 @@
 package com.myfitness.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.myfitness.domain.Reservation;
+import com.myfitness.persistence.ClassDiaryRepository;
 import com.myfitness.persistence.ReservationRepository;
 @Service
 public class ReservationServiceImpl implements ReservationService{
 	
 	@Autowired
-	private ReservationRepository resrepo;
+	private ReservationRepository resRepo;
 	
+	@Autowired
+	private ClassDiaryRepository cdRepo;
+
 	@Override
-	public void insertRes(Reservation res) {
-		
-		resrepo.save(res);
+	public List<Reservation> getReservationList(String username) {
+
+		return resRepo.getReservationList(username);
 	}
+
 	@Override
-	public Reservation getRes(Reservation res) {
+	public Reservation getReservation(Long rseq) {
 		
-		return resrepo.findById(res.getRseq()).get();
+		return resRepo.findById(rseq).get();
+	}
+
+	@Override
+	public Long insertReservation(Reservation res) {
+		
+		res.setClassDate(res.getClassDate());
+		Long rseq = resRepo.save(res).getRseq();
+		
+		return rseq;
+	}
+
+	@Override
+	public void deleteReservation(Reservation res) {
+		
+		resRepo.deleteById(res.getRseq());
 	}
 	
 }

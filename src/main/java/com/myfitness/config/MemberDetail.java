@@ -17,6 +17,18 @@ public class MemberDetail implements UserDetails {
 		this.member = member;
 	}
 	
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Collection<GrantedAuthority> collection = new ArrayList<>();
+        collection.add(new GrantedAuthority() {
+            @Override
+            public String getAuthority() {
+                return ""+member.getRole();
+            }
+        });
+        return collection;
+    }
+	
 	@Override
 	public String getUsername() {
 		return member.getUsername();
@@ -39,7 +51,6 @@ public class MemberDetail implements UserDetails {
 		return member.getRole();
 	}
 
-
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
@@ -60,19 +71,4 @@ public class MemberDetail implements UserDetails {
 		return true;
 	}
 	
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Collection<GrantedAuthority> collection = new ArrayList<>();
-		collection.add(new GrantedAuthority() {
-			
-			@Override
-			public String getAuthority() {
-				//return "ROLE_"+member.getRole();
-				return ""+member.getRole();
-			}
-		});
-
-		return collection;
-	}
-
 }

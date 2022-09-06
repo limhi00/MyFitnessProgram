@@ -4,8 +4,11 @@ import javax.validation.constraints.Email;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Length;
+
 import com.myfitness.domain.Role;
+
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,22 +17,25 @@ import lombok.Setter;
 //@ToString
 public class MemberJoinDTO { 
 	
-	@Size(min = 3, max = 25)
+	@Length(min=3, max=20, message = "최소 3글자 이상 입력해 주세요.")
 	@NotBlank(message = "ID는 필수 입력 항목입니다.")
+	//@Pattern(regexp="^[ㄱ-ㅎ가-힣a-z0-9_-]{3,20}$")
 	private String username;
 	
-	@Size(min = 2, max = 10, message = "최소 2글자 이상 입력해 주세요.")
+	@Length(min = 2, max = 10, message = "최소 2글자 이상 입력해 주세요.")
 	@NotBlank(message = "이름은 필수 입력 항목입니다.")
 	private String name;
 	
+	//@Length(min = 11, message = "'-'를 제외한 11자리를 입력해 주세요.")
 	@NotBlank(message = "전화번호는 필수 입력 항목입니다.")
+	//@Pattern(regexp = "\\d{2,3}-\\d{3,4}-\\d{3,4}")
 	private String phone;
 	
-	@Size(min = 3, max = 10)
+	@Length(min=3, max=50)
 	@NotBlank(message = "비밀번호는 필수 입력 항목입니다.")
 	private String password1;
 	
-	@Size(min = 3, max = 10)
+	@Length(min=3, max=50)
 	@NotBlank(message = "비밀번호 확인을 해주세요.")
 	private String password2;
 	
