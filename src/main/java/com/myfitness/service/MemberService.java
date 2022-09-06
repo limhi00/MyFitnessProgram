@@ -1,18 +1,10 @@
 package com.myfitness.service;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.validation.Valid;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
 
-import com.myfitness.domain.Board;
 import com.myfitness.domain.Member;
 import com.myfitness.domain.Role;
-import com.myfitness.dto.MemberModifyDTO;
 
 public interface MemberService {
 	// 아이디를 조건으로 회원 검색

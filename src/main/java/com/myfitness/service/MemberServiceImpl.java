@@ -1,20 +1,13 @@
 package com.myfitness.service;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.myfitness.domain.Board;
 import com.myfitness.domain.Member;
 import com.myfitness.domain.Role;
-import com.myfitness.dto.MemberModifyDTO;
-import com.myfitness.persistence.BoardRepository;
 import com.myfitness.persistence.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
