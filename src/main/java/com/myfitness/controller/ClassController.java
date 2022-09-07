@@ -29,12 +29,9 @@ public class ClassController {
 	
 	@Autowired
 	private ReservationService resService;
-	
 	@Autowired
-	private MemberService memService;
+	private MemberService memberService;
 	
-	//@Autowired
-	//private classdia
 	@GetMapping("/classCalendar")
 	public String classCalendar() {
 		
@@ -55,7 +52,6 @@ public class ClassController {
 		
 		int count = 0;
 		for (Reservation re : resList) {
-			System.out.println("resList" + re);
 			FullCalendarDto vo = new FullCalendarDto();
 			vo.setTitle("수업 확인");
 			vo.setStart(re.getClassDate()+"T"+re.getClassTime()+":00:00");
@@ -72,8 +68,10 @@ public class ClassController {
 	}
 	
 	@GetMapping("/classChecking")
-	public String classChecking(@RequestParam("rseq") Long rseq, Model model, Reservation res, RedirectAttributes rattr) {
+	public String classChecking(@RequestParam("rseq") Long rseq, Model model, Reservation res) {
 		
+//		System.out.println("rseq="+rseq);
+//		System.out.println("reservation="+res);
 		res = resService.getReservation(rseq);
 		String cTrainerName = resService.getCTrainerName(res.getCTrainer());
 		String username = resService.getCTrainerName(res.getMember().getUsername());
@@ -95,41 +93,40 @@ public class ClassController {
 	}
 	
 	@PostMapping("/classReservation")
-	public String classReservation(RedirectAttributes rattr, Reservation res  ) {
+	public String classReservation(RedirectAttributes rattr, Reservation res) {
 		
 		Long rseq = resService.insertReservation(res);
+		
 		rattr.addAttribute("rseq", rseq);
 		
 		return "redirect:/classChecking";
 	}
 	
-	
-	@GetMapping("/classCancel")
-	public String classCancleView(Model model, Reservation res,  @RequestParam("rseq") Long rseq,RedirectAttributes rattr, Member mem) {
+	@GetMapping("/classCancelView")
+	public String classCancleView(@RequestParam("rseq") Long rseq, Model model, Reservation res) {
 		
-		//mem = memService.getMember(password);
 		res = resService.getReservation(rseq);
 		model.addAttribute("reservation", res);
-		rattr.addAttribute("rseq", rseq);
-		//rattr.addAttribute("password", password);
 		
 		return "class/classCancel";
 	}
 	
-	@PostMapping("/classCancel")
+	@RequestMapping("/classCancel")
 	public String classCancle(Reservation res, @RequestParam("password") String password, Principal principal, Model model) {
+		
+		Long cdseq = resService.getClassDiary(res.getRseq()).getCdseq();
+		
 		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-		//String encodedPwd = pwdEncoder.encode(password); // 화면에서 입력된 비밀번호를 암호화
+		Member member = memberService.getMember(principal.getName());
 		
-		Member member = memService.getMember(principal.getName());
-		
-		if(member != null && pwdEncoder.matches(password, member.getPassword())) {
-			resService.deleteReservation(res);
-			return "redirect:/classCalendarView";
+		if (member != null && pwdEncoder.matches(password, member.getPassword())) {
+			resService.deleteClassDiary(cdseq);
+			System.out.println("deleteClassDiary seccess!!");
+			return "/class/classCancelResult";
 		} else {
 			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
 			return "class/classCancel";
-		}	
+		}
 	}
 	
 	@GetMapping("/getClassDiary")
@@ -197,5 +194,4 @@ public class ClassController {
 		
 		return eventMap;
 	}
-	
 }

@@ -1,14 +1,13 @@
 package com.myfitness.dto;
 
 import javax.validation.constraints.Email;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.Length;
 
 import com.myfitness.domain.Role;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

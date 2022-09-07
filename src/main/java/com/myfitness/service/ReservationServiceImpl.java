@@ -16,8 +16,10 @@ public class ReservationServiceImpl implements ReservationService{
 	
 	@Autowired
 	private ReservationRepository resRepo;
+	
 	@Autowired
 	private MemberRepository memberRepo;
+	
 	@Autowired
 	private ClassDiaryRepository cdRepo;
 
@@ -37,15 +39,15 @@ public class ReservationServiceImpl implements ReservationService{
 	@Override
 	public Reservation getReservation(Long rseq) {
 		
-		return resRepo.findById(rseq).get();  
+		return resRepo.findById(rseq).get();
 	}
-	
+
 	@Override
 	public String getCTrainerName(String cTrainer) {
 		
 		return resRepo.getCTrainerName(cTrainer);
 	}
-	
+
 	@Override
 	public Long insertReservation(Reservation res) {
 		
@@ -61,12 +63,17 @@ public class ReservationServiceImpl implements ReservationService{
 		return rseq;
 	}
 
+	public void deleteClassDiary(Long cdseq) {
+		
+		cdRepo.deleteById(cdseq);
+	}
+	
 	@Override
 	public void deleteReservation(Reservation res) {
 		
 		resRepo.deleteById(res.getRseq());
 	}
-	
+
 	@Override
 	public ClassDiary getClassDiary(Long rseq) {
 		
