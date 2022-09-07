@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myfitness.domain.DietDiary;
-import com.myfitness.domain.DietDiaryListDto;
+import com.myfitness.domain.FullCalendarDto;
 import com.myfitness.service.DietDiaryService;
 
 @Controller
@@ -32,15 +32,15 @@ public class DietDiaryController {
 	
 	@GetMapping("/dietCalendarList")
 	@ResponseBody
-	public Map<String, DietDiaryListDto> dietCalendarList(Principal principal) {
+	public Map<String, FullCalendarDto> dietCalendarList(Principal principal) {
 		
-		Map<String, DietDiaryListDto> eventMap = new HashMap<>();
+		Map<String, FullCalendarDto> eventMap = new HashMap<>();
 		List<DietDiary> ddiaryList = ddiaryService.getDiaryList(principal.getName());
 		
 		int count = 0;
 		for (DietDiary dd : ddiaryList) {
 //			System.out.println("ddiaryList" + dd);
-			DietDiaryListDto vo = new DietDiaryListDto();
+			FullCalendarDto vo = new FullCalendarDto();
 			vo.setTitle("식단 확인");
 			vo.setStart(dd.getD_indate());
 			vo.setUrl("/getDiary?dseq="+dd.getDseq());
@@ -101,24 +101,5 @@ public class DietDiaryController {
 		
 		return "redirect:/getDiary";
 	}
-	
-	
-//	@GetMapping("/getDiary")
-//	public String getDiary(DietDiary ddiary, Model model){
-//		model.addAttribute("ddiary", ddiaryservice.getDietDiary(ddiary));
-//		
-//		return "diet/getDiary";
-//	}
-//	
-//	@PostMapping("/insertGetDiary")
-//	public String insertGetDiary(DietDiary ddiary,RedirectAttributes redirectAttributes) {
-//		
-//		System.out.println("Diary =" + ddiary);
-//		long dseq = ddiaryservice.insertDietDiary(ddiary);
-//		System.out.println("insertGetDiary() : dseq="+dseq);
-//		redirectAttributes.addAttribute("dseq", dseq);
-//		
-//		return "redirect:/getDiary";
-//	}
 	
 }

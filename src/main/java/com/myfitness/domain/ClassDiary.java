@@ -2,6 +2,7 @@ package com.myfitness.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +16,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString(exclude = "reservation")
+@ToString
 @Entity
 public class ClassDiary {
 	@Id
@@ -24,10 +25,10 @@ public class ClassDiary {
 	private Long cdseq;
 	
 	@ManyToOne
-	@JoinColumn(name="MEMBER_ID", nullable=false, updatable=false) 
+	@JoinColumn(name="MEMBER_ID", updatable=false) 
 	private Member member;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="RES_ID", nullable=false, updatable=false)
 	private Reservation reservation;
 	

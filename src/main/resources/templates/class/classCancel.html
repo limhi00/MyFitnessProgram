@@ -16,26 +16,6 @@
 
 <!-- Template Main CSS File -->
 <link href="assets/css/style_board.css" rel="stylesheet">
-<script>
-	function deleteClassPopup() {
-		var seq = document.getElementById("rseq").value;
-		var mPwd = document.getElementById("mPwd").value;
-		var mPwd2 = document.getElementById("mPwdPut").value;
-		
-		if(mPwd == mPwd2) {
-			var returnValue = confirm('예약을 취소하시겠습니까?');
-			if(returnValue) {
-				alert('취소되었습니다.')
-				location.href="/deleteClassCheck?rseq"+rseq;
-				self.close();
-			} else {
-				
-			}
-		} else {
-			alert("비밀번호가 일치하지 않습니다.");
-		}
-	}
-</script>
 <style>
 body{
 	font-size: 20px

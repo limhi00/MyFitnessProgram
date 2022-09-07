@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myfitness.domain.Board;
@@ -131,8 +130,10 @@ public class BoardController {
 	
 	// 게시글 수정 폼
 	@GetMapping("/updateBoard")
-	public String updateBoardForm(Board board, Model model) {
+	public String updateBoardForm(Board board, Category category, Model model) {
+		
 		model.addAttribute("board", boardService.getBoard(board));
+		model.addAttribute("categoryList", boardService.getCategoryList(category));
 		
 		return "board/updateBoard";
 	}

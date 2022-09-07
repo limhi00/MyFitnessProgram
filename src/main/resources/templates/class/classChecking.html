@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout/_layout">
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="layout/_layout">
 
 <head>
 <meta charset="utf-8">
@@ -74,9 +75,10 @@ body{
 							</div>
 
 							<div class="bt_wrap">
-								<button class="btItem" href="#" onclick="classCancel()" >예약취소</button>
-								<a class="btItem" href="/classCalendarView" style="width: 130px">달력으로 이동</a>
-								<button  class="btItem" onclick="getclassDiary()">수업일지</button>
+								<button class="btItem" onclick="classCancel()" >예약취소</button>
+								<a href="/classCalendarView" sec:authorize="hasAnyRole('ROLE_MEMBER')" class="btItem" style="width:150px;">달력으로 이동</a>
+								<a href="/classScheduleView" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')" class="btItem" style="width:150px;">수업시간표로 이동</a>
+								<a th:href="@{/getClassDiary(rseq=${reservation.rseq})}" class="btItem">수업일지</a>
 							</div>
 						</form>
 					</div>

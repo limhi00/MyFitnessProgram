@@ -17,14 +17,6 @@
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
 <!-- fullcalendar 언어 CDN -->
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
-
-<style>
-/* body 스타일 */
-html, body {
-	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-	font-size: 14px;
-}
-</style>
 	<script>
 		$(document).ready(function() {
 			var today = new Date();
@@ -51,7 +43,7 @@ html, body {
 								height : '700px', // calendar 높이 설정
 								expandRows : true, // 화면에 맞게 높이 재설정
 								slotMinTime : '09:00', // Day 캘린더에서 시작 시간
-								slotMaxTime : '23:00', // Day 캘린더에서 종료 시간
+								slotMaxTime : '24:00', // Day 캘린더에서 종료 시간
 								initialView : 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
 								editable : true, // 수정 가능?
 								selectable : true, // 달력 일자 드래그 설정가능
@@ -77,15 +69,6 @@ html, body {
 									}
 									calendar.unselect()
 								}
-								// 이벤트 
-								,
-								events : [  {
-									title : '',
-									url : 'getDiary?dseq=',
-									start : '',
-									backgroundColor: '#222',
-									borderColor: '#222'
-								} ]
 							});
 					var arr = data;
 					$.each(arr, function(index, item){
@@ -118,7 +101,7 @@ html, body {
 		</section>
 		<!-- End Breadcrumbs -->
 
-		<section class="myContent">
+		<section class="myContent_calendar">
 			<div class="container">
 				<!-- calendar 태그 -->
 				<div id='calendar-container'
