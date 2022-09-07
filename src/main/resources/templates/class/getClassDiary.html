@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  	  layout:decorate="layout/_layout"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>My Fitness Program - 수업 일지</title>
+<link rel="stylesheet" href="assets/css/style_board.css">
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+		<!-- ======= Breadcrumbs ======= -->
+		<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>수업 일지</h2>
+					<ol>
+						<li><a href="class/classDiary">수업 일지</a></li>
+						<li>수업 달력</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
+
+		<section class="myContent">
+			<div class="container">
+				<!-- 내용 작성. -->
+				<div class="board_wrap">
+					<div class="board_view_wrap">
+					<form>
+						<div class="board_view">
+							<div class="title">
+								<dl>
+									<dd>
+										<input style="border:none;" type="text" name="classDateTime" th:value="${cDiary.reservation.classDate}+' '+${cDiary.reservation.classTime}+':00 ~ '+${cDiary.reservation.classTime}+':50'" readonly>
+									</dd>
+									<dd>
+										<input style="border:none;" type="text" name="member" th:value="'트레이너명: '+${cDiary.reservation.cTrainer}" readonly>
+									</dd>
+									<dd>
+										<input style="border:none;" type="text" name="member" th:value="'회원명: '+${cDiary.member.name}" readonly>
+									</dd>
+								</dl>
+							</div>
+							<div class="cont">
+								<dl>
+									<dd>
+										<textarea style="width: 900px; border:none;" name="content" th:value="${cDiary.content}" th:text="${cDiary.content}" readonly></textarea>
+									</dd>
+								</dl>
+							</div>
+							<div class="bt_wrap" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')">
+								<a th:href="@{/insertClassDiaryView(rseq=${cDiary.reservation.rseq})}" class="on">등록</a>
+							</div>
+						</div>
+						</form>
+						<br>
+						<div id="disqus_thread"></div>
+							<script>
+							    /**
+							    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+							    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+							    /*
+							    var disqus_config = function () {
+							    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+							    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+							    };
+							    */
+							    (function() { // DON'T EDIT BELOW THIS LINE
+							    var d = document, s = d.createElement('script');
+							    s.src = 'https://yjs-gym.disqus.com/embed.js';
+							    s.setAttribute('data-timestamp', +new Date());
+							    (d.head || d.body).appendChild(s);
+							    })();
+							</script>
+						<noscript>
+							Please enable JavaScript to view the <a
+								href="https://disqus.com/?ref_noscript">comments powered by
+								Disqus.</a>
+						</noscript>
+						<div class="bt_wrap">
+							<a href="/classCalendarView" sec:authorize="hasAnyRole('ROLE_MEMBER')" class="btItem" style="width:150px;">달력으로 이동</a>
+							<a href="/classScheduleView" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')" class="btItem" style="width:150px;">수업시간표로 이동</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+	</div>
+
+
+
+</body>
+</html>
