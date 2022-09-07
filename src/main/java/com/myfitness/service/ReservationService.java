@@ -30,4 +30,5 @@ public interface ReservationService {
 	void insertClassDiary(ClassDiary cDiary);
 	
 	List<Reservation> getTrainerReservationList(String username);
+
 }

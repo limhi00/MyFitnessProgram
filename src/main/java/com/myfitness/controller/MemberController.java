@@ -1,13 +1,10 @@
 package com.myfitness.controller;
 
 import java.util.LinkedHashMap;
-
 import java.util.Map;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myfitness.domain.Member;
@@ -73,7 +69,7 @@ public class MemberController {
 			return map; 
 		}
 
-	/* 마이페이지 */
+	/* 마이페이지 폼 */
 	@PreAuthorize("isAuthenticated() and (( #username == principal.username ) or hasRole('ROLE_ADMIN'))")
 	@GetMapping("/mypage/{username}")
 	public String myPage(Model model, @PathVariable("username") String username) {
@@ -81,7 +77,7 @@ public class MemberController {
 		return "members/mypage";
 	}
 	
-    @PostMapping("/mypage/{username}") // 회원정보 수정
+    @PostMapping("/mypage/{username}")
     public String myPageModify(@PathVariable("username") String username, Member member,
     							RedirectAttributes redirectAttributes) {
     	memberService.modifyMemberInfo(member);
@@ -90,7 +86,7 @@ public class MemberController {
     	return "redirect:/mypage/{username}";
     }
 
-	@GetMapping("/mypage/delete") // 회원탈퇴
+	@GetMapping("/mypage/delete")
     public String memberDelete(String username) {
         memberService.deleteMember(username);
         return "redirect:/logout";
@@ -108,7 +104,7 @@ public class MemberController {
 		 
 		if(resultId != null) {
 			model.addAttribute("result", resultId);
-			model.addAttribute("msg", "회원님의 아이디는" + resultId.getUsername() + "입니다.");
+			model.addAttribute("msg", "회원님의 아이디는 " + resultId.getUsername() + " 입니다.");
 			return "members/findId";
 		} else {
 			model.addAttribute("msg", "해당 이메일로 가입된 사용자가 없습니다.");
@@ -116,7 +112,6 @@ public class MemberController {
 		}	
 	}
 
-	/* 비밀번호 찾기 */
 	@GetMapping("/findPwdForm")
 	public String findPwdForm() { return "members/findPwdForm"; }
 	
@@ -128,11 +123,10 @@ public class MemberController {
 		 
 		if(resultPwd != null) {
 			model.addAttribute("result", resultPwd);
-			model.addAttribute("msg", "회원님의 비밀번호는" + resultPwd.getPassword() + "입니다.");
+			model.addAttribute("msg", "회원님의 비밀번호는 " + resultPwd.getPassword() + " 입니다.");
 			return "members/findPwd";
 		} else {
-			System.out.println("없어요");
-			model.addAttribute("msg", "해당 이메일로 가입된 사용자가 없습니다.");
+			model.addAttribute("msg", "조회된 회원 정보가 없습니다.");
 			return "members/findPwdForm";
 		}	
 	}
