@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.myfitness.domain.ClassDiary;
 import com.myfitness.domain.Reservation;
 import com.myfitness.persistence.ClassDiaryRepository;
 import com.myfitness.persistence.ReservationRepository;
@@ -26,7 +28,7 @@ public class ReservationServiceImpl implements ReservationService{
 	@Override
 	public Reservation getReservation(Long rseq) {
 		
-		return resRepo.findById(rseq).get();
+		return resRepo.findById(rseq).get();  
 	}
 
 	@Override
