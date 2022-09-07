@@ -109,7 +109,6 @@ public class ClassController {
 	public void classCancle(Reservation res) {
 		
 		resService.deleteReservation(res);
-		
 	}
 	
 	@GetMapping("/getClassDiary")
