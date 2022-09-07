@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +19,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myfitness.domain.ClassDiary;
 import com.myfitness.domain.FullCalendarDto;
+import com.myfitness.domain.Member;
 import com.myfitness.domain.Reservation;
+import com.myfitness.service.MemberService;
 import com.myfitness.service.ReservationService;
 
 @Controller
@@ -25,6 +29,8 @@ public class ClassController {
 	
 	@Autowired
 	private ReservationService resService;
+	@Autowired
+	private MemberService memberService;
 	
 	@GetMapping("/classCalendar")
 	public String classCalendar() {
@@ -106,9 +112,21 @@ public class ClassController {
 	}
 	
 	@RequestMapping("/classCancel")
-	public void classCancle(Reservation res) {
+	public String classCancle(Reservation res, @RequestParam("password") String password, Principal principal, Model model) {
 		
-		resService.deleteReservation(res);
+		Long cdseq = resService.getClassDiary(res.getRseq()).getCdseq();
+		
+		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+		Member member = memberService.getMember(principal.getName());
+		
+		if (member != null && pwdEncoder.matches(password, member.getPassword())) {
+			resService.deleteClassDiary(cdseq);
+			System.out.println("deleteClassDiary seccess!!");
+			return "/class/classCancelResult";
+		} else {
+			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
+			return "class/classCancel";
+		}
 	}
 	
 	@GetMapping("/getClassDiary")

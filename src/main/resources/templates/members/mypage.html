@@ -25,7 +25,7 @@
 				return false;
 			} else {
 				document.getElementById("mypage").action = "/mypage/[[${username}]]";
-				document.getElementById("modify").submit();
+				document.getElementById("mypage").submit();
 			}
 		}
 	</script>
@@ -91,17 +91,17 @@
 
 				<div class="container mt-3">
 					<label for="name" class="form-label">이름</label>
-					<input type="text" name="name" id="name" class="form-control" th:value="${member.name}">
+					<input type="text" name="name" id="name" class="form-control" th:value="${member.name}" required>
 				</div>
 
 				<div class="container mt-3">
 					<label for="email" class="form-label">이메일</label>
-					<input type="email" name="email" id="email" class="form-control" th:value="${member.email}">
+					<input type="email" name="email" id="email" class="form-control" th:value="${member.email}" required>
 				</div>
 
 				<div class="container mt-3">
 					<label for="phone" class="form-label">전화번호</label>
-					<input type="text" name="phone" id="phone" class="form-control" th:value="${member.phone}">
+					<input type="text" name="phone" id="phone" class="form-control" th:value="${member.phone}" required>
 				</div>
 
 				<div class="container mt-3">
