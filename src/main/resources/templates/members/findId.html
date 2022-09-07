@@ -1,49 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-		layout:decorate="~{layout/_layout}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/_layout}">
+
 <head>
-<meta charset="UTF-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>회원가입</title>
-<!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
+	<title>아이디 찾기</title>
+	<!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
 
-<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
+	<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
 
-<style>
-html {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-}
+	<style>
+		html {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
 
-container {
-	width: 300px;
-	height: 300px;
-}
+		container {
+			width: 300px;
+			height: 300px;
+		}
 
-section {
-	margin-bottom: 20px;
-}
+		section {
+			margin-bottom: 20px;
+		}
 
-.div {
-	display: inline-block;
-	width: 300px;
-	height: 300px;
-}
+		.div {
+			display: inline-block;
+			width: 300px;
+			height: 300px;
+		}
 
-.field-error {
-	border-color: #dc3545;
-	color: #dc3545;
-}
-
-#alert {
-	margin-top: 5px;
-}
-</style>
+		#footer {
+			height: 210px;
+			position: absolute;
+			width: 100%;
+			bottom: 0px;
+			left: 0;
+		}
+	</style>
 </head>
+
 <body>
 	<div layout:fragment="content">
 		<!-- Breadcrumbs -->
@@ -62,42 +61,13 @@ section {
 
 		<div class="container">
 			<!-- 아이디 찾기 결과 내용 -->
-
-			<h1 th:text="${msg}"></h1>
-			<h1 th:text="${result}"></h1>
-			<h1 th:text="${result.username}"></h1>
+			<h1 th:text="${msg}" th:align="center"></h1>
 		</div>
-		
-		
-		
-<!-- 
-			<h1 th:text="${member.username}"></h1>
-			<h1 th:value="${member.username}"></h1>
-			<h1 th:text="${msg}"></h1>
- -->
- 
- <!--			
-				<div class="mb-3">
-					<label for="name" class="form-label">이름</label> 
-					<input type="text" name="name" class="form-control">
-				</div>
 
-				<div class="mb-3">
-					<label for="email" class="form-label">이메일</label> 
-					<input type="email" name="email" class="form-control">
-					<div class="alert alert-danger" id="alert" th:value="${msg}"></div>
-				</div>
-				<h3 th:align="center" th:text="${msg}"></h3>
-				<h3 th:align="center" th:if="${param.status}" th:text="'정상적으로 수정되었습니다.'"></h3>
-				
-				<button type="submit" class="btn btn-primary">확인</button>
-				<a href="/findPwd" class="btn btn-primary">비밀번호 찾기</a>
-				<a href="/login" class="btn btn-primary">로그인</a>
-			</form>
-			<h1 th:value="${member.email}"></h1>
-			<h3 th:align="center" th:if="${param.email}" th:text="'정상적으로 수정되었습니다.'"></h3>
+		<div class="bt_wrap">
+			<a href="/findPwdForm" class="btItem">비밀번호 찾기</a>
 		</div>
-	</div> -->
 	</div>
 </body>
+
 </html>

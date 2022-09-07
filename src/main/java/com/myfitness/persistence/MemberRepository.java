@@ -1,13 +1,13 @@
 package com.myfitness.persistence;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import com.myfitness.domain.Member;
 
@@ -20,6 +20,9 @@ public interface MemberRepository extends JpaRepository<Member, String> {
 	// 아이디와 이메일을 조건으로 회원 비밀번호 찾기
 	Member findByUsernameAndEmail(String username, String email);
 
+	@Query(value = "SELECT * FROM member WHERE role = ?1", nativeQuery = true)
+	List<Member> getRoleList(String role);
+	
 	@Query(value = "SELECT * FROM member WHERE role = ?1", nativeQuery = true)
 	Page<Member> getRoleList(String role, Pageable pageable);
 

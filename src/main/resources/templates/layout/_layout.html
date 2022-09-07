@@ -36,17 +36,24 @@
       <!-- 이미지 로고를 사용하려면 아래에서 주석을 제거해서 사용하기. -->
       <!-- <a href="/" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          	<li>
-     			<a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/login" th:href="@{/login}">로그인</a>
-				<a class="getstarted scrollto" sec:authorize="isAuthenticated()" href="/logout" th:href="@{/logout}">로그아웃</a>
-          	</li>
-        </ul>
-      </nav>
-      <!-- .navbar -->
-      
-	  <div class="sidemenu">
+		<nav id="navbar" class="navbar">
+			<ul>
+				<li>
+					<span sec:authorize="isAuthenticated()" class="nav-link scrollto active"> 
+						<span th:text="${#authentication.name}"></span>
+						[<span sec:authentication="principal.role"></span>]
+					</span>
+				</li>
+				<li><a class="nav-link scrollto active" sec:authorize="isAuthenticated()"
+					th:href="@{'/members/mypage/'+ ${#authentication.principal.username}}">마이페이지</a>
+				</li>
+				<li><a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/members/login" th:href="@{/login}">로그인</a></li>
+				<li><a class="getstarted scrollto" sec:authorize="isAuthenticated()" href="/logout" th:href="@{/logout}">로그아웃</a></li>
+			</ul>
+		</nav>
+		<!-- .navbar -->
+
+		<div class="sidemenu">
 	    <input type="checkbox" id="menuicon">
 	    <label for="menuicon">
 	      <span></span>
@@ -59,28 +66,13 @@
 	        <li class="dropdown"><a href="/"><span>Home</span></a>
 	        <li class="dropdown"><a href="/allBoardList"><span>게시판</span></a>
 	        </li>
-	        <li class="dropdown"><a href="/classCalendar"><span>수업 예약</span> <i class="bi bi-chevron-down"></i></a>
-	          <ul>
-	            <li><a href="/classCalendar">수업 예약 달력</a></li>
-	            <li><a href="/howToClassCalendar">예약 페이지 이용방법</a></li>
-	          </ul>
+	        <li class="dropdown" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')">
+	        	<a href="/classCalendarView"><span>수업예약</span></a>
 	        </li>
-	        <li class="dropdown"><a href="/dietCalendar"><span>식단 올리기</span> <i class="bi bi-chevron-down"></i></a>
-	          <ul>
-	            <li><a href="/dietCalendar">식단 달력</a></li>
-	          </ul>
-	        </li>
-	        
+	        <li class="dropdown"><a href="/dietCalendarView"><span>식단 올리기</span></a></li>
 	        <li class="dropdown" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')">
-	        	<a href="/classSchedule"><span>수업 일정</span>
-	        	 <i class="bi bi-chevron-down"></i>
-	        	</a>
-	          <ul>
-	            <li><a href="/classSchedule">수업 시간표</a></li>
-	            <li><a href="/afterClassList">지난 수업 목록</a></li>
-	          </ul>
+	        	<a href="/classScheduleView"><span>수업 시간표</span></a>
 	        </li>
-	        
 	        <li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
 	        	<a href="/admin/userManagement">
 	        	<span>관리자 기능</span>

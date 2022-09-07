@@ -65,7 +65,7 @@
 				<div class="mb-3">
 					<label for="name" class="form-label">이름</label>
 					<input type="text" th:field="*{name}" class="form-control"
-						th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'" id="name">
+						th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'" id="name" autofocus>
 					<div class="alert alert-danger" th:errors="*{name}" id="alert"></div>
 				</div>
 
@@ -107,7 +107,7 @@
 				<div class="mb-3">
 					<label for="role" class="form-label">가입 유형</label>
 					<div th:each="r : ${roles}" class="form-check form-check-inline">
-						<input type="radio" th:field="*{role}" th:value="${r.value}" class="form-check-input" checked>
+						<input type="radio" th:field="*{role}" th:value="${r.value}" class="form-check-input">
 
 						<label th:for="${#ids.prev('role')}" th:text="${r.key}" class="form-check-label"></label>
 					</div>

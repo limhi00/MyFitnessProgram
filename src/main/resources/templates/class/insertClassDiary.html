@@ -19,57 +19,48 @@
 					<h2>수업 일지</h2>
 					<ol>
 						<li><a href="class/classDiary">수업 일지</a></li>
-						<li>수업 달력</li>
+						<li>수업 일지 작성</li>
 					</ol>
 				</div>
 			</div>
 		</section>
 		<!-- End Breadcrumbs -->
-
+		
 		<section class="myContent">
-			<div class="container" >
-
-				<!-- 내용 작성. -->
+			<div class="container">
 				<div class="board_wrap">
-
-					<div class="board_view_wrap">
-						<div class="board_view">
-							<form th:action="@{/insertClassDiary}" method="post">
-							<div class="title">
-								<dl>
-									<dt>제목</dt>
-									<dd><input type="text"></dd>
-								<dl>
+					<form th:action="@{/insertClassDiary}" method="post">
+						<input type="hidden" name="cdseq" th:value="${cDiary.cdseq}">
+						<input type="hidden" name="rseq" th:value="${cDiary.reservation.rseq}">
+						<div class="board_view_wrap">
+							<div class="board_view">
+								<div class="title">
+									<dl>
+										<dd>
+											<input style="border:none;" type="text" th:value="${cDiary.reservation.classDate}+' '+${cDiary.reservation.classTime}+':00 ~ '+${cDiary.reservation.classTime}+':50'" readonly>
+										</dd>
+										<dd>
+											<input style="border:none;" type="text" name="member" th:value="${cDiary.member.username}" readonly>
+										</dd>
+									</dl>
+								</div>
+								<div class="cont">
+									<dl>
+										<dd>
+											<textarea cols="135" rows="5" name="content" th:text="${cDiary?.content}" style="padding: 10px;"></textarea>
+										</dd>
+									</dl>
+								</div>
 							</div>
-							<div class="info">
-								<dl>
-									<dt>글쓴이</dt>
-									<dd type="text"></dd>
-								</dl>
-								<dl>
-									<dt>수업 시간</dt>
-									<dd>2022년 07월 12일 14:00~ 14:50</dd>
-								</dl>
 
-							</div>
-							<div class="cont">
-								<dl>
-									<dt>내용</dt>
-									<dd><input type="textarea"></dd>
-								</dl>
+							<div class="bt_wrap">
+								<input type="submit" class="btItem" th:value="등록">
 							</div>
 						</div>
-						</form>
-						<div class="bt_wrap"> 
-							<button type="submit" class="btn btn-primary">등록</button>
-							<button type="reset" class="btn btn-primary" >취소</button>
-						</div>
-					</div>
+					</form>
 				</div>
-
 			</div>
 		</section>
 	</div>
-
 </body>
 </html>

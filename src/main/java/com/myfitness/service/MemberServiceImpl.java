@@ -23,11 +23,8 @@ public class MemberServiceImpl implements MemberService {
 	public Member doFindId(String name, String email) {
 		Member findMemberUsername = memberRepo.findByNameAndEmail(name, email);
 		if (findMemberUsername != null) {  
-			System.out.println("이메일 검색 결과 :" + findMemberUsername);
 			return memberRepo.findByNameAndEmail(name, email);
-			// return member.getUsername();
 		} else {
-			System.out.println("이메일 검색 결과 :" + findMemberUsername);
 			return null;
 		}
 	}
@@ -36,17 +33,15 @@ public class MemberServiceImpl implements MemberService {
 	public Member doFindPwd(String username, String email) {
 		Member findMemberPwd = memberRepo.findByUsernameAndEmail(username, email);
 		if (findMemberPwd != null) {
-			System.out.println("아이디 검색 결과 :" + findMemberPwd);
 			return memberRepo.findByUsernameAndEmail(username, email);
 		} else {
-			System.out.println("아이디 검색 결과 :" + findMemberPwd);
 			return null;
 		}
 	}
 	
 	@Override // 회원 아이디를 조회
 	public Member getUsername(Member member, String username) {
-		if(memberRepo.findById(username).isPresent()) { // isPresent() = 값이 있냐?
+		if(memberRepo.findById(username).isPresent()) {
 			return null; 
 		} else {			
 			memberRepo.findById(username);
@@ -78,8 +73,7 @@ public class MemberServiceImpl implements MemberService {
 		if (findMember.isPresent()) {
 			return findMember.get();
 		} else {
-			//throw new IllegalStateException("이미 존재하는 회원입니다.");
-			return null; // 존재하지 않으면 리턴 null
+			return null;
 		}
 	}
 	 
