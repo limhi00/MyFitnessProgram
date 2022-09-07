@@ -45,7 +45,7 @@
 					</span>
 				</li>
 				<li><a class="nav-link scrollto active" sec:authorize="isAuthenticated()"
-					th:href="@{'/members/mypage/'+ ${#authentication.principal.username}}">마이페이지</a>
+					th:href="@{'/mypage/'+ ${#authentication.principal.username}}">마이페이지</a>
 				</li>
 
 				<li><a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/members/login"
