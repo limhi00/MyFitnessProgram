@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="layout/_layout">
 
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 <title>My Fitness Program - 수업확인</title>
-
-<!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-	rel="stylesheet" />
-
-<!-- Vendor CSS Files -->
-<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
-<link href="assets/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet" />
-<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-	rel="stylesheet" />
-<link href="assets/vendor/boxicons/css/boxicons.min.css"
-	rel="stylesheet" />
-<link href="assets/vendor/glightbox/css/glightbox.min.css"
-	rel="stylesheet" />
-<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
-<!-- Template Main CSS File -->
-<link href="assets/css/style_board.css" rel="stylesheet">
-<script type="text/javascript">
-	function cancel() {
-		window.close();
+<script>
+	function classCancel() {
+		form = document.getElementById("classCheckForm");
+		form.action="/classCancel";
+		form.submit();
+	}
+	function getclassDiary(){
+		form = document.getElementById("classCheckForm");
+		form.action="/insertClassDiaryView";
+		form.submit();
 	}
 </script>
+<style>
+body{
+	font-size: 20px
+}
+</style>
 </head>
 <body>
+<div layout:fragment="content">
+	<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center"> 
+					<h2>수업 예약</h2>
+					<ol>
+						<li><a href="/classCalendar">수업 예약</a></li>
+						<li>수업 예약</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
 	<section class="myContent">
 		<div class="container reservation">
 			<main>
@@ -44,29 +51,34 @@
 				<div class="row g-3 justify-content-center">
 					<div class="col-md-7 col-lg-8">
 						<hr class="mb-5">
-						<h4 class="mb-5">2022.08.05.WED</h4>
-						<form class="needs-validation" novalidate>
+						<h4 class="mb-5">
+						</h4>
+						<form id="classCheckForm" class="needs-validation" name="classCheckForm" novalidate method="get">
+						<input type="hidden" th:value='${reservation.rseq}' name="rseq">
+						<!-- <input type="hidden" th:value="${reservation.member.password}" name="password">-->
 							<div class="row g-3">
 
 								<div class="col-md-6">
 									<label class="form-label">회원명</label>
-									<input type="text" readonly class="form-control-plaintext fw-bolder" value="홍길동" required>
+									<input name="member" id="member" type="text" th:value="${reservation.member.name}" readonly class="form-control-plaintext fw-bolder">
 								</div>
 
 								<div class="col-md-8">
 									<label class="form-label">회원 전화번호</label>
-									<input type="text" readonly class="form-control-plaintext fw-bold" value="010-1234-1234" required>
+									<input type="text" readonly class="form-control-plaintext fw-bold" th:value='${reservation.member.phone}' required>
 								</div>
 
 								<div class="col-5">
 									<label class="form-label">시간 선택</label> 
-									<input type="text" readonly class="form-control-plaintext mb-5 fw-bold bg-danger bg-opacity-25 text-dark" value="12:00 ~ 12:50" required>
+									<input type="text" readonly class="form-control-plaintext mb-5 fw-bold bg-danger bg-opacity-25 text-dark" th:value="${reservation.classTime}+':00 ~ '+${reservation.classTime}+':50'" required>
 								</div>
 							</div>
 
 							<div class="bt_wrap">
-								<button class="btItem" type="submit" >예약 취소</button>
-								<button class="btItem" onclick="cancel()" type="button">뒤로 가기</button>
+								<button class="btItem" onclick="classCancel()" >예약취소</button>
+								<a href="/classCalendarView" sec:authorize="hasAnyRole('ROLE_MEMBER')" class="btItem" style="width:150px;">달력으로 이동</a>
+								<a href="/classScheduleView" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')" class="btItem" style="width:150px;">수업시간표로 이동</a>
+								<a th:href="@{/getClassDiary(rseq=${reservation.rseq})}" class="btItem">수업일지</a>
 							</div>
 						</form>
 					</div>
@@ -74,6 +86,6 @@
 			</main>
 		</div>
 	</section>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</div>
 </body>
 </html>

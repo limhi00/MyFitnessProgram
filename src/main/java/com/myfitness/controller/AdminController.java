@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.myfitness.domain.Board;
 import com.myfitness.domain.Category;
 import com.myfitness.domain.Member;
 import com.myfitness.domain.Report;
@@ -20,6 +21,7 @@ import com.myfitness.service.BoardService;
 import com.myfitness.service.MemberService;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 	
 	@Autowired
@@ -98,32 +100,41 @@ public class AdminController {
 		
 		return "admin/reportView";
 	}
+	
+	@RequestMapping("/deleteBoardAdmin")
+	public String deleteBoardAdmin(Board board) {
+		
+		boardService.deleteBoard(board);
+		
+		return "redirect:/admin/reportBoardList";
+	}
 
 	// 트레이너 관리
 	@GetMapping("/trainerManagement")
-	public String trainerManagementView(Model model,
-			@PageableDefault(page=0, size=20, sort="createDate", direction=Sort.Direction.DESC) Pageable pageable,
+	public String trainerManagementView(Model model, String role, 
+			@PageableDefault(page=0, size=20, sort="name", direction=Sort.Direction.DESC) Pageable pageable,
 			   String searchSelect, String searchKeyword) {
 		
 		Page<Member> memberList = null;
+		role = "ROLE_TRAINER";
 		
 		if(searchSelect == null) {
-			memberList = memberService.getMemberList(pageable);
+			memberList = memberService.getRoleList(role, pageable);
 		} else {
 			if(searchSelect.equals("name")) {
 				if(searchKeyword == null) {
-					memberList = memberService.getMemberList(pageable);
+					memberList = memberService.getRoleList(role, pageable);
 				} else {
-					memberList = memberService.getSearchNameMemberList(searchKeyword, pageable);
+					memberList = memberService.getSearchNameMemberList(role, searchKeyword, pageable);
 				}
 			} else if(searchSelect.equals("phone")) {
 				if(searchKeyword == null) {
-					memberList = memberService.getMemberList(pageable);
+					memberList = memberService.getRoleList(role, pageable);
 				} else {
-					memberList = memberService.getSearchPhoneMemberList(searchKeyword, pageable);
+					memberList = memberService.getSearchPhoneMemberList(role, searchKeyword, pageable);
 				}
 			} else {
-				memberList = memberService.getMemberList(pageable);
+				memberList = memberService.getRoleList(role, pageable);
 			}
 		}
 		int nowPage = memberList.getPageable().getPageNumber() + 1;
@@ -140,29 +151,30 @@ public class AdminController {
 	
 	// 회원 관리
 	@GetMapping("/userManagement")
-	public String userManagementView(Model model,
-			@PageableDefault(page=0, size=20, sort="createDate", direction=Sort.Direction.DESC) Pageable pageable,
+	public String userManagementView(Model model, String role,
+			@PageableDefault(page=0, size=20, sort="name", direction=Sort.Direction.DESC) Pageable pageable,
 			   String searchSelect, String searchKeyword) {
 		
 		Page<Member> memberList = null;
+		role = "ROLE_MEMBER";
 		
 		if(searchSelect == null) {
-			memberList = memberService.getMemberList(pageable);
+			memberList = memberService.getRoleList(role, pageable);
 		} else {
 			if(searchSelect.equals("name")) {
 				if(searchKeyword == null) {
-					memberList = memberService.getMemberList(pageable);
+					memberList = memberService.getRoleList(role, pageable);
 				} else {
-					memberList = memberService.getSearchNameMemberList(searchKeyword, pageable);
+					memberList = memberService.getSearchNameMemberList(role, searchKeyword, pageable);
 				}
 			} else if(searchSelect.equals("phone")) {
 				if(searchKeyword == null) {
-					memberList = memberService.getMemberList(pageable);
+					memberList = memberService.getRoleList(role, pageable);
 				} else {
-					memberList = memberService.getSearchPhoneMemberList(searchKeyword, pageable);
+					memberList = memberService.getSearchPhoneMemberList(role, searchKeyword, pageable);
 				}
 			} else {
-				memberList = memberService.getMemberList(pageable);
+				memberList = memberService.getRoleList(role, pageable);
 			}
 		}
 		int nowPage = memberList.getPageable().getPageNumber() + 1;

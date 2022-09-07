@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout/_layout">
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  layout:decorate="layout/_layout">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>My Fitness Program - 게시글 상세</title>
-<!-- 작성하는 페이지에 별도의 CSS가 필요하면 추가. -->
+<title>My Fitness Program - 수업취소</title>
+<!-- Template Main CSS File -->
 <link href="assets/css/style_board.css" rel="stylesheet">
 </head>
 <body>
@@ -82,6 +83,7 @@
 								<a th:href="@{/updateBoard(bseq=${board.bseq})}" class="btItem">수정</a>
 								<a href="" onclick="reportPopup()" class="btItem">신고</a>
 								<a href="" onclick="deletePopup()" class="btItem">삭제</a>
+								<a th:href="@{/admin/deleteBoardAdmin(bseq=${board.bseq})}" class="btItem"  sec:authorize="hasRole('ROLE_ADMIN')" style="width:100px;">관리자 삭제</a>
 							</div>
 							<script type="text/javascript">
 								function deletePopup(){

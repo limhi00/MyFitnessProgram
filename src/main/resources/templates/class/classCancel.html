@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/_layout">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -13,48 +13,33 @@
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 	rel="stylesheet" />
 
-<!-- Vendor CSS Files -->
-<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
-<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
 <!-- Template Main CSS File -->
 <link href="assets/css/style_board.css" rel="stylesheet">
-<script>
-	function deleteClassPopup() {
-		var seq = document.getElementById("rseq").value;
-		var mPwd = document.getElementById("mPwd").value;
-		var mPwd2 = document.getElementById("mPwdPut").value;
-		
-		if(mPwd == mPwd2) {
-			var returnValue = confirm('예약을 취소하시겠습니까?');
-			if(returnValue) {
-				alert('취소되었습니다.')
-				location.href="/deleteClassCheck?rseq"+rseq;
-				self.close();
-			} else {
-				
-			}
-		} else {
-			alert("비밀번호가 일치하지 않습니다.");
-		}
-	}
-	
-	function cancel() {
-		window.close();
-	}
-</script>
+<style>
+body{
+	font-size: 20px
+}
+</style>
 </head>
 <body>
-
+		<section class="breadcrumbs">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>에약 취소</h2>
+					<ol>
+						<li><a href="/classCalendar">수업 예약</a></li>
+						<li>에약 취소</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
 	<section class="myContent">
 		<div class="container reservation">
-			<form>
-				<input type="hidden" th:value="${reservation.rseq}" id="rseq">
-				<input type="hidden" th:value="${member.password}" id="mPwd">
+			<div layout:fragment="content">
+			<form th:action="@{/classCancel}" method="post">
+				<input type="hidden" th:value="${reservation.rseq}" name="rseq" id="rseq">
 				<div class="py-5 text-center">
 					<h2 class="">비밀번호 확인</h2>
 					<hr class="mt-4">
@@ -63,15 +48,19 @@
 					<div class="text-center">
 						<div class="mx-auto">
 							<label class="form-label">회원 비밀번호</label>
-							<input type="text" id="mPwdPut" class="border border-secondary ms-3 mb-5" required>
+							<input type="password" id="mPwdPut" name="password" class="border border-secondary ms-3 mb-5" required >
 						</div>
 						<div class="bt_wrap">
-							<a href="" onclick="deleteClassPopup()" class="btItem">예약취소</a>
-							<a href="" onclick="cancel()" class="btItem">취소</a>
+							<button class="btItem" type="submit">예약취소</button>
+							<input type="reset" class="btItem" value="취소">
+						</div>
+						<div>
+							<span style="color:red;" th:text="${message}"></span>
 						</div>
 					</div>
 				</div>
 			</form>
+			</div>
 		</div>
 	</section>
 

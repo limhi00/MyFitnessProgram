@@ -7,7 +7,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>My Fitness Program - 신고글 관리</title>
   <!-- 작성하는 페이지가 CSS가 별도로 필요하면 추가한다. -->
-  <link href="assets/css/style_board.css" rel="stylesheet">
+  <link href="../assets/css/style_board.css" rel="stylesheet">
 </head>
 <body>
 	<div layout:fragment="content">
@@ -18,7 +18,7 @@
 				<div class="d-flex justify-content-between align-items-center">
 					<h2>신고글 목록</h2>
 					<ol>
-						<li><a href="/reportBoardList">신고글 목록</a></li>
+						<li><a href="/admin/reportBoardList">신고글 목록</a></li>
 						<li>게시판 관리</li>
 					</ol>
 				</div>
@@ -41,6 +41,7 @@
 								<div class="cont" th:text="${report.rContent}"></div>
 								<div class="rIndate" th:text="${#dates.format(report.rIndate, 'yyyy-MM-dd hh:mm')}"></div>
 								<div class="bt_wrap">
+									<a href="/admin/reportBoardList" class="btItem">목록</a>
 									<input type="submit" value="해당 게시글로 이동" class="btItem" style="width: 150px;">
 								</div>
 							</form>

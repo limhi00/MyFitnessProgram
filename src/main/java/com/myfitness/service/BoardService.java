@@ -22,7 +22,11 @@ public interface BoardService {
 	
 	Page<Board> getBoardSearchContList(String searchKeyword, Pageable pageable);
 	
-	Page<Board> getBoardSearchCategoryList(String searchKeyword, Pageable pageable);
+	Page<Board> getCategoryBoardList(Long searchCategory, Pageable pageable);
+	
+	Page<Board> getCategoryBoardSearchTitleList(Long searchCategory, String searchKeyword, Pageable pageable);
+	
+	Page<Board> getCategoryBoardSearchContList(Long searchCategory, String searchKeyword, Pageable pageable);
 
 	Board getBoard(Board board);
 	
