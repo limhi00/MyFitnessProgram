@@ -48,10 +48,10 @@
 					th:href="@{'/mypage/'+ ${#authentication.principal.username}}">마이페이지</a>
 				</li>
 
-				<li><a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/members/login"
-					th:href="@{login}">로그인</a></li>
+				<li><a class="getstarted scrollto" sec:authorize="isAnonymous()" href="/login"
+					th:href="@{/login}">로그인</a></li>
 				<li><a class="getstarted scrollto" sec:authorize="isAuthenticated()" href="/logout"
-					th:href="@{logout}">로그아웃</a></li>
+					th:href="@{/logout}">로그아웃</a></li>
 			</ul>
 		</nav>
 		<!-- .navbar -->
