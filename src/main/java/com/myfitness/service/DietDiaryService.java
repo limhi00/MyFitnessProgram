@@ -1,11 +1,16 @@
 package com.myfitness.service;
 
+import java.util.List;
+
 import com.myfitness.domain.DietDiary;
 
 public interface DietDiaryService {
 
-	long insertDietDiary(DietDiary ddiary);
+	List<DietDiary> getDiaryList(String username);
+	
+	DietDiary getDiary(Long dseq);
+	
+	Long insertDiary(DietDiary ddiary);
 
-	DietDiary getDietDiary(DietDiary ddiary);
-
+	void updateDiary(DietDiary ddiary);
 }

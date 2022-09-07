@@ -1,11 +1,15 @@
 package com.myfitness.domain;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,46 +17,27 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude="member")
 @Entity
 public class Reservation {
+	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "RES_ID")
 	private Long rseq;
 	
-//	@ManyToOne
-//	@JoinColumn(name="mid", nullable=false, updatable=false) 
-//	private Member member;
+	@ManyToOne
+	@JoinColumn(name="MEMBER_ID", nullable=false, updatable=false) 
+	@JsonManagedReference
+	private Member member;
 	
-	private Date classDate;
+	private String classDate;
 	
-
-	private int phonenum;
-	
-	// 'yyyyMMdd'형식을 Date형식으로 변환
-	public Date dateFormat(String selectedDate) {
-		SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyyMMdd");
-		Date tempDate = null;
-		
-		try {
-			tempDate = beforeFormat.parse(selectedDate);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return tempDate;
-	}
-	
-	// Date형식을 'yyyy년 MM월 dd일'형식으로 변환
-	public String stringFormat(Date selectedDate) {
-		SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String tempDate = null;
-		
-		tempDate = afterFormat.format(selectedDate);
-		
-		return tempDate;
-	}
-
 	private String classTime;
-
+	
+	private String cTrainer;
+	
+	@OneToOne
+	@JoinColumn(name="CD_ID", updatable=false)
+	private ClassDiary classDiary;
 }

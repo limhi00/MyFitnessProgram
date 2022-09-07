@@ -1,153 +1,201 @@
 package com.myfitness.controller;
 
+import java.security.Principal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myfitness.domain.ClassDiary;
-import com.myfitness.domain.DietDiary;
+import com.myfitness.domain.FullCalendarDto;
+import com.myfitness.domain.Member;
 import com.myfitness.domain.Reservation;
-import com.myfitness.service.ClassDiaryService;
-import com.myfitness.service.DietDiaryService;
+import com.myfitness.service.MemberService;
 import com.myfitness.service.ReservationService;
 
-
-
 @Controller
-public class ClassController<getDiary> {
-	
-
-	@Autowired(required=false)
-	private DietDiaryService ddiaryservice;
+public class ClassController {
 	
 	@Autowired
-	private ReservationService reservice;
+	private ReservationService resService;
 	
 	@Autowired
-	private ClassDiaryService cdiaryservice;
+	private MemberService memService;
 	
-
-	@GetMapping("/afterClassList")
-	public String afterClassListView() {
+	//@Autowired
+	//private classdia
+	@GetMapping("/classCalendar")
+	public String classCalendar() {
 		
-		return "class/afterClassList";
+		return "class/classCalendar";
+	}
+	@GetMapping("/classCalendarView")
+	public String classCalendarView() {
+		
+		return "redirect:/classCalendar";
 	}
 	
-	@GetMapping("/classCancel")
-	public String classCancelView() {
+	@GetMapping("/classCalendarList")
+	@ResponseBody
+	public Map<String, FullCalendarDto> classCalendarList(Principal principal) {
 		
-		return "class/classCancel";
+		Map<String, FullCalendarDto> eventMap = new HashMap<>();
+		List<Reservation> resList = resService.getReservationList(principal.getName());
+		
+		int count = 0;
+		for (Reservation re : resList) {
+			System.out.println("resList" + re);
+			FullCalendarDto vo = new FullCalendarDto();
+			vo.setTitle("수업 확인");
+			vo.setStart(re.getClassDate()+"T"+re.getClassTime()+":00:00");
+			vo.setEnd(re.getClassDate()+"T"+re.getClassTime()+":50:00");
+			vo.setUrl("/classChecking?rseq="+re.getRseq());
+			vo.setColor("#ff4800");
+			vo.setTextColor("#fff");
+			
+			eventMap.put("event"+count, vo);
+			++count;
+		}
+		
+		return eventMap;
 	}
 	
 	@GetMapping("/classChecking")
-	public String classCheckingView() {
+	public String classChecking(@RequestParam("rseq") Long rseq, Model model, Reservation res, RedirectAttributes rattr) {
+		
+		res = resService.getReservation(rseq);
+		String cTrainerName = resService.getCTrainerName(res.getCTrainer());
+		String username = resService.getCTrainerName(res.getMember().getUsername());
+		model.addAttribute("reservation", res);
+		model.addAttribute("cTrainer", cTrainerName);
+		model.addAttribute("username", username);
 		
 		return "class/classChecking";
 	}
 	
-	@GetMapping("/classDiary")
-	public String classDiaryView() {
-		
-		return "class/classDiary";
-	}
-	
 	@GetMapping("/classReservation")
-	public String classReservationView() {
+	public String classReservationView(Principal principal, Model model, @RequestParam String classDate, String role) {
+		
+		model.addAttribute("cTrainerList", resService.getCTrainerList(role));
+		model.addAttribute("name", principal.getName());
+		model.addAttribute("classDate", classDate);
 		
 		return "class/classReservation";
 	}
-	@PostMapping("/insertRes")
-	public String insertResForm(Model model) {
-		model.addAttribute("Reservation", new Reservation());
+	
+	@PostMapping("/classReservation")
+	public String classReservation(RedirectAttributes rattr, Reservation res  ) {
 		
-		return "Reservation/insertRes";
+		Long rseq = resService.insertReservation(res);
+		rattr.addAttribute("rseq", rseq);
+		
+		return "redirect:/classChecking";
 	}
 	
 	
-	@GetMapping("/classSchedule")
-	public String classScheduleView() {
+	@GetMapping("/classCancel")
+	public String classCancleView(Model model, Reservation res,  @RequestParam("rseq") Long rseq,RedirectAttributes rattr, Member mem) {
 		
-		return "class/classSchedule";
+		//mem = memService.getMember(password);
+		res = resService.getReservation(rseq);
+		model.addAttribute("reservation", res);
+		rattr.addAttribute("rseq", rseq);
+		//rattr.addAttribute("password", password);
+		
+		return "class/classCancel";
 	}
 	
-	@GetMapping("/dietCalendar")
-	public String dietCalendarView() {
+	@PostMapping("/classCancel")
+	public String classCancle(Reservation res, @RequestParam("password") String password, Principal principal, Model model) {
+		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+		//String encodedPwd = pwdEncoder.encode(password); // 화면에서 입력된 비밀번호를 암호화
 		
-		return "diet/dietCalendar";
+		Member member = memService.getMember(principal.getName());
+		
+		if(member != null && pwdEncoder.matches(password, member.getPassword())) {
+			resService.deleteReservation(res);
+			return "redirect:/classCalendarView";
+		} else {
+			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
+			return "class/classCancel";
+		}	
 	}
 	
-	@GetMapping("/getDiary")
-	public String getDiary(@RequestParam("dseq") long dseq, DietDiary ddiary, Model model){
-		System.out.println("dseq=" + dseq);
-		ddiary.setDseq(dseq);
-		model.addAttribute("ddiary", ddiaryservice.getDietDiary(ddiary));
+	@GetMapping("/getClassDiary")
+	public String getClassDiary(Long rseq, ClassDiary cDiary, Model model) {
 		
-		return "diet/getDiary";
+		cDiary = resService.getClassDiary(rseq);
+//		System.out.println("get rseq="+rseq);
+//		System.out.println("get cDiary="+cDiary);
+		cDiary.setReservation(resService.getReservation(rseq));
+		model.addAttribute("cDiary", cDiary);
+		
+		return "class/getClassDiary";
 	}
 	
-	@GetMapping("/insertGetDiary")
-	public String insertGetDiaryForm(Model model ,DietDiary ddiary) {
-		model.addAttribute("insertGetDiary", new DietDiary());
+	@RequestMapping("/insertClassDiaryView")
+	public String insertClassDiaryView(Long rseq, ClassDiary cDiary, Model model) {
 		
-		return "class/insertGetDiary";	
+		cDiary = resService.getClassDiary(rseq);
+		System.out.println("rseq="+rseq);
+		System.out.println("insertView cDiary="+cDiary);
+		model.addAttribute("cDiary", cDiary);
 		
-	}
-	
-	@PostMapping("/insertGetDiary")
-	public String insertGetDiary(DietDiary ddiary,RedirectAttributes redirectAttributes) {
-		
-		System.out.println("Diary =" + ddiary);
-		long dseq = ddiaryservice.insertDietDiary(ddiary);
-		System.out.println("insertGetDiary() : dseq="+dseq);
-		redirectAttributes.addAttribute("dseq", dseq);
-		
-		return "redirect:/getDiary";
-	}
-	
-	@GetMapping("/howToClassCalendar")
-	public String howToClassCalendarView() {
-		
-		return "class/howToClassCalendar";
-	}
-	
-	@GetMapping("/classCalendar")
-	public String classCalendarView() {
-		
-		return "class/classCalendar";
-	}
-	
-	@GetMapping("/checkCalendar")
-	public String checkCalendarView() {
-		
-		return "class/checkCalendar";
-	}
-	
-	@GetMapping("/resCalendar")
-	public String resCalendarView() {
-		
-		return "class/resCalendar";
-	}
-	
-	@GetMapping("/insertClassDiary")
-	public String insertClassDiaryForm(Model model) {
-		model.addAttribute("insertClassDiary", new ClassDiary());
-		
-		return "class/insertClassDiary";	
-		
+		return "class/insertClassDiary";
 	}
 	
 	@PostMapping("/insertClassDiary")
-	public String insertClassDiary(ClassDiary cdiary) {
-		cdiaryservice.insertcdiary(cdiary);
+	public String insertClassDiary(Long rseq, ClassDiary cDiary, RedirectAttributes rattr) {
 		
-		return "redirect:classDiary";
+//		System.out.println("insertCDiary rseq="+rseq);
+		ClassDiary cd = resService.findClassDiary(resService.getReservation(rseq));
+		cd.setContent(cDiary.getContent());
+//		System.out.println("insert cDiary="+cDiary);
+		resService.insertClassDiary(cDiary);
+		rattr.addAttribute("rseq", rseq);
+		
+		return "redirect:/getClassDiary";
 	}
 	
+	@GetMapping("/classScheduleView")
+	public String classScheduleView() {
+		
+		return "trainer/classSchedule";
+	}
 	
+	@GetMapping("/classScheduleList")
+	@ResponseBody
+	public Map<String, FullCalendarDto> classScheduleList(Principal principal) {
+		
+		Map<String, FullCalendarDto> eventMap = new HashMap<>();
+		List<Reservation> resList = resService.getTrainerReservationList(principal.getName());
+		
+		int count = 0;
+		for (Reservation re : resList) {
+			FullCalendarDto vo = new FullCalendarDto();
+			vo.setTitle("수업 확인");
+			vo.setStart(re.getClassDate()+"T"+re.getClassTime()+":00:00");
+			vo.setEnd(re.getClassDate()+"T"+re.getClassTime()+":50:00");
+			vo.setUrl("/classChecking?rseq="+re.getRseq());
+			vo.setColor("#ff4800");
+			vo.setTextColor("#fff");
+			
+			eventMap.put("event"+count, vo);
+			++count;
+		}
+		
+		return eventMap;
+	}
 	
 }
