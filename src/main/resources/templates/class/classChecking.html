@@ -10,11 +10,16 @@
 <title>My Fitness Program - 수업확인</title>
 <script type="text/javascript">
 	function classCancel() {
+		/*
 		var seq = document.getElementById("rseq").value;
 		var url = "/classCancelView?rseq="+seq;
 		var name = "classCancel";
 		var features = "fullscreen=no,menubar=no,status=no,toolbar=no,titlebar=no,location=no,scrollbar=auto,width=800,height=500,top=200,left=600";
-		window.open(url, name, features);
+		window.open(url, name, features);1
+		*/
+		form = document.getElementById("classCheckForm");
+		form.action="/classCancelView";
+		form.submit();
 	}
 </script>
 </head>
@@ -43,7 +48,7 @@
 						<hr class="mb-5">
 						<h4 class="mb-5">
 						</h4>
-						<form class="needs-validation" novalidate>
+						<form id="classCheckForm" name="classCheckForm" class="needs-validation" novalidate>
 							<input type="hidden" th:value="${reservation.rseq}" name="rseq" id="rseq">
 							<div class="row g-3">
 								<div class="col-md-6 mx-5 my-3">
@@ -68,7 +73,7 @@
 							</div>
 
 							<div class="bt_wrap mx-5 my-5">
-								<a href="" onclick="classCancel()" class="btItem">예약취소</a>
+								<button onclick="classCancel()" class="btItem">예약취소</button>
 								<a href="/classCalendarView" sec:authorize="hasAnyRole('ROLE_MEMBER')" class="btItem" style="width:150px;">달력으로 이동</a>
 							<a href="/classScheduleView" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')" class="btItem" style="width:150px;">수업시간표로 이동</a>
 								<a th:href="@{/getClassDiary(rseq=${reservation.rseq})}" class="btItem">수업일지</a>
